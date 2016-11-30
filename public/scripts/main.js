@@ -7,7 +7,8 @@
 
     const REQ = [
         'ngAnimate',
-        'ngCookies'
+        'ngCookies',
+        'PhotoCapture'
     ];
 
     angular.module('Chochbuech', REQ)
@@ -15,42 +16,29 @@
             return { restrict: 'E', replace: true, templateUrl: 'templates/photo-site.html' }
         })
         .controller('photo', ['$scope', '$http', '$element', function($scope, $http, $element) {
-
-            let video = $element.find('video')[0];
-            let canvas = $element.find('canvas')[0];
-            let image = $element.find('img')[0];
+            let image = $element.find('img');
 
             $scope.images = [];
             $scope.mode = 0;
+            $scope.error = '';
+            navigator.mediaDevices.enumerateDevices()
+                .then(function(devices) {
+                    $scope.error = devices.filter(d => d.kind == 'videoinput').map(d => d.label).join(' & ');
+                }).catch(e => $scope.error = e.message);
 
             refresh();
 
-
-            $scope.take = function () {
-                let context = canvas.getContext('2d');
-                context.drawImage(video, 0, 0, 200, 200);
-                let data = canvas.toDataURL('image/png');
-                image.setAttribute('src', data);
-
-                try {
-                    $http.post('/addImage', data);
-                } catch (e) {$scope.error = e.message;}
-            };
+            $scope.$on('photo', function (e, img) {
+                image.css({ width: img.width+'px', height: img.height+'px' });
+                image.attr('src', img.photo);
+                $http.post('/addImage', img.photo);
+            });
 
             function refresh() {
                 $http.get('/image-list').then(function (res) {
                     $scope.images = res.data;
                 });
             }
-
-
-            let options = { audio: false, video: { facingMode: { exact: "environment" } } };
-
-            navigator.mediaDevices.getUserMedia(options)
-                .then(function(stream) {
-                    video.src = window.URL.createObjectURL(stream);
-                    video.play();
-                }).catch(e => $scope.error = e.message);
         }])
 })();
 

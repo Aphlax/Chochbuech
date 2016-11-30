@@ -8,10 +8,9 @@
         <button ng-click="mode = 1">Add</button>
     </div>
     <div class="take-photo" ng-show="mode == 1">
-        <div class="video"><video></video></div>
-        <canvas class="video-take"></canvas>
-        <button ng-click="take(); mode = 2">Save</button>
-        <button ng-click="mode = 0">Back</button>
+        <div class="video"><photo-capture></photo-capture></div>
+        <button ng-click="$root.$broadcast('capture'); mode = 2">Save</button>
+        <button ng-click="refresh(); mode = 0">Back</button>
     </div>
     <img class="show-photo" ng-show="mode == 2" ng-click="mode = 1"/>
 </div>

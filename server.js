@@ -41,7 +41,10 @@ app.get('/image-list', function(req, res) {
 });
 app.get('/images/:id', function(req, res) {
     db.collection('images').find({ _id: req.params.id }).toArray(function(e, data) {
-        res.json(data[0].data).end();
+        if (data.length)
+            res.json(data[0].data).end();
+        else
+            res.status(404);
     });
 });
 app.post('/addImage', function(req, res) {
