@@ -10,20 +10,30 @@ angular.module('PhotoCapture', [])
             restrict: 'E',
             replace: true,
             template: '<video autoplay></video>',
+            scope: { width: '=?', height: '=?' },
             link: function(scope, element, attrs, controller) {
                 scope.photo = null;
-                scope.width = 720;
-                scope.height = 0;
+                scope.width = attrs.width || 360;
+                scope.height = attrs.height || 0;
                 let canvas = angular.element('<canvas/>')[0];
                 let video = element[0];
 
                 let options = { audio: false, video: { facingMode: "environment" } };
 
-                navigator.mediaDevices.getUserMedia(options)
-                    .then(function(stream) {
-                        video.src = window.URL.createObjectURL(stream);
-                        video.play();
-                    }).catch(e => console.error(e.message));
+                navigator.mediaDevices.enumerateDevices()
+                    .then(function(devices) {
+                        let dev = devices.find(d => d.kind == 'videoinput' &&
+                            (d.label.indexOf('rear') != -1 || d.label.indexOf('back') != -1));
+                        let options = { audio: false, video: { facingMode: "environment" } };
+                        if (dev)
+                            options.video = { deviceId: dev.deviceId };
+
+                        navigator.mediaDevices.getUserMedia(options)
+                            .then(function(stream) {
+                                video.src = window.URL.createObjectURL(stream);
+                                video.play();
+                            }).catch(console.error);
+                    }).catch(console.error);
 
                 video.addEventListener('canplay', function(){
                     scope.height = video.videoHeight / (video.videoWidth/scope.width);

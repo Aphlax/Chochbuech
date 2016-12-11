@@ -21,17 +21,25 @@
             $scope.images = [];
             $scope.mode = 0;
             $scope.error = '';
-            navigator.mediaDevices.enumerateDevices()
-                .then(function(devices) {
-                    $scope.error = devices.filter(d => d.kind == 'videoinput').map(d => d.label).join(' & ');
-                }).catch(e => $scope.error = e.message);
 
             refresh();
 
             $scope.$on('photo', function (e, img) {
                 image.css({ width: img.width+'px', height: img.height+'px' });
                 image.attr('src', img.photo);
-                $http.post('/addImage', img.photo);
+                $scope.error = img.photo.length;
+
+                try{
+                    let data = new FormData();
+                    data.append('file', img.photo.substring('data:image/png;base64,'.length));
+                    $http.post('/addImage', data, {
+                        transformRequest: angular.identity,
+                        header:{'Content-Type': undefined},
+                        enctype:'multipart/form-data'
+                    });
+                } catch(e) {$scope.error = e.message;}
+
+                // $http.post('/addImage', { data: img.photo});
             });
 
             function refresh() {

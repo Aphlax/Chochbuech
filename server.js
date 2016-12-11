@@ -15,12 +15,15 @@ let express = require('express');
 let app = express();
 let http = require('http');
 let https = require('https');
+let multer = require('multer');
 let mongo = require('mongodb').MongoClient;
 let fs = require('fs');
+let readline = require('readline');
 
 let sec = { key: fs.readFileSync('key.pem'), cert: fs.readFileSync('cert.pem') };
 
 app.use(express.static('public'));
+
 app.get('/', function(req, res) {
     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
     res.sendFile(__dirname + '/public/index.html');
@@ -44,12 +47,14 @@ app.get('/images/:id', function(req, res) {
         if (data.length)
             res.json(data[0].data).end();
         else
-            res.status(404);
+            res.status(404).end();
     });
 });
-app.post('/addImage', function(req, res) {
+app.post('/addImage', multer().single('file'), function(req, res) {
 
-    db.collection('images').insertMany([{ data: 9 }])
+
+
+    db.collection('images').insertMany([])
         .then(() => res.status(200).end());
 });
 

@@ -1,10 +1,11 @@
 <div class="photo-site" ng-controller="photo">
     <div class="debug">{{error}}</div>
-    <div class="list" ng-show="mode == 0" ng-init="reload()">
-        <div class="item" ng-repeat="item in images">
-            <img ng-src="/images/{{item.id}}"/>
+    <div class="image-list" ng-show="mode == 0" ng-init="reload()">
+        <div class="list">
+            <div class="item" ng-repeat="item in images">
+                <img ng-src="/images/{{item.id}}"/>
+            </div>
         </div>
-        <div class="free-space"></div>
         <button ng-click="mode = 1">Add</button>
     </div>
     <div class="take-photo" ng-show="mode == 1">
