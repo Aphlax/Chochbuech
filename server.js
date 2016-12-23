@@ -51,11 +51,7 @@ app.get('/images/:id', function(req, res) {
     });
 });
 app.post('/addImage', multer().single('file'), function(req, res) {
-
-
-
-    db.collection('images').insertMany([])
-        .then(() => res.status(200).end());
+    let a = req.file;
 });
 
 
