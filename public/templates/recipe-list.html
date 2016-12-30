@@ -1,0 +1,17 @@
+<div class="recipe-list-site">
+    <md-toolbar class="header">
+        <h2 class="title">Recipes</h2>
+
+    </md-toolbar>
+    <div class="site">
+        <div class="recipe-list">
+            <div class="recipe-list-item" ng-repeat="recipe in recipes">
+                <div class="image" back-img="/images/{{recipe.imageId}}.png"></div>
+                <div class="tags">
+                    <span class="tag" ng-repeat="tag in recipe.tags">{{tag}}</span>
+                </div>
+                <div class="name">{{recipe.name}}</div>
+            </div>
+        </div>
+    </div>
+</div>

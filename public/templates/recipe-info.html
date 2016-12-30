@@ -1,0 +1,19 @@
+<div class="recipe-info-site">
+    <md-toolbar class="header">
+        <md-button class="md-icon-button">Delete</md-button>
+    </md-toolbar>
+    <div class="site">
+        <md-input-container>
+            <label>Name</label>
+            <input ng-model="recipe.name">
+        </md-input-container>
+        <md-input-container>
+            <label>Tags</label>
+            <md-chips ng-model="recipe.tags"></md-chips>
+        </md-input-container>
+        <md-input-container>
+            <label>Last prepared</label>
+            <input ng-model="recipe.last" readonly="readonly">
+        </md-input-container>
+    </div>
+</div>

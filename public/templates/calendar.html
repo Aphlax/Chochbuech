@@ -1,0 +1,18 @@
+<div class="calendar-site">
+    <md-toolbar class="header">
+        <h2 class="title">Calendar</h2>
+    </md-toolbar>
+    <div class="site">
+        <div class="calendar-item" ng-repeat="item in calendar"
+             ng-class="{ saturday: (item.date | isSaturday), sunday: (item.date | isSunday), today: (item.date | isToday) }">
+            <div class="image" ng-show="item.recipe" back-img="/images/{{item.recipe.imageId}}.png"></div>
+            <div class="tags" ng-show="item.recipe">
+                <span class="tag" ng-repeat="tag in item.recipe.tags">{{tag.name}}</span>
+            </div>
+            <div class="name" ng-show="item.recipe">{{item.recipe.name}}</div>
+            <div class="date" ng-show="item.recipe">{{item.date | datify}}</div>
+            <div class="image no-recipe" ng-show="!item.recipe"></div>
+            <div class="name no-recipe" ng-show="!item.recipe">Add...</div>
+        </div>
+    </div>
+</div>

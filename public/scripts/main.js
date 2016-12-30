@@ -6,6 +6,7 @@
     "use strict";
 
     const REQ = [
+        'ngRoute',
         'ngAnimate',
         'ngCookies',
         'ngMaterial',
@@ -16,25 +17,39 @@
         .directive('photoSite', function() {
             return { restrict: 'E', replace: true, templateUrl: 'templates/photo-site.html' }
         })
-        .directive('app', function() {
-            return { restrict: 'E', replace: true, templateUrl: 'templates/app.html' }
-        })
         .value('C', {
             SITES: { RecipeList: 'recipe-list', RecipeInfo: 'recipe-info', Calendar: 'calendar' }
         })
+        .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+            $routeProvider
+                .when('/calendar', {
+                    templateUrl: 'templates/calendar.html',
+                    controller: 'calendarController'
+                })
+                .when('/recipe-list', {
+                    templateUrl: 'templates/recipe-list.html',
+                    controller: 'recipeListController'
+                })
+                .when('/recipe-info/:recipeId', {
+                    templateUrl: 'templates/recipe-info.html',
+                    controller: 'recipeInfoController'
+                });
+            $locationProvider.html5Mode(false);
+        }])
         .controller('main', ['$scope', '$http', 'C', function($scope, $http, C) {
             $scope.C = C;
-            $scope.site = C.SITES.Calendar;
 
+            $scope.recipes = [{ name: 'Spaghetti', tags: [], imageId: '99A9', last: new Date() }];
+        }])
+        .controller('calendarController', ['$scope', '$http', 'C', function($scope, $http, C) {
             $scope.calendar = [{
                 date: new Date(),
-                recipe: { name: 'Spaghetti', tags: [], imageURL: '' }
+                recipe: { name: 'Spaghetti', tags: [], imageId: '99A9' }
             }];
-
+        }])
+        .controller('recipeListController', ['$scope', '$http', 'C', function($scope, $http, C) { }])
+        .controller('recipeInfoController', ['$scope', '$http', 'C', function($scope, $http, C) {
             $scope.recipe = { name: 'Spaghetti', tags: [], imageURL: '', last: new Date() };
-
-            //ngRoute
-
         }])
         .controller('photo', ['$scope', '$http', '$element', function($scope, $http, $element) {
             let image = $element.find('img');
@@ -68,27 +83,6 @@
                     $scope.images = res.data;
                 });
             }
-        }])
-        .filter('datify', ['dateFilter', function(dateFilter) {
-            return function(date) {
-                let diff = Math.round((date - new Date()) / (1000 * 60 * 60 * 24));
-                switch (diff) {
-                    case -1: return 'Yesterday';
-                    case 0: return 'Today';
-                    case 1: return 'Tomorrow';
-                    default: return dateFilter(date, "d.M.yy");
-                }
-            }
-        }])
-        .directive('backImg', function(){
-            return function(scope, element, attrs){
-                attrs.$observe('backImg', function(value) {
-                    element.css({
-                        'background-image': 'url(' + value +')',
-                        'background-size' : 'cover'
-                    });
-                });
-            };
-        });
+        }]);
 })();
 
