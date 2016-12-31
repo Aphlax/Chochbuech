@@ -50,6 +50,25 @@ app.get('/images/:id', function(req, res) {
             res.status(404).end();
     });
 });
+
+function date(day) {
+    let date = new Date();
+    date.setDate(date.getDate() + day);
+    date.setHours(0, 0, 0, 0);
+    return date;
+}
+
+app.get('/calendar', function(req, res) {
+    let start = Number(req.query.start) || 0;
+    let end = Math.min(Math.max(start, Number(req.query.end)), start + 371) || 0;
+
+    let mockdata = [];
+    for (let i = start; i <= end; i++){
+        mockdata.push({ date: date(i), recipe: null });
+    }
+
+    res.json(mockdata).end();
+});
 app.post('/addImage', multer().single('file'), function(req, res) {
     let a = req.file;
 });

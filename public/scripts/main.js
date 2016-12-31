@@ -14,11 +14,11 @@
     ];
 
     angular.module('Chochbuech', REQ)
-        .directive('photoSite', function() {
-            return { restrict: 'E', replace: true, templateUrl: 'templates/photo-site.html' }
-        })
         .value('C', {
             SITES: { RecipeList: 'recipe-list', RecipeInfo: 'recipe-info', Calendar: 'calendar' }
+        })
+        .directive('photoSite', function() {
+            return { restrict: 'E', replace: true, templateUrl: 'templates/photo-site.html' }
         })
         .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
             $routeProvider
@@ -42,10 +42,14 @@
             $scope.recipes = [{ name: 'Spaghetti', tags: [], imageId: '99A9', last: new Date() }];
         }])
         .controller('calendarController', ['$scope', '$http', 'C', function($scope, $http, C) {
-            $scope.calendar = [{
-                date: new Date(),
-                recipe: { name: 'Spaghetti', tags: [], imageId: '99A9' }
-            }];
+            $scope.calendarStart = -6;
+            $scope.calendarEnd = 14;
+            $scope.calendar = [];
+
+            $http.get('/calendar', { params: { "start": $scope.calendarStart, "end": $scope.calendarEnd } })
+                .then(function(res) {
+                    $scope.calendar = res.data;
+                });
         }])
         .controller('recipeListController', ['$scope', '$http', 'C', function($scope, $http, C) { }])
         .controller('recipeInfoController', ['$scope', '$http', 'C', function($scope, $http, C) {

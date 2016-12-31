@@ -9,23 +9,33 @@
     angular.module('Chochbuech')
         .filter('datify', ['dateFilter', function(dateFilter) {
             return function(date) {
-                let diff = Math.round((date - new Date()) / (1000 * 60 * 60 * 24));
+                date = new Date(date);
+                let now = new Date();
+                now.setHours(0, 0, 0, 0);
+                let diff = Math.round((date - now) / (1000 * 60 * 60 * 24));
                 switch (diff) {
                     case -1: return 'Yesterday';
                     case 0: return 'Today';
                     case 1: return 'Tomorrow';
-                    default: return dateFilter(date, "d.M.yy");
                 }
+                if (date.getFullYear() == now.getFullYear())
+                    return dateFilter(date, "d. MMM");
+                else
+                    return dateFilter(date, "d. MMM yyyy");
             }
         }])
         .filter('isSaturday', [function() {
-            return date => date.getDay() == 6;
+            return date => new Date(date).getDay() == 6;
         }])
         .filter('isSunday', [function() {
-            return date => date.getDay() == 0;
+            return date => new Date(date).getDay() == 0;
         }])
         .filter('isToday', [function() {
-            return date => !Math.round((date - new Date()) / (1000 * 60 * 60 * 24));
+            return date => {
+                let now = new Date();
+                now.setHours(0, 0, 0, 0);
+                return !Math.round((new Date(date) - now) / (1000 * 60 * 60 * 24));
+            };
         }])
         .directive('backImg', function(){
             return function(scope, element, attrs){
