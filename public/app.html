@@ -6,7 +6,11 @@
     <base href="/app.html">
 
     <!-- style sheets -->
-    <link rel="stylesheet" href="templates/photo-site.css">
+    <link rel="stylesheet" href="styles/calendar.css">
+    <link rel="stylesheet" href="styles/angular-material.min.css">
+
+    <!-- jQuery -->
+    <script src="scripts/lib/jquery-3.1.1.min.js"></script>
 
     <!-- Angular.js Libraries -->
     <script src="scripts/lib/angular.min.js"></script>
@@ -22,8 +26,6 @@
     <script src="scripts/photo-capture.js"></script>
 </head>
 <body ng-app="Chochbuech" ng-controller="main">
-    <a href="#/calendar">Calendar</a>
-    <a href="#/recipe-list">Recipes</a>
     <ng-view></ng-view>
 </body>
 </html>

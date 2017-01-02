@@ -22,7 +22,8 @@
         })
         .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
             $routeProvider
-                .when('/calendar', {
+                //.when('/calendar', {
+                .otherwise({
                     templateUrl: 'templates/calendar.html',
                     controller: 'calendarController'
                 })
@@ -41,19 +42,49 @@
 
             $scope.recipes = [{ name: 'Spaghetti', tags: [], imageId: '99A9', last: new Date() }];
         }])
-        .controller('calendarController', ['$scope', '$http', 'C', function($scope, $http, C) {
+        .controller('calendarController', ['$scope', '$http', 'C', '$timeout', function($scope, $http, C, $timeout) {
             $scope.calendarStart = -6;
             $scope.calendarEnd = 14;
             $scope.calendar = [];
+            $scope.setup = true;
+
+            $scope.setupCalendar = function(data) {
+                $scope.calendar = [];
+
+                function date(day) {
+                    let date = new Date();
+                    date.setDate(date.getDate() + (day || 0));
+                    date.setHours(0, 0, 0, 0);
+                    return date;
+                }
+
+                for(let i = $scope.calendarStart; i <= $scope.calendarEnd; i++) {
+                    let day = { date: date(i) };
+                    let dataDay = data.find(item => new Date(item.date).valueOf() == day.date.valueOf());
+                    if (dataDay)
+                        $scope.calendar.push(dataDay);
+                    else
+                        $scope.calendar.push(day);
+                }
+
+                if ($scope.setup)
+                    $timeout(function() {
+                        let site = $('.calendar-site .site');
+                        let item = site.find('.item.today');
+                        site.scrollTop(item.offset().top - site.offset().top + site.scrollTop());
+                    }, 0, false);
+                $scope.setup = false;
+            };
 
             $http.get('/calendar', { params: { "start": $scope.calendarStart, "end": $scope.calendarEnd } })
                 .then(function(res) {
-                    $scope.calendar = res.data;
+                    $scope.setupCalendar(res.data);
                 });
+
         }])
         .controller('recipeListController', ['$scope', '$http', 'C', function($scope, $http, C) { }])
         .controller('recipeInfoController', ['$scope', '$http', 'C', function($scope, $http, C) {
-            $scope.recipe = { name: 'Spaghetti', tags: [], imageURL: '', last: new Date() };
+            $scope.recipe = { name: 'Spaghetti', tags: [], imageURL: 'e', last: new Date() };
         }])
         .controller('photo', ['$scope', '$http', '$element', function($scope, $http, $element) {
             let image = $element.find('img');

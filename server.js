@@ -16,6 +16,7 @@ let app = express();
 let http = require('http');
 let https = require('https');
 let multer = require('multer');
+let sassMiddleware = require('node-sass-middleware');
 let mongo = require('mongodb').MongoClient;
 let fs = require('fs');
 let readline = require('readline');
@@ -23,6 +24,12 @@ let readline = require('readline');
 let sec = { key: fs.readFileSync('key.pem'), cert: fs.readFileSync('cert.pem') };
 
 app.use(express.static('public'));
+app.use('/styles', sassMiddleware({
+    src: __dirname + '/public/styles/sass',
+    dest: __dirname + '/public/styles/gen',
+    force: true,
+    outputStyle: 'expanded'
+}));
 
 app.get('/', function(req, res) {
     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
@@ -66,7 +73,7 @@ app.get('/calendar', function(req, res) {
     for (let i = start; i <= end; i++){
         mockdata.push({ date: date(i), recipe: null });
     }
-
+    mockdata[9] = { date: mockdata[9].date, recipe: { name: 'Spaghetti', tags: ['Pasta', 'Easy'], last: 0, image: 'CYX' }};
     res.json(mockdata).end();
 });
 app.post('/addImage', multer().single('file'), function(req, res) {
