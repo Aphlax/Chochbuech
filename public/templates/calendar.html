@@ -1,12 +1,13 @@
 <div class="calendar-site">
     <md-toolbar class="header">
         <h2 class="title">Calendar</h2>
-        <!--<a href="#/calendar">Calendar</a>-->
-        <!--<a href="#/recipe-list">Recipes</a>-->
+        <!--<a href="/calendar">Calendar</a>-->
+        <!--<a href="/recipe-list">Recipes</a>-->
     </md-toolbar>
     <div class="site">
         <div class="item" ng-repeat="item in calendar track by item.date"
-             ng-class="{ saturday: (item.date | isSaturday), sunday: (item.date | isSunday), today: (item.date | isToday) }">
+             ng-class="{ saturday: (item.date | isSaturday), sunday: (item.date | isSunday), today: (item.date | isToday) }"
+             ng-click="onItemClick(item)">
             <div class="image" ng-show="item.recipe" back-img="/images/{{item.recipe.imageId}}.png"></div>
             <div class="tags" ng-show="item.recipe">
                 <span class="tag" ng-repeat="tag in item.recipe.tags">{{tag}}</span>

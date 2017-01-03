@@ -19,6 +19,7 @@ html, body, ul, ol, table, td, th, h1, h2, h3 {
     height: $itemHeight;
     width: $itemHeight;
     border-left: 2px solid #373737;
+    background-size: $itemHeight $itemHeight;
   }
 
   .tags {
@@ -43,50 +44,45 @@ html, body, ul, ol, table, td, th, h1, h2, h3 {
   }
 }
 
+.header {
+  flex: none;
+  overflow: hidden;
+}
+
+.site {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
 .calendar-site {
 
   height: 100%;
   display: flex;
   flex-direction: column;
 
-  .header {
-    $height: 50px;
+  .item {
+    .image.no-recipe {
+      background-image: url("/img/add_sign.png");
+    }
+    .date {
+      position: absolute;
+      top: 0.2em;
+      right: 0.2em;
 
-    flex: none;
-    height: $height;
-    background-color: $headerColor;
-    line-height: $height;
+      color: $textGrey;
+    }
   }
-
-  .site {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-
-    .item {
-      .image.no-recipe {
-        background-image: url("/img/add_sign.png");
-        background-size: $itemHeight $itemHeight;
-      }
-      .date {
-        position: absolute;
-        top: 0.2em;
-        right: 0.2em;
-
-        color: $textGrey;
-      }
-    }
-    .item.saturday {
-      background-color: lavender;
-    }
-    .item.sunday {
-      background-color: LightSteelBlue;
-    }
-    .item.today {
-      z-index: 1;
-      box-shadow: 0 -1px 0 0 darkred, 0 -0.5px 2px 2px red;
-      border-bottom-color: darkred;
-    }
+  .item.saturday {
+    background-color: lavender;
+  }
+  .item.sunday {
+    background-color: LightSteelBlue;
+  }
+  .item.today {
+    z-index: 1;
+    box-shadow: 0 -1px 0 0 darkred, 0 -0.5px 2px 2px red;
+    border-bottom-color: darkred;
   }
 }

@@ -15,7 +15,8 @@
 
     angular.module('Chochbuech', REQ)
         .value('C', {
-            SITES: { RecipeList: 'recipe-list', RecipeInfo: 'recipe-info', Calendar: 'calendar' }
+            SITE: { RecipeList: 'recipe-list', RecipeInfo: 'recipe-info', Calendar: 'calendar' },
+            RecipeList: { MODE: { none: undefined, select: 'select' } }
         })
         .directive('photoSite', function() {
             return { restrict: 'E', replace: true, templateUrl: 'templates/photo-site.html' }
@@ -27,64 +28,28 @@
                     templateUrl: 'templates/calendar.html',
                     controller: 'calendarController'
                 })
-                .when('/recipe-list', {
+                .when('/recipe-list/:mode?', {
                     templateUrl: 'templates/recipe-list.html',
                     controller: 'recipeListController'
                 })
-                .when('/recipe-info/:recipeId', {
+                .when('/recipe-info/:id?', {
                     templateUrl: 'templates/recipe-info.html',
                     controller: 'recipeInfoController'
                 });
-            $locationProvider.html5Mode(false);
+            $locationProvider.html5Mode(true);
         }])
-        .controller('main', ['$scope', '$http', 'C', function($scope, $http, C) {
+        .controller('main', ['$scope', '$http', 'C', '$location', function($scope, $http, C, $location) {
             $scope.C = C;
 
-            $scope.recipes = [{ name: 'Spaghetti', tags: [], imageId: '99A9', last: new Date() }];
-        }])
-        .controller('calendarController', ['$scope', '$http', 'C', '$timeout', function($scope, $http, C, $timeout) {
-            $scope.calendarStart = -6;
-            $scope.calendarEnd = 14;
-            $scope.calendar = [];
-            $scope.setup = true;
-
-            $scope.setupCalendar = function(data) {
-                $scope.calendar = [];
-
-                function date(day) {
-                    let date = new Date();
-                    date.setDate(date.getDate() + (day || 0));
-                    date.setHours(0, 0, 0, 0);
-                    return date;
-                }
-
-                for(let i = $scope.calendarStart; i <= $scope.calendarEnd; i++) {
-                    let day = { date: date(i) };
-                    let dataDay = data.find(item => new Date(item.date).valueOf() == day.date.valueOf());
-                    if (dataDay)
-                        $scope.calendar.push(dataDay);
-                    else
-                        $scope.calendar.push(day);
-                }
-
-                if ($scope.setup)
-                    $timeout(function() {
-                        let site = $('.calendar-site .site');
-                        let item = site.find('.item.today');
-                        site.scrollTop(item.offset().top - site.offset().top + site.scrollTop());
-                    }, 0, false);
-                $scope.setup = false;
+            $scope.navigate = function(target, param) {
+                $location.url(target + (param !== undefined ? '/' + param : ''));
             };
 
-            $http.get('/calendar', { params: { "start": $scope.calendarStart, "end": $scope.calendarEnd } })
-                .then(function(res) {
-                    $scope.setupCalendar(res.data);
-                });
+            $scope.recipes = [{ name: 'Spaghetti', tags: [], imageId: 'A', last: new Date() }];
 
-        }])
-        .controller('recipeListController', ['$scope', '$http', 'C', function($scope, $http, C) { }])
-        .controller('recipeInfoController', ['$scope', '$http', 'C', function($scope, $http, C) {
-            $scope.recipe = { name: 'Spaghetti', tags: [], imageURL: 'e', last: new Date() };
+            $http.get('/recipes').then(function(res) {
+                $scope.recipes = res.data;
+            });
         }])
         .controller('photo', ['$scope', '$http', '$element', function($scope, $http, $element) {
             let image = $element.find('img');

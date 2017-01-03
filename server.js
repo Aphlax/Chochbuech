@@ -33,7 +33,7 @@ app.use('/styles', sassMiddleware({
 
 app.get('/', function(req, res) {
     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '/public/app.html');
 });
 
 let db = null;
@@ -50,12 +50,22 @@ app.get('/image-list', function(req, res) {
     });
 });
 app.get('/images/:id', function(req, res) {
-    db.collection('images').find({ _id: req.params.id }).toArray(function(e, data) {
-        if (data.length)
-            res.json(data[0].data).end();
-        else
-            res.status(404).end();
-    });
+    // db.collection('images').find({ _id: req.params.id }).toArray(function(e, data) {
+    //     if (data.length)
+    //         res.json(data[0].data).end();
+    //     else
+    //         res.status(404).end();
+    // });
+    res.sendFile(__dirname + '/public/img/food.png');
+});
+
+app.get('/recipes', function(req, res) {
+    let mockdata = [
+        { id: 0, name: 'Spaghetti', tags: ['Pasta', 'Easy'], last: 0, imageId: 'A' },
+        { id: 1, name: 'Pizza', tags: ['Oven'], last: 0, imageId: 'A' },
+        { id: 1, name: 'Frites', tags: [], last: 0, imageId: 'A' },
+    ];
+    res.json(mockdata).end();
 });
 
 function date(day) {
@@ -69,11 +79,11 @@ app.get('/calendar', function(req, res) {
     let start = Number(req.query.start) || 0;
     let end = Math.min(Math.max(start, Number(req.query.end)), start + 371) || 0;
 
-    let mockdata = [];
-    for (let i = start; i <= end; i++){
-        mockdata.push({ date: date(i), recipe: null });
-    }
-    mockdata[9] = { date: mockdata[9].date, recipe: { name: 'Spaghetti', tags: ['Pasta', 'Easy'], last: 0, image: 'CYX' }};
+    let mockdata = [
+        { date: date(2), recipe: { id: 0, name: 'Spaghetti', tags: ['Pasta', 'Easy'], last: 0, imageId: 'A' }},
+        { date: date(4), recipe: { id: 1, name: 'Pizza', tags: ['Oven'], last: 0, imageId: 'A' }},
+        { date: date(5), recipe: { id: 0, name: 'Spaghetti', tags: ['Pasta', 'Easy'], last: 0, imageId: 'A' }},
+        ];
     res.json(mockdata).end();
 });
 app.post('/addImage', multer().single('file'), function(req, res) {

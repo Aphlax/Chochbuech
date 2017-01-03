@@ -5,7 +5,7 @@
     </md-toolbar>
     <div class="site">
         <div class="recipe-list">
-            <div class="recipe-list-item" ng-repeat="recipe in recipes">
+            <div class="item" ng-repeat="recipe in recipes" ng-click="onRecipeClick(recipe)">
                 <div class="image" back-img="/images/{{recipe.imageId}}.png"></div>
                 <div class="tags">
                     <span class="tag" ng-repeat="tag in recipe.tags">{{tag}}</span>
