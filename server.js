@@ -8,93 +8,46 @@
 
 "use strict";
 
-if (!Array.prototype.includes)
-    throw console.error('Node option --harmony_array_includes not activated!');
-
 let express = require('express');
 let app = express();
-let http = require('http');
-let https = require('https');
-let multer = require('multer');
-let sassMiddleware = require('node-sass-middleware');
-let mongo = require('mongodb').MongoClient;
-let fs = require('fs');
-let readline = require('readline');
+let http = require('http').Server(app);
+let MongoDb = require('mongodb').MongoClient;
+const nconf = require('nconf');
 
-let sec = { key: fs.readFileSync('key.pem'), cert: fs.readFileSync('cert.pem') };
+nconf.argv().file('keys', 'keys.json').file('config', 'config.json').env();
+global.prod = nconf.get('NODE_ENV') == 'production';
 
 app.use(express.static('public'));
-app.use('/styles', sassMiddleware({
-    src: __dirname + '/public/styles/sass',
-    dest: __dirname + '/public/styles/gen',
-    force: true,
-    outputStyle: 'expanded'
-}));
-
-app.get('/', function(req, res) {
-    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    res.sendFile(__dirname + '/public/app.html');
+const modules = new Map(['angular', 'angular-animate', 'angular-aria',
+    'angular-cookies', 'angular-material']
+    .map(name => ({ name: name, path: name + '/' + name, min: 1 })).append([
+        { name: 'angular-ui-router', path: '@uirouter/angularjs/release/angular-ui-router', min: 1 },
+    ]).map(module => [module.name, module]));
+app.get(`/node-modules/:module`, function (req, res) {
+    const i = req.params.module.indexOf('.');
+    const [name, ext] = [req.params.module.substring(0, i), req.params.module.substring(i)];
+    const module = modules.get(name);
+    if (module) {
+        const extension = global.prod && module.min && !ext.startsWith('.min') ? `.min${ext}` : ext;
+        res.sendFile(`${__dirname}/node_modules/${module.path}${extension}`);
+    } else res.status(404).send('unknown module ' + req.params.module);
 });
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+const mongoUser = nconf.get('mongoUser');
+const mongoPass = nconf.get('mongoPass');
+const mongoUrl = nconf.get('mongoUrl');
+const mongoDb = nconf.get('mongoDb');
 
 let db = null;
-mongo.connect('mongodb://localhost:27017/ChochbuechDB', function(err, database) {
-    if(err) console.error(err);
-    db = database;
-});
+const MONGO_CONNECT_OPTIONS = { useNewUrlParser: true, useUnifiedTopology: true };
+MongoDb.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, MONGO_CONNECT_OPTIONS)
+    .then(client => { db = client.db(mongoDb); }).catch(console.error);
 
-
-
-app.get('/image-list', function(req, res) {
-    db.collection('images').find({}, { _id: 1 }).toArray(function(e, data) {
-        res.json(data.map(img => { return { id: img._id }; })).end();
-    });
-});
-app.get('/images/:id', function(req, res) {
-    // db.collection('images').find({ _id: req.params.id }).toArray(function(e, data) {
-    //     if (data.length)
-    //         res.json(data[0].data).end();
-    //     else
-    //         res.status(404).end();
-    // });
-    res.sendFile(__dirname + '/public/img/food.png');
-});
-
-app.get('/recipes', function(req, res) {
-    let mockdata = [
-        { id: 0, name: 'Spaghetti', tags: ['Pasta', 'Easy'], last: 0, imageId: 'A' },
-        { id: 1, name: 'Pizza', tags: ['Oven'], last: 0, imageId: 'A' },
-        { id: 1, name: 'Frites', tags: [], last: 0, imageId: 'A' },
-    ];
-    res.json(mockdata).end();
-});
-
-function date(day) {
-    let date = new Date();
-    date.setDate(date.getDate() + day);
-    date.setHours(0, 0, 0, 0);
-    return date;
-}
-
-app.get('/calendar', function(req, res) {
-    let start = Number(req.query.start) || 0;
-    let end = Math.min(Math.max(start, Number(req.query.end)), start + 371) || 0;
-
-    let mockdata = [
-        { date: date(2), recipe: { id: 0, name: 'Spaghetti', tags: ['Pasta', 'Easy'], last: 0, imageId: 'A' }},
-        { date: date(4), recipe: { id: 1, name: 'Pizza', tags: ['Oven'], last: 0, imageId: 'A' }},
-        { date: date(5), recipe: { id: 0, name: 'Spaghetti', tags: ['Pasta', 'Easy'], last: 0, imageId: 'A' }},
-        ];
-    res.json(mockdata).end();
-});
-app.post('/addImage', multer().single('file'), function(req, res) {
-    let a = req.file;
-});
-
-
-let httpServer = http.createServer(app);
-let httpsServer = https.createServer(sec, app);
-httpServer.listen(3001);
-httpsServer.listen(3002);
+const port = nconf.get(global.prod ? 'serverProdPort' : 'serverDevPort');
+http.listen(port);
 
 
 
