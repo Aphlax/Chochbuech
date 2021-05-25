@@ -23,11 +23,10 @@ const modules = new Map(['angular', 'angular-animate', 'angular-aria',
     .map(name => ({ name: name, path: name + '/' + name, min: 1 })).append([
         { name: 'angular-ui-router', path: '@uirouter/angularjs/release/angular-ui-router', min: 1 },
     ]).map(module => [module.name, module]));
-app.get(`/node-modules/:module`, function (req, res) {
+app.get(`/node-modules/:module`, function (req, res, module) {
     const i = req.params.module.indexOf('.');
     const [name, ext] = [req.params.module.substring(0, i), req.params.module.substring(i)];
-    const module = modules.get(name);
-    if (module) {
+    if ((module = modules.get(name))) {
         const extension = global.prod && module.min && !ext.startsWith('.min') ? `.min${ext}` : ext;
         res.sendFile(`${__dirname}/node_modules/${module.path}${extension}`);
     } else res.status(404).send('unknown module ' + req.params.module);
