@@ -61,15 +61,3 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
         const port = nconf.get(global.prod ? 'serverProdPort' : 'serverDevPort');
         new Server(app).listen(port);
     }).catch(console.error);
-
-
-
-
-
-
-
-
-
-
-
-

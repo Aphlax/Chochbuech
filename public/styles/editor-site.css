@@ -2,5 +2,16 @@ html, body {
     margin: 0;
 }
 
-.editor-site {
+#editor-site .site-container {
+    width: 800px;
+    padding-top: 40px;
+}
+
+#editor-site .image {
+    height: 400px;
+    width: 400px;
+}
+
+#editor-site .image-input {
+    display: none;
 }

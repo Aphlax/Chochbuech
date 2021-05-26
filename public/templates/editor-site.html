@@ -1,10 +1,12 @@
-<div id="editor-site" layout="column" flex>
-
-    <input type="file" name="image" accept="image/*" capture="environment" file-model="image">
-
-    <img src="{{imagePreview}}">
-
-    <md-button class="md-raised" ng-click="save()">Save</md-button>
-
-    <img src="images/recipe1.jpg">
+<div id="editor-site" layout="column" flex layout-align="start center">
+    <div class="site-container" layout="column" flex>
+        <div layout="row">
+            <picture-input class="image" model="recipe.image">
+            </picture-input>
+            <input type="text" ng-model="recipe.name" flex>
+        </div>
+        <textarea ng-model="recipe.ingredients"></textarea>
+        <textarea ng-model="recipe.steps"></textarea>
+        <md-button class="md-raised" ng-click="save()">Save</md-button>
+    </div>
 </div>
