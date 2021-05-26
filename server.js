@@ -11,6 +11,7 @@
 const express = require('express');
 const { Server } = require('http');
 const { MongoClient } = require('mongodb');
+const multer = require('multer');
 const nconf = require('nconf');
 
 nconf.argv().file('keys', 'keys.json').file('config', 'config.json').env();
@@ -20,9 +21,8 @@ const mongoUser = nconf.get('mongoUser');
 const mongoPass = nconf.get('mongoPass');
 const mongoUrl = nconf.get('mongoUrl');
 const mongoDb = nconf.get('mongoDb');
-const MONGO_CONNECT_OPTIONS = { useNewUrlParser: true, useUnifiedTopology: true };
-
-MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, MONGO_CONNECT_OPTIONS)
+const mongoOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongoOptions)
     .then(client => {
         const db = client.db(mongoDb);
 
@@ -41,6 +41,21 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, MONGO
                 const extension = global.prod && !ext.startsWith('.min') ? `.min${ext}` : ext;
                 res.sendFile(`${__dirname}/node_modules/${module.path}${extension}`);
             } else res.status(404).send('unknown module ' + req.params.module);
+        });
+        const upload = multer({storage: multer.memoryStorage()});
+        app.post('/save', upload.single('image'), async function(req, res) {
+            if (!req.file || !req.file.mimetype) return res.sendStatus(400);
+            await db.collection('images').updateOne(
+                {_id: 1},
+                {$set: {data: req.file.buffer, mimeType: req.file.mimetype}},
+                {upsert: true});
+            res.sendStatus(200);
+        });
+        app.get('/images/recipe:id.jpg', async function(req, res) {
+            if (isNaN(req.params.id)) return res.sendStatus(400);
+            const image = await db.collection('images').findOne({_id: Number(req.params.id)});
+            if (!image) return res.sendStatus(404);
+            res.type(image.mimeType).send(image.data.buffer);
         });
 
         const port = nconf.get(global.prod ? 'serverProdPort' : 'serverDevPort');

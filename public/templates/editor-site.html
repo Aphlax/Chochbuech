@@ -1,12 +1,10 @@
 <div id="editor-site" layout="column" flex>
 
+    <input type="file" name="image" accept="image/*" capture="environment" file-model="image">
 
-
-    <input type="file" name="image" accept="image/*" capture="environment">
-
-    <img src="{{image}}">
-
-    <span>{{debug}}</span>
+    <img src="{{imagePreview}}">
 
     <md-button class="md-raised" ng-click="save()">Save</md-button>
+
+    <img src="images/recipe1.jpg">
 </div>
