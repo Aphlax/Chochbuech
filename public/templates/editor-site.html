@@ -1,12 +1,14 @@
-<div id="editor-site" layout="column" flex layout-align="start center">
+<div id="editor-site" layout="column" flex>
     <div class="site-container" layout="column" flex>
         <div layout="row">
             <picture-input class="image" model="recipe.image">
             </picture-input>
-            <input type="text" ng-model="recipe.name" flex>
+            <input class="input name" type="text" ng-model="recipe.name" flex>
         </div>
-        <textarea ng-model="recipe.ingredients"></textarea>
-        <textarea ng-model="recipe.steps"></textarea>
-        <md-button class="md-raised" ng-click="save()">Save</md-button>
+        <textarea class="input ingredients" ng-model="recipe.ingredients" flex></textarea>
+        <textarea class="input steps" ng-model="recipe.steps" flex></textarea>
+        <md-button class="md-raised" ng-click="save()" ng-disabled="!Recipe.isValid(recipe)">
+            Save
+        </md-button>
     </div>
 </div>

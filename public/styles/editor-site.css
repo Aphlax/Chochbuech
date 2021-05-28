@@ -2,16 +2,34 @@ html, body {
     margin: 0;
 }
 
+#editor-site {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 #editor-site .site-container {
-    width: 800px;
     padding-top: 40px;
 }
 
 #editor-site .image {
-    height: 400px;
-    width: 400px;
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+    object-fit: cover;
 }
 
-#editor-site .image-input {
-    display: none;
+#editor-site .input {
+    padding: 0;
+    background: none;
+    /*border: none;*/
+    outline: none;
+    resize: none;
+}
+
+#editor-site .input:focus, #editor-site .input:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#editor-site .name {
+
 }

@@ -3,11 +3,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Chochbuech</title>
-    <link rel="icon" href="icon.png">
+    <link rel="icon" href="images/icon.png">
     <base href="/">
 
     <!-- style sheets -->
-    <link rel="stylesheet" href="node-modules/angular-material.min.css">
+    <link rel="stylesheet" href="node-modules/angular-material.css">
     <link rel="stylesheet" href="styles/editor-site.css">
 
     <!-- Angular.js Libraries -->
@@ -20,10 +20,10 @@
 
     <!-- Application  -->
     <script src="scripts/main.js"></script>
-    <script src="scripts/photo-capture.js"></script>
     <script src="scripts/editor.js"></script>
+    <script src="scripts/values.js"></script>
 </head>
-<body ng-app="Chochbuech" layout="column">
+<body ng-app="Chochbuech" layout="column" ng-controller="main">
     <ui-view flex layout="column"></ui-view>
 </body>
 </html>
