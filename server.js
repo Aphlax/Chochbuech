@@ -44,14 +44,36 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
         });
         const upload = multer({storage: multer.memoryStorage()});
         app.post('/save', upload.single('image'), async function(req, res) {
-            if (!req.file || !req.file.mimetype) return res.sendStatus(400);
-            await db.collection('images').updateOne(
-                {_id: 1},
-                {$set: {data: req.file.buffer, mimeType: req.file.mimetype}},
-                {upsert: true});
-            res.sendStatus(200);
+            if (!validSaveRequest(req.body, req.file)) return res.sendStatus(400);
+
+            try {
+                const mimeTypeMap = new Map([['image/jpeg', 'jpg'], ['image/png', 'png']]);
+                if (req.body.id) { // Update existing recipe.
+                    req.body.id = Number(req.body.id);
+                    const result = await db.collection('recipes')
+                        .updateOne({_id: req.body.id}, {$set: unassign(req.body, 'id')});
+                    if (result.matchedCount == 0) return res.sendStatus(400);
+                } else { // Create new recipe.
+                    const recipeUID = (await db.collection('values').findOneAndUpdate(
+                        {_id: 'recipeUID'}, {$inc: {value: 1}}, {upsert: true})).value.value;
+                    await db.collection('recipes').insertOne(
+                        {_id: recipeUID, ...req.body, image:
+                                `images/recipe${recipeUID}.${mimeTypeMap.get(req.file.mimetype)}`});
+                    req.body.id = recipeUID;
+                }
+
+                if (req.file) {
+                    await db.collection('images').updateOne(
+                        {_id: req.body.id},
+                        {$set: {data: req.file.buffer, mimeType: req.file.mimetype}},
+                        {upsert: true});
+                }
+                return res.sendStatus(200);
+            } catch (e) {
+                return res.sendStatus(500);
+            }
         });
-        app.get('/images/recipe:id.jpg', async function(req, res) {
+        app.get('/images/recipe:id.(jpg|png)', async function(req, res) {
             if (isNaN(req.params.id)) return res.sendStatus(400);
             const image = await db.collection('images').findOne({_id: Number(req.params.id)});
             if (!image) return res.sendStatus(404);
@@ -61,3 +83,18 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
         const port = nconf.get(global.prod ? 'serverProdPort' : 'serverDevPort');
         new Server(app).listen(port);
     }).catch(console.error);
+
+function validSaveRequest(body, file) {
+    const KEYS = ['id', 'name', 'ingredients', 'steps'];
+    return Object.keys(body).every(key => KEYS.includes(key)) &&
+        (!body.id || !isNaN(body.id)) && typeof body.name == 'string' &&
+        typeof body.ingredients == 'string' && typeof body.steps == 'string' &&
+        (!file || ['image/jpeg', 'image/png'].includes(file.mimetype)) &&
+        !!(file || body.id);
+}
+
+function unassign(obj, ...names) {
+    const  copy = {...obj};
+    names.forEach(name => delete copy[name]);
+    return copy;
+}

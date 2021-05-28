@@ -15,7 +15,7 @@
     angular.module('Chochbuech', REQ)
         .controller('main', (names => ['$scope', ...names, function ($scope, ...values) {
             names.forEach((name, i) => $scope[name] = values[i]);
-        }])(['C', 'Recipe']))
+        }])(['C']))
         .config(['$stateProvider', '$locationProvider', 'CProvider', function($stateProvider, $locationProvider, CProvider) {
             const C = CProvider.$get();
             $locationProvider.html5Mode({ enabled: true, rewriteLinks: false });

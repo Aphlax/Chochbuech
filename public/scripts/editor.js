@@ -4,13 +4,18 @@
 
 "use strict";
 
-angular.module('Editor', ['Values'])
-    .controller('editor', ['$scope', 'Recipe', function($scope, Recipe) {
-        $scope.recipe = { name: '', image: 'images/recipe1.jpg', ingredients: '', steps: '' };
+angular.module('Editor', [])
+    .controller('editor', ['$scope', function($scope) {
+        $scope.recipe = { name: '', image: 'images/new.png', ingredients: '', steps: '' };
+
+        $scope.saveEnabled = function() {
+            return (!$scope.recipe.id || !isNaN($scope.recipe.id)) &&
+                $scope.recipe.image && $scope.recipe.name &&
+                $scope.recipe.ingredients && $scope.recipe.steps &&
+                ($scope.recipe.id || $scope.recipe.image instanceof File);
+        }
 
         $scope.save = async function() {
-            if (!Recipe.isValid($scope.recipe)) { return; }
-
             const data = new FormData();
             if ($scope.recipe.id) {
                 data.append('id', $scope.recipe.id);
@@ -23,7 +28,7 @@ angular.module('Editor', ['Values'])
                     {type: $scope.recipe.image.type});
                 data.append('image', imageData, $scope.recipe.image.name)
             }
-            const response = await fetch('/save', { method: 'POST', body: data });
+            return await fetch('/save', { method: 'POST', body: data });
         };
     }])
     .directive("pictureInput", [function() {

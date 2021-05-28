@@ -5,10 +5,12 @@
             </picture-input>
             <input class="input name" type="text" ng-model="recipe.name" flex>
         </div>
+        Zuetate
         <textarea class="input ingredients" ng-model="recipe.ingredients" flex></textarea>
+        Aleitig
         <textarea class="input steps" ng-model="recipe.steps" flex></textarea>
-        <md-button class="md-raised" ng-click="save()" ng-disabled="!Recipe.isValid(recipe)">
-            Save
+        <md-button class="md-raised" ng-click="save()" ng-disabled="!saveEnabled()">
+            Spichere
         </md-button>
     </div>
 </div>
