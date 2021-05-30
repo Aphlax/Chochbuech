@@ -1,7 +1,7 @@
 
 "use strict";
 
-const { unassign } = require('utils');
+const { unassign } = require('./utils');
 
 module.export = { saveRecipe, validSaveRecipeRequest };
 

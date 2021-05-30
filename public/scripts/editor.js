@@ -5,8 +5,8 @@
 "use strict";
 
 angular.module('Editor', [])
-    .controller('editor', ['$scope', function($scope) {
-        $scope.recipe = { name: '', image: 'images/new.png', ingredients: '', steps: '' };
+    .controller('editor', ['$scope', 'recipe', function($scope, recipe) {
+        $scope.recipe = recipe;
 
         $scope.saveEnabled = function() {
             return (!$scope.recipe.id || !isNaN($scope.recipe.id)) &&

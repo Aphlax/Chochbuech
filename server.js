@@ -14,8 +14,8 @@ const { MongoClient } = require('mongodb');
 const multer = require('multer');
 const nconf = require('nconf');
 
-const { saveRecipe, validSaveRecipeRequest } = require('chochbuech');
-const { unassign } = require('utils');
+const { saveRecipe, validSaveRecipeRequest } = require('./chochbuech');
+const { unassign } = require('./utils');
 
 nconf.argv().file('keys', 'keys.json').file('config', 'config.json').env();
 global.prod = nconf.get('NODE_ENV') == 'production';
@@ -30,9 +30,6 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
         const db = client.db(mongoDb);
 
         const app = express().use(express.static('public'));
-        app.get('/', function(req, res) {
-            res.sendFile(__dirname + '/public/index.html');
-        });
         const modules = new Map([...['angular', 'angular-animate', 'angular-aria', 'angular-cookies',
                 'angular-material'].map(name => ({ name: name, path: name + '/' + name })),
                 { name: 'angular-ui-router', path: '@uirouter/angularjs/release/angular-ui-router' },
@@ -66,6 +63,9 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
             const image = await db.collection('images').findOne({_id: Number(req.params.id)});
             if (!image) return res.sendStatus(404);
             res.type(image.mimeType).send(image.data.buffer);
+        });
+        app.get('/*', function(req, res) {
+            res.sendFile(__dirname + '/public/index.html');
         });
 
         const port = nconf.get(global.prod ? 'serverProdPort' : 'serverDevPort');
