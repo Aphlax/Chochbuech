@@ -3,7 +3,7 @@
 
 const { unassign } = require('./utils');
 
-module.export = { saveRecipe, validSaveRecipeRequest };
+module.exports = { saveRecipe, validSaveRecipeRequest };
 
 
 const allowedMimeTypesMap = new Map([['image/jpeg', 'jpg'], ['image/png', 'png']]);
@@ -13,7 +13,7 @@ function validSaveRecipeRequest(body, file) {
     return Object.keys(body).every(key => KEYS.includes(key)) &&
         (!body.id || !isNaN(body.id)) && typeof body.name == 'string' &&
         typeof body.ingredients == 'string' && typeof body.steps == 'string' &&
-        (!file || allowedMimeTypesMap.keys().includes(file.mimetype)) &&
+        (!file || [...allowedMimeTypesMap.keys()].includes(file.mimetype)) &&
         !!(file || body.id);
 }
 

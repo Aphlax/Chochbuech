@@ -1,7 +1,7 @@
 
 "use strict";
 
-module.export = { unassign };
+module.exports = { unassign };
 
 function unassign(obj, ...names) {
     const  copy = {...obj};

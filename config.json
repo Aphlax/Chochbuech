@@ -3,6 +3,6 @@
   "mongoUrl": "chochbuech.zxgpe.mongodb.net",
   "mongoDb": "main",
 
-  "serverDevPort": "3000",
+  "serverDevPort": "3001",
   "serverProdPort": "8082"
 }

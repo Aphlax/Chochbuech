@@ -64,7 +64,7 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
             if (!image) return res.sendStatus(404);
             res.type(image.mimeType).send(image.data.buffer);
         });
-        app.get('/*', function(req, res) {
+        app.get(['/', '/new', '/edit/*', 'r/*'].join('|'), function(req, res) {
             res.sendFile(__dirname + '/public/index.html');
         });
 
