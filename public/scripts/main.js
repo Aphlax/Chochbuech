@@ -12,10 +12,14 @@
         'Values',
     ];
 
-    angular.module('Chochbuech', REQ)
-        .controller('main', (names => ['$scope', ...names, function ($scope, ...values) {
+    function controls(...names) {
+        return ['$scope', ...names, function($scope, ...values) {
             names.forEach((name, i) => $scope[name] = values[i]);
-        }])(['C']))
+        }];
+    }
+
+    angular.module('Chochbuech', REQ)
+        .controller('main', controls('C', '$state'))
         .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'CProvider',
         function($stateProvider, $locationProvider, $urlRouterProvider, CProvider) {
             const C = CProvider.$get();
@@ -25,20 +29,24 @@
                 .state(C.SITE.Main, {
                     url: '/',
                     templateUrl: 'templates/start-site.html',
+                    controller: controls('recipes'),
+                    resolve: {
+                        recipes: ['recipeApi', recipeApi => recipeApi.list()],
+                    }
                 })
                 .state(C.SITE.Editor, {
                     url: '/edit/:id',
                     templateUrl: 'templates/editor-site.html',
-                    controller: 'editor',
+                    controller: controls('recipe'),
                     resolve: {
-                        recipe: ['$stateParams', 'recipeCache',
-                            ($stateParams, recipeCache) => recipeCache.get(+$stateParams.id)],
+                        recipe: ['$stateParams', 'recipeApi',
+                            ($stateParams, recipeApi) => recipeApi.get(+$stateParams.id)],
                     },
                 })
                 .state(C.SITE.Create, {
                     url: '/new',
                     templateUrl: 'templates/editor-site.html',
-                    controller: 'editor',
+                    controller: controls('recipe'),
                     resolve: {
                         recipe: ['NEW_RECIPE', NEW_RECIPE => NEW_RECIPE],
                     },

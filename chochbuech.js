@@ -21,8 +21,8 @@ async function saveRecipe(db, body, file) {
     if (body.id) { // Update existing recipe.
         body.id = Number(body.id);
         const result = await db.collection('recipes')
-            .updateOne({_id: body.id}, {$set: unassign(body, 'id')});
-        if (result.matchedCount == 0) return 400;
+            .updateOne({_id: body.id}, {$set: unassign({...body}, 'id')});
+        if (result.matchedCount == 0) return {status: 400};
     } else { // Create new recipe.
         const recipeUID = (await db.collection('values').findOneAndUpdate(
             {_id: 'recipeUID'}, {$inc: {value: 1}}, {upsert: true})).value.value;
@@ -38,5 +38,5 @@ async function saveRecipe(db, body, file) {
             {$set: {data: file.buffer, mimeType: file.mimetype}},
             {upsert: true});
     }
-    return 200;
+    return {id: body.id, status: 200};
 }

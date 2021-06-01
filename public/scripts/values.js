@@ -10,18 +10,30 @@
             SITE: {Main: 'main', Editor: 'edit', Create: 'new'},
         })
         .value('NEW_RECIPE', { name: '', image: 'images/new.png', ingredients: '', steps: '' })
-        .factory('recipeCache', ['$http', function($http) {
-            function RecipeCache() {
+        .factory('recipeApi', ['$http', function($http) {
+            function RecipeApi() {
                 this.cache = new Map();
+                this.listCache = null;
             }
 
-            RecipeCache.prototype.get = async function(id) {
+            RecipeApi.prototype.list = async function() {
+                if (!this.listCache) {
+                    this.listCache = $http.get('/listRecipes').then(recipes => {
+                        recipes.data.forEach(recipe =>
+                            this.cache.set(recipe.id, Promise.resolve(recipe)));
+                        return recipes.data.map(recipe => recipe.id);
+                    });
+                }
+                return Promise.all((await this.listCache).map(id => this.get(id)));
+            }
+
+            RecipeApi.prototype.get = async function(id) {
                 if (!this.cache.has(id)) {
-                    this.cache.set(id, $http.get(`/recipe/${id}`));
+                    this.cache.set(id, $http.get(`/recipe/recipe${id}`).then(({data}) => data));
                 }
                 return this.cache.get(id);
             }
 
-            return new RecipeCache();
+            return new RecipeApi();
         }]);
 })();

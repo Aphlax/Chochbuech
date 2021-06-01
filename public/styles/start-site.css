@@ -1,3 +1,33 @@
 #start-site .site-container {
-    max-width: 800px;
+    max-width: 600px;
+}
+
+#start-site .recipe {
+    width: 50%;
+}
+
+#start-site .recipe .image {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    background-size: cover;
+}
+
+#start-site .recipe .image:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40px;
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9));
+}
+
+#start-site .recipe .name {
+    z-index: 1;
+    margin-top: -10px;
+    padding: 0 10px 10px;
+    font-family: "Gotham Medium", sans-serif;
+    font-size: 20px;
+    color: rgb(30, 30, 30);
 }

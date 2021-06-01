@@ -47,12 +47,17 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
         app.post('/save', upload.single('image'), async function(req, res) {
             try {
                 if (!validSaveRecipeRequest(req.body, req.file)) return res.sendStatus(400);
-                return res.sendStatus(await saveRecipe(db, req.body, req.file));
+                const result = await saveRecipe(db, req.body, req.file);
+                return result.status == 200 ? res.json(result.id) : res.sendStatus(result.status);
             } catch (e) {
                 return res.sendStatus(500);
             }
         });
-        app.get('/recipe/:id', async function(req, res) {
+        app.get('/listRecipes', async function(req, res) {
+            const recipes = await db.collection('recipes').find({}).limit(10).toArray();
+            res.json(recipes.map(recipe => unassign({...recipe, id: recipe._id}, '_id')));
+        });
+        app.get('/recipe/recipe:id', async function(req, res) {
             if (isNaN(req.params.id)) return res.sendStatus(400);
             const recipe = await db.collection('recipes').findOne({_id: Number(req.params.id)});
             if (!recipe) return res.sendStatus(404);
@@ -64,7 +69,7 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
             if (!image) return res.sendStatus(404);
             res.type(image.mimeType).send(image.data.buffer);
         });
-        app.get(['/', '/new', '/edit/*', 'r/*'].join('|'), function(req, res) {
+        app.get(['/', 'r/*', '/edit/*', '/new'].join('|'), function(req, res) {
             res.sendFile(__dirname + '/public/index.html');
         });
 

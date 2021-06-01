@@ -1,5 +1,9 @@
 <div id="start-site" flex layout="column" layout-align="start center">
-  <div class="site-container" layout="column" flex>
-
+  <div class="site-container" flex layout="row" layout-wrap>
+    <div class="recipe" layout="column" ng-repeat="recipe in recipes track by recipe.id"
+         ng-click="$state.go('edit', { id: recipe.id })">
+      <div class="image" style="background-image: url('{{recipe.image}}');"></div>
+      <span class="name">{{recipe.name}}</span>
+    </div>
   </div>
 </div>

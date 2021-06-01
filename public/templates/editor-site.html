@@ -1,4 +1,4 @@
-<div id="editor-site" flex layout="column" layout-align="start center">
+<div id="editor-site" flex layout="column" layout-align="start center" ng-controller="editor">
     <div class="site-container" layout="column" flex>
         <div layout="row">
             <picture-input class="image" model="recipe.image">
@@ -9,7 +9,7 @@
         <textarea class="input ingredients" ng-model="recipe.ingredients" flex></textarea>
         Aleitig
         <textarea class="input steps" ng-model="recipe.steps" flex></textarea>
-        <md-button class="md-raised" ng-click="save()" ng-disabled="!saveEnabled()">
+        <md-button class="md-raised" ng-click="save(recipe)" ng-disabled="!saveEnabled(recipe)">
             Spichere
         </md-button>
     </div>

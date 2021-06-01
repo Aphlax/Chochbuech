@@ -4,31 +4,29 @@
 
 "use strict";
 
-angular.module('Editor', [])
-    .controller('editor', ['$scope', 'recipe', function($scope, recipe) {
-        $scope.recipe = recipe;
-
-        $scope.saveEnabled = function() {
-            return (!$scope.recipe.id || !isNaN($scope.recipe.id)) &&
-                $scope.recipe.image && $scope.recipe.name &&
-                $scope.recipe.ingredients && $scope.recipe.steps &&
-                ($scope.recipe.id || $scope.recipe.image instanceof File);
+angular.module('Editor', ['Values'])
+    .controller('editor', ['$scope', function($scope) {
+        $scope.saveEnabled = function(recipe) {
+            return (!recipe.id || !isNaN(recipe.id)) &&
+                recipe.image && recipe.name &&
+                recipe.ingredients && recipe.steps &&
+                (recipe.id || recipe.image instanceof File);
         }
 
-        $scope.save = async function() {
+        $scope.save = async function(recipe) {
             const data = new FormData();
-            if ($scope.recipe.id) {
-                data.append('id', $scope.recipe.id);
+            if (recipe.id) {
+                data.append('id', recipe.id);
             }
-            data.append('name', $scope.recipe.name);
-            data.append('ingredients', $scope.recipe.ingredients);
-            data.append('steps', $scope.recipe.steps);
-            if ($scope.recipe.image instanceof File) {
-                const imageData = new Blob([new Uint8Array(await $scope.recipe.image.arrayBuffer())],
-                    {type: $scope.recipe.image.type});
-                data.append('image', imageData, $scope.recipe.image.name)
+            data.append('name', recipe.name);
+            data.append('ingredients', recipe.ingredients);
+            data.append('steps', recipe.steps);
+            if (recipe.image instanceof File) {
+                const imageData = new Blob([new Uint8Array(await recipe.image.arrayBuffer())],
+                    {type: recipe.image.type});
+                data.append('image', imageData, recipe.image.name)
             }
-            return await fetch('/save', { method: 'POST', body: data });
+            await fetch('/save', { method: 'POST', body: data });
         };
     }])
     .directive("pictureInput", [function() {

@@ -4,7 +4,6 @@
 module.exports = { unassign };
 
 function unassign(obj, ...names) {
-    const  copy = {...obj};
-    names.forEach(name => delete copy[name]);
-    return copy;
+    names.forEach(name => delete obj[name]);
+    return obj;
 }
