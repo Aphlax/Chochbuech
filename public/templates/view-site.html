@@ -1,0 +1,26 @@
+<div id="view-site" flex layout="column" layout-align="start center">
+    <div class="site-container" flex layout="column">
+        <div class="image" style="background-image: url('{{recipe.image}}');" layout="row"
+             ng-click="showDetail = true">
+            <span flex></span>
+            <md-button class="md-icon-button edit-button" title="Edit" aria-label="Edit"
+                       ng-click="$state.go('edit', { id: recipe.id })">
+                <i class="material-icons">edit</i>
+            </md-button>
+        </div>
+        <span class="name">{{recipe.name}}</span>
+        <ul class="content">
+            <li ng-repeat="item in recipe.ingredients.split('\n')">
+                {{item}}
+            </li>
+        </ul>
+        <ol class="content">
+            <li class="step" ng-repeat="step in recipe.steps.split('\n')"
+                ng-click="done = !done" ng-class="{ done: done }" tabindex="-1">
+                {{step}}
+            </li>
+        </ol>
+    </div>
+    <img class="detail-image" ng-show="showDetail" src="{{recipe.image}}"
+         ng-click="showDetail = false">
+</div>

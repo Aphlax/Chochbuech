@@ -1,16 +1,3 @@
-html, body {
-    margin: 0;
-}
-
-#editor-site {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-#editor-site .site-container {
-    padding-top: 40px;
-}
-
 #editor-site .image {
     height: 100px;
     width: 100px;

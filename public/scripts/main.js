@@ -34,6 +34,15 @@
                         recipes: ['recipeApi', recipeApi => recipeApi.list()],
                     }
                 })
+                .state(C.SITE.View, {
+                    url: '/r/:id',
+                    templateUrl: 'templates/view-site.html',
+                    controller: controls('recipe'),
+                    resolve: {
+                        recipe: ['$stateParams', 'recipeApi',
+                            ($stateParams, recipeApi) => recipeApi.get(+$stateParams.id)],
+                    },
+                })
                 .state(C.SITE.Editor, {
                     url: '/edit/:id',
                     templateUrl: 'templates/editor-site.html',

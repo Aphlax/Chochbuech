@@ -1,9 +1,6 @@
-#start-site .site-container {
-    max-width: 600px;
-}
-
 #start-site .recipe {
     width: 50%;
+    cursor: pointer;
 }
 
 #start-site .recipe .image {
@@ -27,7 +24,8 @@
     z-index: 1;
     margin-top: -10px;
     padding: 0 10px 10px;
-    font-family: "Gotham Medium", sans-serif;
+    font-family: "Gotham", sans-serif;
+    font-weight: 400;
     font-size: 20px;
     color: rgb(30, 30, 30);
 }
