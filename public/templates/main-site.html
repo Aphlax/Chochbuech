@@ -1,0 +1,15 @@
+<div id="main-site" flex layout="column" layout-align="start center">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <div layout="row" ng-click="$state.go('main')" tabindex="0">
+                <img id="app-icon" src="images/icon.png">
+                <h2 id="app-title">Chochbuech</h2>
+            </div>
+            <span flex></span>
+            <md-button class="md-icon-button menu-button" aria-label="Menu">
+                <i class="material-icons">menu</i>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <ui-view flex layout="column"></ui-view>
+</div>

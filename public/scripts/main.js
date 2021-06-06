@@ -20,6 +20,9 @@
 
     angular.module('Chochbuech', REQ)
         .controller('main', controls('C', '$state'))
+        .directive('mainSite', [function() {
+            return { replace: true, restrict: 'E', templateUrl: 'templates/main-site.html', };
+        }])
         .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'CProvider',
         function($stateProvider, $locationProvider, $urlRouterProvider, CProvider) {
             const C = CProvider.$get();

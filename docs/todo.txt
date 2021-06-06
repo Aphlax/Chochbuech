@@ -1,0 +1,5 @@
+view-site keep display on
+start-site random dishes
+main menu category, add
+main log in
+shopping list
