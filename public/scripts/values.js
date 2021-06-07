@@ -7,7 +7,7 @@
 
     angular.module('Values', [])
         .value('C', {
-            SITE: {Main: 'main', Editor: 'edit', Create: 'new', View: 'view'},
+            SITE: {Main: 'main', Editor: 'edit', New: 'new', View: 'view'},
         })
         .value('NEW_RECIPE', { name: '', image: 'images/new.png', ingredients: '', steps: '' })
         .factory('recipeApi', ['$http', function($http) {

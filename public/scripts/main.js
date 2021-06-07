@@ -55,7 +55,7 @@
                             ($stateParams, recipeApi) => recipeApi.get(+$stateParams.id)],
                     },
                 })
-                .state(C.SITE.Create, {
+                .state(C.SITE.New, {
                     url: '/new',
                     templateUrl: 'templates/editor-site.html',
                     controller: controls('recipe'),
@@ -64,6 +64,37 @@
                     },
                 });
             $urlRouterProvider.otherwise('/');
+        }])
+        .config(['$transitionsProvider', 'CProvider', function($transitionsProvider, CProvider) {
+            const C = CProvider.$get();
+            let lock = null;
+
+            const onVisibilityChange = () => {
+                if (lock && lock.released && document.visibilityState == 'visible') {
+                    return keepScreenOn();
+                }
+            };
+            document.addEventListener('visibilitychange', onVisibilityChange);
+            document.addEventListener('fullscreenchange', onVisibilityChange);
+
+            async function keepScreenOn() {
+                if (!('wakeLock' in navigator && 'request' in navigator.wakeLock)) {
+                    return;
+                }
+                try {
+                    lock = await navigator.wakeLock.request('screen');
+                } catch (e) {
+                }
+            }
+
+            $transitionsProvider.onSuccess({ to: C.SITE.View }, keepScreenOn);
+
+            $transitionsProvider.onSuccess({ from: C.SITE.View }, async function () {
+                if (lock) {
+                    await lock.release();
+                    lock = null;
+                }
+            });
         }]);
 })();
 

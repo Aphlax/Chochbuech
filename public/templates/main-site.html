@@ -1,7 +1,7 @@
 <div id="main-site" flex layout="column" layout-align="start center">
     <md-sidenav md-component-id="sidenav" class="md-sidenav-right">
         <md-list ng-click="$mdSidenav('sidenav').close()">
-            <md-list-item ng-click="$state.go('new')">
+            <md-list-item ng-click="$state.go(C.SITE.New)">
                 <i class="material-icons md-avatar-icon">add</i>
                 <span class="md-list-item-text">New Recipe</span>
             </md-list-item>
@@ -9,7 +9,7 @@
     </md-sidenav>
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <div layout="row" ng-click="$state.go('main')" tabindex="0">
+            <div layout="row" ng-click="$state.go(C.SITE.Main)" tabindex="0">
                 <img id="app-icon" src="images/icon.png">
                 <h2 id="app-title">Chochbuech</h2>
             </div>

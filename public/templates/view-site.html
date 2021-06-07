@@ -4,7 +4,7 @@
              ng-click="showDetail = true">
             <span flex></span>
             <md-button class="md-icon-button edit-button" aria-label="Edit"
-                       ng-click="$state.go('edit', { id: recipe.id })">
+                       ng-click="$state.go(C.SITE.Editor, { id: recipe.id })">
                 <i class="material-icons">edit</i>
             </md-button>
         </div>
