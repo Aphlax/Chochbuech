@@ -48,7 +48,9 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
             try {
                 if (!validSaveRecipeRequest(req.body, req.file)) return res.sendStatus(400);
                 const result = await saveRecipe(db, req.body, req.file);
-                return result.status == 200 ? res.json(result.id) : res.sendStatus(result.status);
+                return result.status == 200 ?
+                    res.json({ id: result.id }) :
+                    res.sendStatus(result.status);
             } catch (e) {
                 return res.sendStatus(500);
             }

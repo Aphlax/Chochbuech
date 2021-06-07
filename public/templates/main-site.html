@@ -1,4 +1,12 @@
 <div id="main-site" flex layout="column" layout-align="start center">
+    <md-sidenav md-component-id="sidenav" class="md-sidenav-right">
+        <md-list ng-click="$mdSidenav('sidenav').close()">
+            <md-list-item ng-click="$state.go('new')">
+                <i class="material-icons md-avatar-icon">add</i>
+                <span class="md-list-item-text">New Recipe</span>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
     <md-toolbar>
         <div class="md-toolbar-tools">
             <div layout="row" ng-click="$state.go('main')" tabindex="0">
@@ -6,7 +14,8 @@
                 <h2 id="app-title">Chochbuech</h2>
             </div>
             <span flex></span>
-            <md-button class="md-icon-button menu-button" aria-label="Menu">
+            <md-button class="md-icon-button menu-button" aria-label="Menu"
+                       ng-click="$mdSidenav('sidenav').open()">
                 <i class="material-icons">menu</i>
             </md-button>
         </div>

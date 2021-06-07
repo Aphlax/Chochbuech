@@ -5,7 +5,7 @@
 "use strict";
 
 angular.module('Editor', ['Values'])
-    .controller('editor', ['$scope', function($scope) {
+    .controller('editor', ['$scope', '$http', '$state', 'C', function($scope, $http, $state, C) {
         $scope.saveEnabled = function(recipe) {
             return (!recipe.id || !isNaN(recipe.id)) &&
                 recipe.image && recipe.name &&
@@ -26,7 +26,9 @@ angular.module('Editor', ['Values'])
                     {type: recipe.image.type});
                 data.append('image', imageData, recipe.image.name)
             }
-            await fetch('/save', { method: 'POST', body: data });
+            const { data: result } =
+                await $http.post('/save', data, { headers: { 'Content-Type': undefined } });
+            $state.go(C.SITE.View, result);
         };
     }])
     .directive("pictureInput", [function() {

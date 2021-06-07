@@ -10,7 +10,7 @@ const allowedMimeTypesMap = new Map([['image/jpeg', 'jpg'], ['image/png', 'png']
 
 function validSaveRecipeRequest(body, file) {
     const KEYS = ['id', 'name', 'ingredients', 'steps'];
-    return Object.keys(body).every(key => KEYS.includes(key)) &&
+    return body && Object.keys(body).every(key => KEYS.includes(key)) &&
         (!body.id || !isNaN(body.id)) && typeof body.name == 'string' &&
         typeof body.ingredients == 'string' && typeof body.steps == 'string' &&
         (!file || [...allowedMimeTypesMap.keys()].includes(file.mimetype)) &&
