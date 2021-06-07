@@ -1,10 +1,23 @@
 <div id="main-site" flex layout="column" layout-align="start center">
-    <md-sidenav md-component-id="sidenav" class="md-sidenav-right">
-        <img id="app-icon-big" src="images/icon.png">
+    <md-sidenav md-component-id="sidenav" class="md-sidenav-right" layout="column">
+        <div id="app-icon-big"><img src="images/icon.png"></div>
         <md-list ng-click="$mdSidenav('sidenav').close()">
+            <md-list-item ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy })">
+                <div class="material-icons md-avatar-icon">dinner_dining</div>
+                <span class="md-list-item-text">Alltag</span>
+            </md-list-item>
+            <md-list-item ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Hard })">
+                <div class="material-icons md-avatar-icon">brunch_dining</div>
+                <span class="md-list-item-text">Sonntags Menü</span>
+            </md-list-item>
+            <md-list-item ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Dessert })">
+                <div class="material-icons md-avatar-icon">icecream</div>
+                <span class="md-list-item-text">Dessert</span>
+            </md-list-item>
+            <md-divider></md-divider>
             <md-list-item ng-click="$state.go(C.SITE.New)">
-                <i class="material-icons md-avatar-icon">add</i>
-                <span class="md-list-item-text">New Recipe</span>
+                <div class="material-icons md-avatar-icon">add</div>
+                <span class="md-list-item-text">Neues Rezept</span>
             </md-list-item>
         </md-list>
     </md-sidenav>
@@ -17,7 +30,7 @@
             <span flex></span>
             <md-button class="md-icon-button menu-button" aria-label="Menu"
                        ng-click="$mdSidenav('sidenav').open()">
-                <i class="material-icons">menu</i>
+                <div class="material-icons">menu</div>
             </md-button>
         </div>
     </md-toolbar>

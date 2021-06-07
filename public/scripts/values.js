@@ -11,30 +11,31 @@
             CATEGORY: {Easy: 'easy', Hard: 'hard', Dessert: 'dessert'},
         })
         .value('NEW_RECIPE', { name: '', image: 'images/new.png', ingredients: '', steps: '' })
-        .factory('recipeApi', ['$http', function($http) {
-            function RecipeApi() {
+        .factory('$recipe', ['$http', function($http) {
+            function RecipeService() {
                 this.cache = new Map();
-                this.listCache = null;
+                this.listCache = {};
             }
 
-            RecipeApi.prototype.list = async function(category) {
-                if (!this.listCache) {
-                    this.listCache = $http.get('/listRecipes', {params: {category}}).then(recipes => {
-                        recipes.data.forEach(recipe =>
-                            this.cache.set(recipe.id, Promise.resolve(recipe)));
-                        return recipes.data.map(recipe => recipe.id);
-                    });
+            RecipeService.prototype.list = async function(category) {
+                if (!this.listCache[category]) {
+                    this.listCache[category] = $http.get('/listRecipes', {params: {category}})
+                        .then(recipes => {
+                            recipes.data.forEach(recipe =>
+                                this.cache.set(recipe.id, Promise.resolve(recipe)));
+                            return recipes.data.map(recipe => recipe.id);
+                        });
                 }
-                return Promise.all((await this.listCache).map(id => this.get(id)));
+                return Promise.all((await this.listCache[category]).map(id => this.get(id)));
             }
 
-            RecipeApi.prototype.get = async function(id) {
+            RecipeService.prototype.get = async function(id) {
                 if (!this.cache.has(id)) {
                     this.cache.set(id, $http.get(`/recipe/recipe${id}`).then(({data}) => data));
                 }
                 return this.cache.get(id);
             }
 
-            return new RecipeApi();
+            return new RecipeService();
         }]);
 })();

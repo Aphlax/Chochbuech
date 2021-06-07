@@ -31,28 +31,32 @@
             $stateProvider
                 .state(C.SITE.Main, {
                     url: '/',
+                    params: { category: null },
                     templateUrl: 'templates/start-site.html',
                     controller: controls('recipes'),
                     resolve: {
-                        recipes: ['recipeApi', recipeApi => recipeApi.list(C.CATEGORY.Easy)],
+                        recipes: ['$stateParams', '$recipe', ($stateParams, $recipe) =>
+                            $recipe.list($stateParams.category ?? C.CATEGORY.Easy)],
                     }
                 })
                 .state(C.SITE.View, {
                     url: '/r/:id',
+                    params: { id: { type: 'int' } },
                     templateUrl: 'templates/view-site.html',
                     controller: controls('recipe'),
                     resolve: {
-                        recipe: ['$stateParams', 'recipeApi',
-                            ($stateParams, recipeApi) => recipeApi.get(+$stateParams.id)],
+                        recipe: ['$stateParams', '$recipe',
+                            ($stateParams, $recipe) => $recipe.get(+$stateParams.id)],
                     },
                 })
                 .state(C.SITE.Editor, {
                     url: '/edit/:id',
+                    params: { id: { type: 'int' } },
                     templateUrl: 'templates/editor-site.html',
                     controller: controls('recipe'),
                     resolve: {
-                        recipe: ['$stateParams', 'recipeApi',
-                            ($stateParams, recipeApi) => recipeApi.get(+$stateParams.id)],
+                        recipe: ['$stateParams', '$recipe',
+                            ($stateParams, $recipe) => $recipe.get(+$stateParams.id)],
                     },
                 })
                 .state(C.SITE.New, {
@@ -70,7 +74,7 @@
             let lock = null;
 
             const onVisibilityChange = () => {
-                if (lock && lock.released && document.visibilityState == 'visible') {
+                if (lock?.released && document.visibilityState == 'visible') {
                     return keepScreenOn();
                 }
             };
@@ -83,8 +87,7 @@
                 }
                 try {
                     lock = await navigator.wakeLock.request('screen');
-                } catch (e) {
-                }
+                } catch (e) { }
             }
 
             $transitionsProvider.onSuccess({ to: C.SITE.View }, keepScreenOn);

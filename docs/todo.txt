@@ -1,4 +1,4 @@
-main menu category
+editor-site set category
 start-site search
 shopping list
 main log in
