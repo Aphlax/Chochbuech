@@ -9,6 +9,15 @@ html, body {
     margin: 0;
 }
 
+#app-icon-big {
+    width: 96px;
+    height: 96px;
+    padding:12px;
+    margin: 48px calc(50% - 60px) 24px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 #app-icon {
     width: 24px;
     height: 24px;

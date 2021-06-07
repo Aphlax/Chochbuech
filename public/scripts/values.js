@@ -8,6 +8,7 @@
     angular.module('Values', [])
         .value('C', {
             SITE: {Main: 'main', Editor: 'edit', New: 'new', View: 'view'},
+            CATEGORY: {Easy: 'easy', Hard: 'hard', Dessert: 'dessert'},
         })
         .value('NEW_RECIPE', { name: '', image: 'images/new.png', ingredients: '', steps: '' })
         .factory('recipeApi', ['$http', function($http) {
@@ -16,9 +17,9 @@
                 this.listCache = null;
             }
 
-            RecipeApi.prototype.list = async function() {
+            RecipeApi.prototype.list = async function(category) {
                 if (!this.listCache) {
-                    this.listCache = $http.get('/listRecipes').then(recipes => {
+                    this.listCache = $http.get('/listRecipes', {params: {category}}).then(recipes => {
                         recipes.data.forEach(recipe =>
                             this.cache.set(recipe.id, Promise.resolve(recipe)));
                         return recipes.data.map(recipe => recipe.id);

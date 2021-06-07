@@ -56,8 +56,15 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
             }
         });
         app.get('/listRecipes', async function(req, res) {
-            const recipes = await db.collection('recipes').find({}).limit(10).toArray();
-            res.json(recipes.map(recipe => unassign({...recipe, id: recipe._id}, '_id')));
+            if (!['easy', 'hard', 'dessert'].includes(req.query.category)) return res.sendStatus(400);
+            const recipes = await db.collection('recipes').aggregate([
+                {$match: {category: req.query.category}},
+                {$set: {order: {$rand: {}}, id: "$_id"}},
+                {$sort: {order: 1}},
+                {$limit: 10},
+                {$project: {order: 0, _id: 0}},
+            ]).toArray();
+            res.json(recipes);
         });
         app.get('/recipe/recipe:id', async function(req, res) {
             if (isNaN(req.params.id)) return res.sendStatus(400);

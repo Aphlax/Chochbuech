@@ -34,7 +34,7 @@
                     templateUrl: 'templates/start-site.html',
                     controller: controls('recipes'),
                     resolve: {
-                        recipes: ['recipeApi', recipeApi => recipeApi.list()],
+                        recipes: ['recipeApi', recipeApi => recipeApi.list(C.CATEGORY.Easy)],
                     }
                 })
                 .state(C.SITE.View, {

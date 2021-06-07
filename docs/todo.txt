@@ -1,4 +1,4 @@
-start-site random dishes
-main menu category, add
-main log in
+main menu category
+start-site search
 shopping list
+main log in
