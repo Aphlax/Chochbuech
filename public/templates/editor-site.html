@@ -1,16 +1,14 @@
-<div id="editor-site" flex layout="column" layout-align="start center" ng-controller="editor">
-    <div class="site-container" layout="column" flex>
-        <div layout="row">
-            <picture-input class="image" model="recipe.image">
-            </picture-input>
-            <input class="input name" type="text" ng-model="recipe.name" flex>
-        </div>
-        <h4>Zutaten</h4>
-        <textarea class="input ingredients" ng-model="recipe.ingredients" flex></textarea>
-        <h4>Rezept</h4>
-        <textarea class="input steps" ng-model="recipe.steps" flex></textarea>
-        <md-button class="md-raised" ng-click="save(recipe)" ng-disabled="!saveEnabled(recipe)">
-            Speichern
-        </md-button>
+<div id="editor-site" flex layout="column" ng-controller="editor">
+    <div layout="row">
+        <picture-input class="image" model="recipe.image">
+        </picture-input>
+        <input class="input name" type="text" ng-model="recipe.name" flex>
     </div>
+    <h4>Zutaten</h4>
+    <textarea class="input ingredients" ng-model="recipe.ingredients" flex></textarea>
+    <h4>Rezept</h4>
+    <textarea class="input steps" ng-model="recipe.steps" flex></textarea>
+    <md-button class="md-raised" ng-click="save(recipe)" ng-disabled="!saveEnabled(recipe)">
+        Speichern
+    </md-button>
 </div>

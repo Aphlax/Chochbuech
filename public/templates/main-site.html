@@ -23,7 +23,8 @@
     </md-sidenav>
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <div layout="row" ng-click="$state.go(C.SITE.Main)" tabindex="0">
+            <div layout="row" tabindex="0"
+                 ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy })">
                 <img id="app-icon" src="images/icon.png">
                 <h2 id="app-title">Chochbuech</h2>
             </div>
@@ -34,5 +35,7 @@
             </md-button>
         </div>
     </md-toolbar>
-    <ui-view flex layout="column"></ui-view>
+    <div class="site-container" flex layout="column" layout-align="start center">
+        <ui-view flex layout="column"></ui-view>
+    </div>
 </div>

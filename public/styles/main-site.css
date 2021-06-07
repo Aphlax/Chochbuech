@@ -7,7 +7,6 @@
 
 html, body {
     margin: 0;
-    overflow: hidden;
 }
 
 #app-icon-big {
@@ -41,7 +40,7 @@ html, body {
     background-color: lightslategrey;
 }
 
-ui-view {
+.site-container {
     width: 700px;
     max-width: 100%;
     overflow: auto;
@@ -49,7 +48,7 @@ ui-view {
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
 }
 
-.site-container {
+ui-view {
     width: 600px;
     max-width: 100%;
 }
