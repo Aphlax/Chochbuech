@@ -2,7 +2,20 @@
     <div layout="row">
         <picture-input class="image" model="recipe.image">
         </picture-input>
-        <input class="input name" type="text" ng-model="recipe.name" flex>
+        <div flex layout="column">
+            <input class="input name" type="text" ng-model="recipe.name" flex>
+            <md-radio-group ng-model="recipe.category">
+                <md-radio-button ng-value="C.CATEGORY.Easy" class="material-icons">
+                    dinner_dining
+                </md-radio-button>
+                <md-radio-button ng-value="C.CATEGORY.Hard" class="material-icons">
+                    brunch_dining
+                </md-radio-button>
+                <md-radio-button ng-value="C.CATEGORY.Dessert" class="material-icons">
+                    icecream
+                </md-radio-button>
+            </md-radio-group>
+        </div>
     </div>
     <h4>Zutaten</h4>
     <textarea class="input ingredients" ng-model="recipe.ingredients" flex></textarea>

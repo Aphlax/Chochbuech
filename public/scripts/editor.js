@@ -21,6 +21,7 @@ angular.module('Editor', ['Values'])
             data.append('name', recipe.name);
             data.append('ingredients', recipe.ingredients);
             data.append('steps', recipe.steps);
+            data.append('category', recipe.category);
             if (recipe.image instanceof File) {
                 const imageData = new Blob([new Uint8Array(await recipe.image.arrayBuffer())],
                     {type: recipe.image.type});

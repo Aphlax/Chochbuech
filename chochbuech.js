@@ -9,10 +9,11 @@ module.exports = { saveRecipe, validSaveRecipeRequest };
 const allowedMimeTypesMap = new Map([['image/jpeg', 'jpg'], ['image/png', 'png']]);
 
 function validSaveRecipeRequest(body, file) {
-    const KEYS = ['id', 'name', 'ingredients', 'steps'];
+    const KEYS = ['id', 'name', 'ingredients', 'steps', 'category'];
     return body && Object.keys(body).every(key => KEYS.includes(key)) &&
         (!body.id || !isNaN(body.id)) && typeof body.name == 'string' &&
         typeof body.ingredients == 'string' && typeof body.steps == 'string' &&
+        ['easy', 'hard', 'dessert'].includes(body.category) &&
         (!file || [...allowedMimeTypesMap.keys()].includes(file.mimetype)) &&
         !!(file || body.id);
 }

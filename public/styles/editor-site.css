@@ -8,7 +8,7 @@
 #editor-site .input {
     padding: 0;
     background: none;
-    /*border: none;*/
+    border: none;
     outline: none;
     resize: none;
 }
@@ -18,5 +18,32 @@
 }
 
 #editor-site .name {
+    padding-top: 24px;
+    padding-left: 10px;
+    font-family: "Gotham", sans-serif;
+    font-size: 22px;
+}
 
+#editor-site md-radio-button {
+    position: relative;
+    margin: 0 10px;
+}
+
+#editor-site md-radio-button div:not(.md-ripple-container), #editor-site md-radio-button {
+    width: 40px;
+    height: 40px;
+}
+
+#editor-site md-radio-button.md-checked .md-on {
+    transform: scale(0.8);
+}
+
+#editor-site md-radio-button .md-label {
+    position: absolute;
+    margin: 8px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+#editor-site h4 {
+    margin-bottom: 10px;
 }
