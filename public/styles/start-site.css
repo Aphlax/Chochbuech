@@ -29,3 +29,12 @@
     font-size: 20px;
     color: rgb(30, 30, 30);
 }
+
+#start-site .no-recipes {
+    font-family: "Gotham", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: rgb(83, 83, 83);
+    text-align: center;
+    margin-top: 50px;
+}

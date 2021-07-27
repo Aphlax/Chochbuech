@@ -33,14 +33,14 @@ html, body {
     user-select: none;
 }
 
-#app-title {
+.app-title {
     padding: 9px 0 8px;
     user-select: none;
     cursor: pointer;
 }
 
 #main-site {
-    background-color: lightslategrey;
+    background-color: #c3c3d7;
 }
 
 .site-container {

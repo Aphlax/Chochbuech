@@ -29,6 +29,15 @@
                 return Promise.all((await this.listCache[category]).map(id => this.get(id)));
             }
 
+            RecipeService.prototype.search = async function(search) {
+                return $http.get('/searchRecipes', {params: {search}})
+                    .then(recipes => {
+                        recipes.data.forEach(recipe =>
+                            this.cache.set(recipe.id, Promise.resolve(recipe)));
+                        return recipes.data;
+                    });
+            }
+
             RecipeService.prototype.get = async function(id) {
                 if (!this.cache.has(id)) {
                     this.cache.set(id, $http.get(`/recipe/recipe${id}`).then(({data}) => data));

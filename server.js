@@ -46,6 +46,8 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
         const upload = multer({storage: multer.memoryStorage()});
         app.post('/save', upload.single('image'), async function(req, res) {
             try {
+                if (!req.headers.referer.startsWith("http://192.168.1") &&
+                    !req.headers.referer.startsWith("http://localhost")) return res.sendStatus(403);
                 if (!validSaveRecipeRequest(req.body, req.file)) return res.sendStatus(400);
                 const result = await saveRecipe(db, req.body, req.file);
                 return result.status == 200 ?
@@ -63,6 +65,17 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
                 {$sort: {order: 1}},
                 {$limit: 10},
                 {$project: {order: 0, _id: 0}},
+            ]).toArray();
+            res.json(recipes);
+        });
+        app.get('/searchRecipes', async function(req, res) {
+            if (typeof req.query.search != 'string' || !req.query.search.length)
+                return res.sendStatus(400);
+            const recipes = await db.collection('recipes').aggregate([
+                {$search: {index: 'text-search-de',
+                        text: {path: ['name', 'ingredients', 'steps'], query: req.query.search}}},
+                {$set: {id: "$_id"}},
+                {$project: {_id: 0}},
             ]).toArray();
             res.json(recipes);
         });

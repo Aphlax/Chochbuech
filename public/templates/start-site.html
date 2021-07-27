@@ -4,4 +4,7 @@
     <div class="image" style="background-image: url('{{recipe.image}}');"></div>
     <span class="name">{{recipe.name}}</span>
   </div>
+  <div class="no-recipes" ng-if="!recipes.length" flex>
+    Keine Rezepte gefunden.
+  </div>
 </div>

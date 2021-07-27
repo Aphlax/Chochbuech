@@ -31,12 +31,17 @@
             $stateProvider
                 .state(C.SITE.Main, {
                     url: '/',
-                    params: { category: null },
+                    params: { search: { type: 'string', value: '' }, category: null },
                     templateUrl: 'templates/start-site.html',
                     controller: controls('recipes'),
                     resolve: {
-                        recipes: ['$stateParams', '$recipe', ($stateParams, $recipe) =>
-                            $recipe.list($stateParams.category ?? C.CATEGORY.Easy)],
+                        recipes: ['$stateParams', '$recipe', function ($stateParams, $recipe) {
+                            if ($stateParams.search) {
+                                return $recipe.search($stateParams.search);
+                            } else {
+                                return $recipe.list($stateParams.category ?? C.CATEGORY.Easy);
+                            }
+                        }],
                     }
                 })
                 .state(C.SITE.View, {
@@ -98,6 +103,16 @@
                     lock = null;
                 }
             });
-        }]);
+        }])
+        .directive('ngEnter', function () {
+            return function ($scope, $elem, $attr) {
+                $elem.bind('keydown keypress', function (e) {
+                    if (e.key == 'Enter') {
+                        $scope.$apply(() => $scope.$eval($attr['ngEnter']));
+                        e.preventDefault();
+                    }
+                });
+            };
+        });
 })();
 

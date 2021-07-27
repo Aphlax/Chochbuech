@@ -24,11 +24,20 @@
     <md-toolbar>
         <div class="md-toolbar-tools">
             <div layout="row" tabindex="0"
-                 ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy })">
+                 ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy, search: '' })">
                 <img id="app-icon" src="images/icon.png">
-                <h2 id="app-title">Chochbuech</h2>
+                <h2 class="app-title" hide show-gt-xs>Chochbuech</h2>
+                <h2 class="app-title" ng-show="!openSearch" hide-gt-xs>Chochbuech</h2>
             </div>
             <span flex></span>
+            <div layout="row" ng-show="$state.is(C.SITE.Main)">
+                <input class="input search" ng-show="openSearch" type="text" ng-model="search" flex
+                       ng-enter="$state.go(C.SITE.Main, { search: search })">
+                <md-button class="md-icon-button search-button" aria-label="Search"
+                           ng-click="openSearch = !openSearch">
+                    <div class="material-icons">search</div>
+                </md-button>
+            </div>
             <md-button class="md-icon-button menu-button" aria-label="Menu"
                        ng-click="$mdSidenav('sidenav').open()">
                 <div class="material-icons">menu</div>
