@@ -1,3 +1,7 @@
+#start-site {
+    align-content: flex-start;
+}
+
 #start-site .recipe {
     width: 50%;
     cursor: pointer;

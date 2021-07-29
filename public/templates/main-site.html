@@ -2,15 +2,18 @@
     <md-sidenav md-component-id="sidenav" class="md-sidenav-right" layout="column">
         <div id="app-icon-big"><img src="images/icon.png"></div>
         <md-list ng-click="$mdSidenav('sidenav').close()">
-            <md-list-item ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy })">
+            <md-list-item
+                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy, search: '' })">
                 <div class="material-icons md-avatar-icon">dinner_dining</div>
                 <span class="md-list-item-text">Alltag</span>
             </md-list-item>
-            <md-list-item ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Hard })">
+            <md-list-item
+                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Hard, search: '' })">
                 <div class="material-icons md-avatar-icon">brunch_dining</div>
                 <span class="md-list-item-text">Sonntags Menü</span>
             </md-list-item>
-            <md-list-item ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Dessert })">
+            <md-list-item
+                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Dessert, search: '' })">
                 <div class="material-icons md-avatar-icon">icecream</div>
                 <span class="md-list-item-text">Dessert</span>
             </md-list-item>
@@ -27,14 +30,15 @@
                  ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy, search: '' })">
                 <img id="app-icon" src="images/icon.png">
                 <h2 class="app-title" hide show-gt-xs>Chochbuech</h2>
-                <h2 class="app-title" ng-show="!openSearch" hide-gt-xs>Chochbuech</h2>
+                <h2 class="app-title" ng-show="!showSearch" hide-gt-xs>Chochbuech</h2>
             </div>
             <span flex></span>
             <div layout="row" ng-show="$state.is(C.SITE.Main)">
-                <input class="input search" ng-show="openSearch" type="text" ng-model="search" flex
-                       ng-enter="$state.go(C.SITE.Main, { search: search })">
+                <input class="search-input" ng-show="showSearch" type="search" ng-model="search"
+                       flex ng-enter="$state.go(C.SITE.Main, { search: search })"
+                       placeholder="Suche">
                 <md-button class="md-icon-button search-button" aria-label="Search"
-                           ng-click="openSearch = !openSearch">
+                           ng-click="showSearch = !showSearch">
                     <div class="material-icons">search</div>
                 </md-button>
             </div>

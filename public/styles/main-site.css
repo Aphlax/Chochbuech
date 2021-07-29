@@ -39,6 +39,11 @@ html, body {
     cursor: pointer;
 }
 
+.search-input {
+    width: calc(100% - 10px);
+    max-width: 250px;
+}
+
 #main-site {
     background-color: #c3c3d7;
 }
