@@ -7,7 +7,7 @@
 
     angular.module('Values', [])
         .value('C', {
-            SITE: {Main: 'main', Editor: 'edit', New: 'new', View: 'view'},
+            SITE: {Main: 'main', Editor: 'edit', New: 'new', View: 'view', Shopping: 'shop'},
             CATEGORY: {Easy: 'easy', Hard: 'hard', Dessert: 'dessert'},
         })
         .value('NEW_RECIPE', { name: '', image: 'images/new.png', ingredients: '', steps: '' })

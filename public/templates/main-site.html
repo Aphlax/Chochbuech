@@ -22,6 +22,11 @@
                 <div class="material-icons md-avatar-icon">add</div>
                 <span class="md-list-item-text">Neues Rezept</span>
             </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item ng-click="$state.go(C.SITE.Shopping)">
+                <div class="material-icons md-avatar-icon">shopping_cart</div>
+                <span class="md-list-item-text">Einkaufs-Liste</span>
+            </md-list-item>
         </md-list>
     </md-sidenav>
     <md-toolbar>
@@ -42,6 +47,10 @@
                     <div class="material-icons">search</div>
                 </md-button>
             </div>
+            <md-button class="md-icon-button" aria-label="Zur einkaufs-Liste hinzufügen"
+                       ng-click="$broadcast('foo')" ng-show="$state.is(C.SITE.View)">
+                <div class="material-icons">add_shopping_cart</div>
+            </md-button>
             <md-button class="md-icon-button menu-button" aria-label="Menu"
                        ng-click="$mdSidenav('sidenav').open()">
                 <div class="material-icons">menu</div>

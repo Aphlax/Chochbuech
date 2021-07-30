@@ -9,6 +9,7 @@
         'ui.router',
         'ngMaterial',
         'Editor',
+        'Shopping',
         'Values',
     ];
 
@@ -71,6 +72,10 @@
                     resolve: {
                         recipe: ['NEW_RECIPE', NEW_RECIPE => NEW_RECIPE],
                     },
+                })
+                .state(C.SITE.Shopping, {
+                    url: '/shopping-list',
+                    templateUrl: 'templates/shopping-site.html',
                 });
             $urlRouterProvider.otherwise('/');
         }])
