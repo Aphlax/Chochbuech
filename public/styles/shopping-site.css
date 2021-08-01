@@ -1,0 +1,17 @@
+.sortable-list {
+  border-top: 1px solid lightgrey;
+}
+
+.sortable-list-item {
+  position: relative;
+  height: 35px;
+  line-height: 35px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.sortable-list-item .drag-icon {
+  margin: 5px 4px 6px 0;
+  color: darkgrey;
+  cursor: move;
+  user-select: none;
+}

@@ -9,6 +9,7 @@
         .value('C', {
             SITE: {Main: 'main', Editor: 'edit', New: 'new', View: 'view', Shopping: 'shop'},
             CATEGORY: {Easy: 'easy', Hard: 'hard', Dessert: 'dessert'},
+            EVENTS: {SHOPPING_CART_CLICK: 'shop'},
         })
         .value('NEW_RECIPE', { name: '', image: 'images/new.png', ingredients: '', steps: '' })
         .factory('$recipe', ['$http', function($http) {

@@ -1,4 +1,5 @@
-<div id="view-site" flex layout="column">
+<div id="view-site" flex layout="column"
+     ng-init="$on(C.EVENTS.SHOPPING_CART_CLICK, shopRecipe(recipe));">
     <div class="image" style="background-image: url('{{recipe.image}}');" layout="row"
          ng-click="showDetail = true">
         <span flex></span>

@@ -48,7 +48,8 @@
                 </md-button>
             </div>
             <md-button class="md-icon-button" aria-label="Zur einkaufs-Liste hinzufügen"
-                       ng-click="$broadcast('foo')" ng-show="$state.is(C.SITE.View)">
+                       ng-show="$state.is(C.SITE.View)"
+                       ng-click="$broadcast(C.EVENTS.SHOPPING_CART_CLICK)">
                 <div class="material-icons">add_shopping_cart</div>
             </md-button>
             <md-button class="md-icon-button menu-button" aria-label="Menu"

@@ -22,13 +22,13 @@ async function saveRecipe(db, body, file) {
     if (body.id) { // Update existing recipe.
         body.id = Number(body.id);
         const result = await db.collection('recipes')
-            .updateOne({_id: body.id}, {$set: unassign({...body}, 'id')});
+            .updateOne({_id: body.id}, {$set: unassign(sanitizeRecipe(body), 'id')});
         if (result.matchedCount == 0) return {status: 400};
     } else { // Create new recipe.
         const recipeUID = (await db.collection('values').findOneAndUpdate(
             {_id: 'recipeUID'}, {$inc: {value: 1}}, {upsert: true})).value.value;
         await db.collection('recipes').insertOne(
-            {_id: recipeUID, ...body, image:
+            {_id: recipeUID, ...sanitizeRecipe(body), image:
                     `images/recipe${recipeUID}.${allowedMimeTypesMap.get(file.mimetype)}`});
         body.id = recipeUID;
     }
@@ -40,4 +40,8 @@ async function saveRecipe(db, body, file) {
             {upsert: true});
     }
     return {id: body.id, status: 200};
+}
+
+function sanitizeRecipe(recipe) {
+    return {...recipe};
 }
