@@ -1,17 +1,28 @@
 .sortable-list {
-  border-top: 1px solid lightgrey;
+  position: relative;
 }
 
 .sortable-list-item {
-  position: relative;
-  height: 35px;
-  line-height: 35px;
-  border-bottom: 1px solid lightgrey;
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 37px;
+  line-height: 36px;
+  border-collapse: separate;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+  background-color: rgb(250, 250, 250);
+  transition: top 0.1s ease-out, z-index 0.1s step-end;
+}
+
+.sortable-list-item.dragging {
+  z-index: 1;
+  transition: none;
 }
 
 .sortable-list-item .drag-icon {
   margin: 5px 4px 6px 0;
-  color: darkgrey;
+  color: lightgray;
   cursor: move;
   user-select: none;
 }

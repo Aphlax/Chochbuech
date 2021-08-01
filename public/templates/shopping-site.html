@@ -1,23 +1,8 @@
 <div id="shopping-site" flex layout="column" ng-controller="shopping">
     <h2>Einkaufs-Liste</h2>
-    <sortable-list>
-<!--        <sortable-list-item ng-repeat="item in list track by $index">-->
-<!--            {{item}}-->
-<!--        </sortable-list-item>-->
-        <sortable-list-item>
-            Apfel
-        </sortable-list-item>
-        <sortable-list-item>
-            Birne
-        </sortable-list-item>
-        <sortable-list-item>
-            Clementine
-        </sortable-list-item>
-        <sortable-list-item>
-            Dattel
-        </sortable-list-item>
-        <sortable-list-item>
-            Elderbeeren
+    <sortable-list order-changed="onOrderChanged(order)">
+        <sortable-list-item ng-repeat="item in list track by $index">
+            {{item}}
         </sortable-list-item>
     </sortable-list>
 </div>

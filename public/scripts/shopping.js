@@ -22,36 +22,89 @@ angular.module('Shopping', ['Values', 'ngCookies'])
         const COOKIE_OPTIONS = {expires: (d => { d.setDate(d.getDate() + 30); return d; })(new Date())};
 
         $scope.list = ($cookies.get(COOKIE_NAME) ?? '').split('\n').filter(i => i);
+
+        $scope.onOrderChanged = function(order) {
+            let orderedList = order.map(i => $scope.list[i]);
+            $cookies.put(COOKIE_NAME, orderedList.join('\n') + '\n', COOKIE_OPTIONS);
+        }
     }])
     .directive('sortableList', function() {
+        const HEIGHT = 36;
         return {
             restrict: 'E',
             replace: true,
             transclude: true,
-            scope: {},
+            scope: {
+                orderChanged: '&?'
+            },
             controller: ['$scope', '$element', function SortableListController($scope, $element) {
-                this.items = [];
+                $scope.items = [];
 
                 this.register = function(item) {
-                    this.items.push(item);
+                    item.index = item.initialIndex = $scope.items.length;
+                    item.offset = $scope.items.length * HEIGHT;
+                    $scope.items.push(item);
+                    $element.css('height', ($scope.items.length * HEIGHT + 1) + 'px');
+                    return $scope;
+                }
+
+                /** First is currently being dragged to the position of second. */
+                this.swap = function(first, second) {
+                    let secondItem = $scope.items[second];
+                    $scope.items[second] = $scope.items[first];
+                    $scope.items[first] = secondItem;
+                    secondItem.index = first;
+                    secondItem.offset = first * HEIGHT;
+                    if ($scope.orderChanged)
+                        $scope.orderChanged({order: $scope.items.map(item => item.initialIndex)});
                 }
             }],
-            template: '<div class="sortable-list" layout="column" ng-transclude></div>',
+            template: '<div class="sortable-list" ng-transclude></div>',
         };
     })
-    .directive('sortableListItem', function() {
+    .directive('sortableListItem', ['$document', function($document) {
+        const HEIGHT = 36;
         return {
-            requires: '^^sortableList',
+            require: '^^sortableList',
             restrict: 'E',
             replace: true,
             transclude: true,
             scope: {},
             link: function($scope, $elem, $attr, sortableList) {
-                //sortableList.register($scope);
+                let list = sortableList.register($scope);
+                let startY = 0;
+                $scope.$watch('offset', offset => $elem.css('top', (offset ?? 0) + 'px'));
+                $scope.$watch('index', (newIndex, oldIndex) => {
+                    if ($elem.hasClass('dragging')) sortableList.swap(oldIndex, newIndex);
+                });
+
+                $scope.startDrag = function(e) {
+                    e.preventDefault();
+                    startY = e.pageY - $scope.offset;
+                    $elem.addClass('dragging');
+                    $document.on('mousemove', mousemove);
+                    $document.on('mouseup', mouseup);
+                };
+
+                function mousemove(e) {
+                    $scope.$apply(() => {
+                        let maxOffset = (list.items.length - 1) * HEIGHT;
+                        $scope.offset = Math.max(Math.min(e.pageY - startY, maxOffset), 0);
+                        $scope.index = Math.round($scope.offset / HEIGHT);
+                    });
+                }
+
+                function mouseup() {
+                    $scope.$apply(() =>
+                        $scope.offset = HEIGHT * Math.round($scope.offset / HEIGHT));
+                    $elem.removeClass('dragging');
+                    $document.off('mousemove', mousemove);
+                    $document.off('mouseup', mouseup);
+                }
             },
             template: '<div class="sortable-list-item" layout="row">' +
-                '   <div class="material-icons drag-icon">drag_indicator</div>' +
+                '   <div class="material-icons drag-icon" ng-mousedown="startDrag($event)">drag_indicator</div>' +
                 '   <ng-transclude flex layout="row"></ng-transclude>' +
                 '</div>',
         };
-    });
+    }]);
