@@ -112,8 +112,8 @@ angular.module('Chochbuech', REQ)
         return function ($scope, $elem, $attr) {
             $elem.bind('keydown keypress', function (e) {
                 if (e.key == 'Enter') {
-                    $scope.$apply(() => $scope.$eval($attr['ngEnter']));
                     e.preventDefault();
+                    $scope.$apply(() => $scope.$eval($attr['ngEnter']));
                 }
             });
         };

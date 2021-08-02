@@ -80,16 +80,16 @@ angular.module('Shopping', ['Values', 'ngCookies'])
 
                 $scope.startDrag = function(e) {
                     e.preventDefault();
-                    startY = e.pageY - $scope.offset;
+                    startY = getPageY(e) - $scope.offset;
                     $elem.addClass('dragging');
-                    $document.on('mousemove', mousemove);
-                    $document.on('mouseup', mouseup);
+                    $document.on('touchmove mousemove', mousemove);
+                    $document.on('touchend touchcancel mouseup', mouseup);
                 };
 
                 function mousemove(e) {
                     $scope.$apply(() => {
                         let maxOffset = (list.items.length - 1) * HEIGHT;
-                        $scope.offset = Math.max(Math.min(e.pageY - startY, maxOffset), 0);
+                        $scope.offset = Math.max(Math.min(getPageY(e) - startY, maxOffset), 0);
                         $scope.index = Math.round($scope.offset / HEIGHT);
                     });
                 }
@@ -98,12 +98,19 @@ angular.module('Shopping', ['Values', 'ngCookies'])
                     $scope.$apply(() =>
                         $scope.offset = HEIGHT * Math.round($scope.offset / HEIGHT));
                     $elem.removeClass('dragging');
-                    $document.off('mousemove', mousemove);
-                    $document.off('mouseup', mouseup);
+                    $document.off('touchmove mousemove', mousemove);
+                    $document.off('touchend touchcancel mouseup', mouseup);
+                }
+
+                function getPageY(e) {
+                    return e instanceof TouchEvent ? e.touches[0].pageY : e.pageY;
                 }
             },
             template: '<div class="sortable-list-item" layout="row">' +
-                '   <div class="material-icons drag-icon" ng-mousedown="startDrag($event)">drag_indicator</div>' +
+                '   <div class="material-icons drag-icon" ng-on-touchstart="startDrag($event)"' +
+                '        ng-mousedown="startDrag($event)">' +
+                '       drag_indicator' +
+                '   </div>' +
                 '   <ng-transclude flex layout="row"></ng-transclude>' +
                 '</div>',
         };
