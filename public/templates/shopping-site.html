@@ -2,8 +2,8 @@
     <h2>Einkaufsliste</h2>
     <sortable-list order-changed="onOrderChanged(order)">
         <sortable-list-item ng-repeat="item in list">
-            <md-checkbox ng-model="item.selected" aria-label="{{item.label}}" flex>
-                {{item.label}}
+            <md-checkbox ng-model="item.selected" aria-label="{{item.label}} " flex>
+                {{item.label}} <em class="origin">({{item.origin}})</em>
             </md-checkbox>
         </sortable-list-item>
     </sortable-list>

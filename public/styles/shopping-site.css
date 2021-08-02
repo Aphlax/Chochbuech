@@ -41,6 +41,10 @@ div.sortable-list-item .drag-icon {
   line-height: 24px;
 }
 
+#shopping-site md-checkbox .origin {
+  color: darkgray
+}
+
 #shopping-site .no-items {
   font-family: "Gotham", sans-serif;
   font-weight: 400;

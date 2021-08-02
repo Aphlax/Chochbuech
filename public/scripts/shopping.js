@@ -11,30 +11,43 @@ angular.module('Shopping', ['Values', 'ngCookies'])
 
         return function shopRecipe(recipe) {
             return () => {
-                const shoppingList = ($cookies.get(COOKIE_NAME) ?? '') + recipe.ingredients;
+                const shoppingList = ($cookies.get(COOKIE_NAME) ?? '') +
+                    recipe.ingredients.split('\n').filter(i => i)
+                        .map(i => `${i} (${initials(recipe.name)})\n`).join('');
                 $cookies.put(COOKIE_NAME, shoppingList, COOKIE_OPTIONS);
                 $state.go(C.SITE.Shopping);
             };
         };
+
+        function initials(name) {
+            const isUpperCase = c => c == c.toUpperCase() && c != c.toLowerCase();
+            return name.split(" ").map(w => w[0]).filter(isUpperCase).join('');
+        }
     }])
     .controller('shopping', ['$scope', '$cookies', 'C', function($scope, $cookies, C) {
         const COOKIE_NAME = 'shopping-list';
         const COOKIE_OPTIONS = {expires: (d => { d.setDate(d.getDate() + 30); return d; })(new Date())};
+        const ITEM_REGEX = /(.+)\((.+)\)/;
 
         $scope.list = ($cookies.get(COOKIE_NAME) ?? '').split('\n').filter(i => i).map(createItem);
 
         $scope.onOrderChanged = function(order) {
             if (order.length != $scope.list.length) return;
-            const orderedList = order.map(i => $scope.list[i].label);
-            $cookies.put(COOKIE_NAME, orderedList.join('\n') + '\n', COOKIE_OPTIONS);
+            const orderedList = order.map(i => $scope.list[i].proto + '\n');
+            $cookies.put(COOKIE_NAME, orderedList.join(''), COOKIE_OPTIONS);
         }
 
         $scope.$on(C.EVENTS.SHOP_REMOVE_ALL, () => $scope.list = []);
         $scope.$on(C.EVENTS.SHOP_REMOVE_DONE,
             () => $scope.list = $scope.list.filter(i => !i.selected));
 
-        function createItem(label) {
-            return { label, selected: false };
+        function createItem(proto) {
+            const match = proto.match(ITEM_REGEX);
+            if (match) {
+                return { label: match[1], origin: match[2], selected: false, proto };
+            } else {
+                return { label: proto, origin: '', selected: false, proto };
+            }
         }
     }])
     .directive('sortableList', function() {
