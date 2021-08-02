@@ -17,19 +17,28 @@ angular.module('Shopping', ['Values', 'ngCookies'])
             };
         };
     }])
-    .controller('shopping', ['$scope', '$cookies', function($scope, $cookies) {
+    .controller('shopping', ['$scope', '$cookies', 'C', function($scope, $cookies, C) {
         const COOKIE_NAME = 'shopping-list';
         const COOKIE_OPTIONS = {expires: (d => { d.setDate(d.getDate() + 30); return d; })(new Date())};
 
-        $scope.list = ($cookies.get(COOKIE_NAME) ?? '').split('\n').filter(i => i);
+        $scope.list = ($cookies.get(COOKIE_NAME) ?? '').split('\n').filter(i => i).map(createItem);
 
         $scope.onOrderChanged = function(order) {
-            let orderedList = order.map(i => $scope.list[i]);
+            if (order.length != $scope.list.length) return;
+            const orderedList = order.map(i => $scope.list[i].label);
             $cookies.put(COOKIE_NAME, orderedList.join('\n') + '\n', COOKIE_OPTIONS);
+        }
+
+        $scope.$on(C.EVENTS.SHOP_REMOVE_ALL, () => $scope.list = []);
+        $scope.$on(C.EVENTS.SHOP_REMOVE_DONE,
+            () => $scope.list = $scope.list.filter(i => !i.selected));
+
+        function createItem(label) {
+            return { label, selected: false };
         }
     }])
     .directive('sortableList', function() {
-        const HEIGHT = 36;
+        const HEIGHT = 48;
         return {
             restrict: 'E',
             replace: true,
@@ -41,29 +50,47 @@ angular.module('Shopping', ['Values', 'ngCookies'])
                 $scope.items = [];
 
                 this.register = function(item) {
+                    item.$on('$destroy', () => this.unregister(item));
                     item.index = item.initialIndex = $scope.items.length;
                     item.offset = $scope.items.length * HEIGHT;
                     $scope.items.push(item);
                     $element.css('height', ($scope.items.length * HEIGHT + 1) + 'px');
                     return $scope;
+                };
+
+                this.unregister = function(item) {
+                    for (let i = item.index; i < $scope.items.length - 1; i++) {
+                        $scope.items[i] = $scope.items[i + 1];
+                        $scope.items[i].index = i;
+                        $scope.items[i].offset = i * HEIGHT;
+                    }
+                    $scope.items.pop();
+                    $element.css('height', ($scope.items.length * HEIGHT + 1) + 'px');
+                    for (const other of $scope.items) {
+                        if (other.initialIndex > item.initialIndex) {
+                            other.initialIndex--;
+                        }
+                    }
+                    if ($scope.orderChanged)
+                        $scope.orderChanged({order: $scope.items.map(item => item.initialIndex)});
                 }
 
                 /** First is currently being dragged to the position of second. */
                 this.swap = function(first, second) {
-                    let secondItem = $scope.items[second];
+                    const secondItem = $scope.items[second];
                     $scope.items[second] = $scope.items[first];
                     $scope.items[first] = secondItem;
                     secondItem.index = first;
                     secondItem.offset = first * HEIGHT;
                     if ($scope.orderChanged)
                         $scope.orderChanged({order: $scope.items.map(item => item.initialIndex)});
-                }
+                };
             }],
             template: '<div class="sortable-list" ng-transclude></div>',
         };
     })
     .directive('sortableListItem', ['$document', function($document) {
-        const HEIGHT = 36;
+        const HEIGHT = 48;
         return {
             require: '^^sortableList',
             restrict: 'E',
@@ -71,7 +98,7 @@ angular.module('Shopping', ['Values', 'ngCookies'])
             transclude: true,
             scope: {},
             link: function($scope, $elem, $attr, sortableList) {
-                let list = sortableList.register($scope);
+                const list = sortableList.register($scope);
                 let startY = 0;
                 $scope.$watch('offset', offset => $elem.css('top', (offset ?? 0) + 'px'));
                 $scope.$watch('index', (newIndex, oldIndex) => {
@@ -88,7 +115,7 @@ angular.module('Shopping', ['Values', 'ngCookies'])
 
                 function mousemove(e) {
                     $scope.$apply(() => {
-                        let maxOffset = (list.items.length - 1) * HEIGHT;
+                        const maxOffset = (list.items.length - 1) * HEIGHT;
                         $scope.offset = Math.max(Math.min(getPageY(e) - startY, maxOffset), 0);
                         $scope.index = Math.round($scope.offset / HEIGHT);
                     });

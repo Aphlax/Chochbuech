@@ -1,3 +1,8 @@
+#shopping-site h2 {
+  font-family: "Gotham", sans-serif;
+  padding-left: 4px;
+}
+
 div.sortable-list {
   position: relative;
 }
@@ -6,9 +11,9 @@ div.sortable-list-item {
   position: absolute;
   z-index: 0;
   width: 100%;
-  height: 35px;
-  line-height: 35px;
+  height: 47px;
   box-sizing: content-box;
+  overflow: hidden;
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
   background-color: rgb(250, 250, 250);
@@ -20,9 +25,27 @@ div.sortable-list-item.dragging {
   transition: none;
 }
 
+div.sortable-list-item.ng-leave {
+  z-index: -1;
+}
+
 div.sortable-list-item .drag-icon {
-  padding: 5px 4px 6px;
+  padding: 11px 6px 12px;
   color: lightgray;
   cursor: move;
   user-select: none;
+}
+
+#shopping-site md-checkbox {
+  margin-top: 2px;
+  line-height: 24px;
+}
+
+#shopping-site .no-items {
+  font-family: "Gotham", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: rgb(83, 83, 83);
+  text-align: center;
+  margin-top: 50px;
 }

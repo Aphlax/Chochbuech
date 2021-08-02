@@ -52,6 +52,16 @@
                        ng-click="$broadcast(C.EVENTS.SHOPPING_CART_CLICK)">
                 <div class="material-icons">add_shopping_cart</div>
             </md-button>
+            <md-button class="md-icon-button" aria-label="Entferne selektierte Produkte"
+                       ng-show="$state.is(C.SITE.Shopping)"
+                       ng-click="$broadcast(C.EVENTS.SHOP_REMOVE_DONE)">
+                <div class="material-icons">remove_done</div>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Entferne alle Produkte"
+                       ng-show="$state.is(C.SITE.Shopping)"
+                       ng-click="$broadcast(C.EVENTS.SHOP_REMOVE_ALL)">
+                <div class="material-icons">remove_shopping_cart</div>
+            </md-button>
             <md-button class="md-icon-button menu-button" aria-label="Menu"
                        ng-click="$mdSidenav('sidenav').open()">
                 <div class="material-icons">menu</div>
