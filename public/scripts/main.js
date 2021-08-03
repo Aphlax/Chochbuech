@@ -108,6 +108,13 @@ angular.module('Chochbuech', REQ)
             }
         });
     }])
+    .config([function() {
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js').then(() => {}, () => {});
+            })
+        }
+    }])
     .directive('ngEnter', function () {
         return function ($scope, $elem, $attr) {
             $elem.bind('keydown keypress', function (e) {

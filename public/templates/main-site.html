@@ -35,7 +35,9 @@
                  ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy, search: '' })">
                 <img id="app-icon" src="images/icon.png">
                 <h2 class="app-title" hide show-gt-xs>Chochbuech</h2>
-                <h2 class="app-title" ng-show="!showSearch" hide-gt-xs>Chochbuech</h2>
+                <h2 class="app-title" ng-show="!showSearch || !$state.is(C.SITE.Main)" hide-gt-xs>
+                    Chochbuech
+                </h2>
             </div>
             <span flex></span>
             <div layout="row" ng-show="$state.is(C.SITE.Main)">
@@ -47,7 +49,7 @@
                     <div class="material-icons">search</div>
                 </md-button>
             </div>
-            <md-button class="md-icon-button" aria-label="Zur einkaufs-Liste hinzufügen"
+            <md-button class="md-icon-button" aria-label="Zur Einkaufsliste hinzufügen"
                        ng-show="$state.is(C.SITE.View)"
                        ng-click="$broadcast(C.EVENTS.SHOPPING_CART_CLICK)">
                 <div class="material-icons">add_shopping_cart</div>
