@@ -30,19 +30,21 @@ div.sortable-list-item.ng-leave {
 }
 
 div.sortable-list-item .drag-icon {
-  padding: 11px 6px 12px;
+  padding: 10px 6px 13px;
   color: lightgray;
   cursor: move;
   user-select: none;
 }
 
-#shopping-site md-checkbox {
-  margin-top: 2px;
+#shopping-site md-checkbox .md-label {
+  overflow: hidden;
   line-height: 24px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 #shopping-site md-checkbox .origin {
-  color: darkgray
+  color: lightgray;
 }
 
 #shopping-site .no-items {
@@ -52,4 +54,19 @@ div.sortable-list-item .drag-icon {
   color: rgb(83, 83, 83);
   text-align: center;
   margin-top: 50px;
+}
+
+#shopping-site .new-item-container {
+  height: 47px;
+  margin-top: -1px;
+  padding-left: 36px;
+  box-sizing: content-box;
+  overflow: hidden;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+  background-color: rgb(250, 250, 250);
+}
+
+#shopping-site .new-item-container input {
+  margin: 8px 12px;
 }

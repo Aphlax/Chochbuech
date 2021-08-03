@@ -1,13 +1,21 @@
 <div id="shopping-site" flex layout="column" ng-controller="shopping">
     <h2>Einkaufsliste</h2>
-    <sortable-list order-changed="onOrderChanged(order)">
+    <sortable-list flex="none" order-changed="onOrderChanged(order)">
         <sortable-list-item ng-repeat="item in list">
-            <md-checkbox ng-model="item.selected" aria-label="{{item.label}} " flex>
-                {{item.label}} <em class="origin">({{item.origin}})</em>
+            <md-checkbox ng-model="item.selected" aria-label="{{item.label}} " flex layout="row">
+                {{item.label}} <em class="origin" ng-if="item.origin">({{item.origin}})</em>
             </md-checkbox>
         </sortable-list-item>
     </sortable-list>
-    <div class="no-items" ng-if="!list.length" flex>
+    <div class="no-items" ng-if="!list.length && !showNewItem" flex>
         Deine Einkaufsliste ist leer.
     </div>
+    <div class="new-item-container" layout="row" flex="none" ng-show="showNewItem">
+        <md-checkbox disabled aria-label="Eintrag hinzufügen"></md-checkbox>
+        <input ng-model="newItemLabel" ng-enter="addNewItem()" ng-blur="addNewItem(); showNewItem = flase;"/>
+    </div>
+    <md-button class="md-primary md-fab md-fab-bottom-right" ng-click="openNewItem()">
+        <md-tooltip md-direction="top">Eintrag hinzufügen</md-tooltip>
+        <div class="material-icons">add</div>
+    </md-button>
 </div>

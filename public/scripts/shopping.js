@@ -13,18 +13,13 @@ angular.module('Shopping', ['Values', 'ngCookies'])
             return () => {
                 const shoppingList = ($cookies.get(COOKIE_NAME) ?? '') +
                     recipe.ingredients.split('\n').filter(i => i)
-                        .map(i => `${i} (${initials(recipe.name)})\n`).join('');
+                        .map(i => `${i} (${recipe.name})\n`).join('');
                 $cookies.put(COOKIE_NAME, shoppingList, COOKIE_OPTIONS);
                 $state.go(C.SITE.Shopping);
             };
         };
-
-        function initials(name) {
-            const isUpperCase = c => c == c.toUpperCase() && c != c.toLowerCase();
-            return name.split(" ").map(w => w[0]).filter(isUpperCase).join('');
-        }
     }])
-    .controller('shopping', ['$scope', '$cookies', 'C', function($scope, $cookies, C) {
+    .controller('shopping', ['$scope', '$element', '$cookies', '$timeout', 'C', function($scope, $element, $cookies, $timeout, C) {
         const COOKIE_NAME = 'shopping-list';
         const COOKIE_OPTIONS = {expires: (d => { d.setDate(d.getDate() + 30); return d; })(new Date())};
         const ITEM_REGEX = /(.+)\((.+)\)/;
@@ -35,7 +30,19 @@ angular.module('Shopping', ['Values', 'ngCookies'])
             if (order.length != $scope.list.length) return;
             const orderedList = order.map(i => $scope.list[i].proto + '\n');
             $cookies.put(COOKIE_NAME, orderedList.join(''), COOKIE_OPTIONS);
-        }
+        };
+
+        $scope.showNewItem = false;
+        $scope.newItemLabel = '';
+        $scope.openNewItem = function() {
+            $scope.showNewItem = true;
+            $timeout(() => $element.find('input').focus());
+        };
+        $scope.addNewItem = function() {
+            if (!$scope.newItemLabel) return;
+            $scope.list.push(createItem($scope.newItemLabel));
+            $scope.newItemLabel = '';
+        };
 
         $scope.$on(C.EVENTS.SHOP_REMOVE_ALL, () => $scope.list = []);
         $scope.$on(C.EVENTS.SHOP_REMOVE_DONE,
@@ -68,6 +75,8 @@ angular.module('Shopping', ['Values', 'ngCookies'])
                     item.offset = $scope.items.length * HEIGHT;
                     $scope.items.push(item);
                     $element.css('height', ($scope.items.length * HEIGHT + 1) + 'px');
+                    if ($scope.orderChanged)
+                        $scope.orderChanged({order: $scope.items.map(item => item.initialIndex)});
                     return $scope;
                 };
 
@@ -135,8 +144,7 @@ angular.module('Shopping', ['Values', 'ngCookies'])
                 }
 
                 function mouseup() {
-                    $scope.$apply(() =>
-                        $scope.offset = HEIGHT * Math.round($scope.offset / HEIGHT));
+                    $scope.$apply(() => $scope.offset = HEIGHT * $scope.index);
                     $elem.removeClass('dragging');
                     $document.off('touchmove mousemove', mousemove);
                     $document.off('touchend touchcancel mouseup', mouseup);
