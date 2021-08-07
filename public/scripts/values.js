@@ -51,5 +51,14 @@
             }
 
             return new RecipeService();
-        }]);
+        }])
+        .value('recipeDisplay', function(recipe) {
+            let i = recipe.steps.indexOf('\n\n');
+            if (i == -1) i = recipe.steps.length;
+            return {
+                ingredients: recipe.ingredients.split('\n').filter(i => i),
+                steps: recipe.steps.substring(0, i).split('\n'),
+                notes: recipe.steps.substring(i + 2),
+            }
+        });
 })();

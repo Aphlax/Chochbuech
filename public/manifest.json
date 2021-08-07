@@ -1,6 +1,7 @@
 {
   "short_name": "Chochbuech",
   "name": "Chochbuech",
+  "description": "Dein treues Chochbuech.",
   "icons": [
     {
       "src": "/images/icon.png",
@@ -9,10 +10,10 @@
     }
   ],
   "start_url": "/",
-  "background_color": "#3367D6",
+  "background_color": "#3f51b5",
+  "theme_color": "#3f51b5",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#3367D6",
   "shortcuts": [
     {
       "name": "Einkaufsliste",
@@ -21,6 +22,5 @@
       "url": "/shopping-list",
       "icons": [{ "src": "/images/icon.png", "sizes": "512x512" }]
     }
-  ],
-  "description": "Dein treues Chochbuech."
+  ]
 }

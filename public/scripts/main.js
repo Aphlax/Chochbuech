@@ -48,10 +48,12 @@ angular.module('Chochbuech', REQ)
                 url: '/r/:id',
                 params: { id: { type: 'int' } },
                 templateUrl: 'templates/view-site.html',
-                controller: controls('recipe', 'shopRecipe'),
+                controller: controls('recipe', 'display', 'shopRecipe'),
                 resolve: {
                     recipe: ['$stateParams', '$recipe',
                         ($stateParams, $recipe) => $recipe.get(+$stateParams.id)],
+                    display: ['recipe', 'recipeDisplay',
+                        (recipe, recipeDisplay) => recipeDisplay(recipe)]
                 },
             })
             .state(C.SITE.Editor, {
@@ -111,7 +113,7 @@ angular.module('Chochbuech', REQ)
     .config([function() {
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js').then(() => {}, () => {});
+                navigator.serviceWorker.register('/chochbuech-app.js').then(() => {}, () => {});
             })
         }
     }])

@@ -28,6 +28,7 @@
 
 #view-site .content {
     margin-right: 20px;
+    margin-bottom: 8px;
 }
 
 #view-site .step {
@@ -38,6 +39,10 @@
 #view-site .step.done {
     text-decoration: line-through;
     color: rgba(0, 0, 0, 0.2);
+}
+
+#view-site .notes {
+    padding-left: 20px;
 }
 
 #view-site .detail-image {

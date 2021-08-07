@@ -10,16 +10,17 @@
     </div>
     <span class="name">{{recipe.name}}</span>
     <ul class="content">
-        <li ng-repeat="item in recipe.ingredients.split('\n')">
+        <li ng-repeat="item in display.ingredients">
             {{item}}
         </li>
     </ul>
     <ol class="content">
-        <li class="step" ng-repeat="step in recipe.steps.split('\n')"
+        <li class="step" ng-repeat="step in display.steps"
             ng-click="done = !done" ng-class="{ done: done }" tabindex="-1">
             {{step}}
         </li>
     </ol>
+    <div class="notes">{{display.notes}}</div>
     <img class="detail-image" ng-show="showDetail" src="{{recipe.image}}"
          ng-click="showDetail = false">
 </div>

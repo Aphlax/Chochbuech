@@ -1,9 +1,9 @@
 // https://developers.google.com/web/fundamentals/primers/service-workers/
 
-
 const CACHE_NAME = 'chochbuech';
 const urlsToCache = [
     '/',
+    '/manifest.json',
     '/scripts/editor.js',
     '/scripts/main.js',
     '/scripts/shopping.js',
@@ -21,8 +21,15 @@ const urlsToCache = [
     '/images/icon.png',
     '/images/new.png',
     '/fonts/Gotham Medium.ttf',
+    '/node-modules/angular-material.css',
+    '/node-modules/angular.js',
+    '/node-modules/angular-animate.js',
+    '/node-modules/angular-aria.js',
+    '/node-modules/angular-cookies.js',
+    '/node-modules/angular-material.js',
+    '/node-modules/angular-ui-router.js',
+    'fonts.googleapis.com/icon?family=Material+Icons',
 ];
-
 
 self.addEventListener('install', function(event) {
     event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)));
