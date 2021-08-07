@@ -1,3 +1,1 @@
-standalone app
-keep screen on
-last line of steps should be not part of the list
+show message when offline in app

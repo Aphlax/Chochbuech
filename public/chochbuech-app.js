@@ -1,5 +1,7 @@
 // https://developers.google.com/web/fundamentals/primers/service-workers/
 
+// Only works in https contexts.
+
 const CACHE_NAME = 'chochbuech';
 const urlsToCache = [
     '/',
@@ -20,22 +22,32 @@ const urlsToCache = [
     '/templates/view-site.html',
     '/images/icon.png',
     '/images/new.png',
-    '/fonts/Gotham Medium.ttf',
-    '/node-modules/angular-material.css',
     '/node-modules/angular.js',
     '/node-modules/angular-animate.js',
     '/node-modules/angular-aria.js',
     '/node-modules/angular-cookies.js',
     '/node-modules/angular-material.js',
     '/node-modules/angular-ui-router.js',
+    '/node-modules/angular-material.css',
+    '/fonts/Gotham Medium.ttf',
     'fonts.googleapis.com/icon?family=Material+Icons',
+];
+const appRoutes = [
+    '/r/',
+    '/edit/',
+    '/new',
+    '/shopping-list',
 ];
 
 self.addEventListener('install', function(event) {
     event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)));
 });
 
-self.addEventListener('fetch', function(event) {
-    event.respondWith(caches.match(event.request)
-        .then(cached => cached ?? fetch(event.request)));
-});
+self.addEventListener('fetch', event => event.respondWith((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    if (appRoutes.some(route => event.request.url.indexOf(route) != -1))
+        return await cache.match(new Request('/'));
+    try {
+        return await cache.match(event.request) ?? await fetch(event.request);
+    } catch (e) { return undefined; }
+})()));

@@ -81,6 +81,7 @@ angular.module('Chochbuech', REQ)
         $urlRouterProvider.otherwise('/');
     }])
     .config(['$transitionsProvider', 'CProvider', function($transitionsProvider, CProvider) {
+        // Only works in https contexts.
         const C = CProvider.$get();
         let lock = null;
 
