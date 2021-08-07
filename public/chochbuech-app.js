@@ -21,7 +21,7 @@ const urlsToCache = [
     '/templates/start-site.html',
     '/templates/view-site.html',
     '/images/icon.png',
-    '/images/new.png',
+    '/images/take-picture.png',
     '/node-modules/angular.js',
     '/node-modules/angular-animate.js',
     '/node-modules/angular-aria.js',
@@ -45,9 +45,11 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('fetch', event => event.respondWith((async () => {
     const cache = await caches.open(CACHE_NAME);
-    if (appRoutes.some(route => event.request.url.indexOf(route) != -1))
-        return await cache.match(new Request('/'));
     try {
-        return await cache.match(event.request) ?? await fetch(event.request);
-    } catch (e) { return undefined; }
+        const request = appRoutes.some(route => event.request.url.indexOf(route) != -1) ?
+            new Request('/') : event.request;
+        return await cache.match(request) ?? await fetch(event.request);
+    } catch (e) {
+        return new Response('{"offline":true}', {headers: [['Content-Type', 'application/json']]});
+    }
 })()));

@@ -4,7 +4,15 @@
     <div class="image" style="background-image: url('{{recipe.image}}');"></div>
     <span class="name">{{recipe.name}}</span>
   </div>
-  <div class="no-recipes" ng-if="!recipes.length" flex>
+  <div class="no-recipes" ng-if="!recipes.length && $stateParams.search" flex>
     Keine Rezepte gefunden.
+  </div>
+  <div class="no-recipes" layout="column" layout-align="center center"
+       ng-if="!recipes.length && !$stateParams.search" flex>
+    Offline.
+    <md-button layout="column" ng-click="$state.go(C.SITE.Shopping)">
+      <div class="material-icons">shopping_cart</div>
+      Einkaufsliste
+    </md-button>
   </div>
 </div>

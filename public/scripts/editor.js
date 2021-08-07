@@ -5,7 +5,7 @@
 "use strict";
 
 angular.module('Editor', ['Values'])
-    .controller('editor', ['$scope', '$http', '$state', 'C', function($scope, $http, $state, C) {
+    .controller('editor', ['$scope', '$http', '$state', '$mdToast', 'C', function($scope, $http, $state, $mdToast, C) {
         $scope.saveEnabled = function(recipe) {
             return (!recipe.id || !isNaN(recipe.id)) &&
                 recipe.image && recipe.name &&
@@ -27,9 +27,13 @@ angular.module('Editor', ['Values'])
                     {type: recipe.image.type});
                 data.append('image', imageData, recipe.image.name)
             }
-            const { data: result } =
-                await $http.post('/save', data, { headers: { 'Content-Type': undefined } });
-            $state.go(C.SITE.View, result);
+            try {
+                const {data: result} =
+                    await $http.post('/save', data, {headers: {'Content-Type': undefined}});
+                if (!result.offline) $state.go(C.SITE.View, result);
+            } catch (e) {
+                $mdToast.showSimple('Zugriff verweigert.');
+            }
         };
     }])
     .directive("pictureInput", [function() {
@@ -43,8 +47,8 @@ angular.module('Editor', ['Values'])
                     angular.element('<input type="file" accept="image/*" capture="environment">');
                 input.bind('change', function (event) {
                     $scope.$apply(function () {
-                        $scope.model = event.target.files[0];
-                        $elem[0].src = $scope.model ? URL.createObjectURL($scope.model) : '';
+                        if (($scope.model = event.target.files[0]))
+                            $elem[0].src = URL.createObjectURL($scope.model);
                     });
                 });
 

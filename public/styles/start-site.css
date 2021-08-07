@@ -42,3 +42,8 @@
     text-align: center;
     margin-top: 50px;
 }
+
+#start-site .no-recipes .md-button {
+    margin-top: 40px;
+    padding-top: 8px;
+}

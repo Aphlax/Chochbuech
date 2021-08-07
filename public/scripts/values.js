@@ -15,7 +15,7 @@
                 SHOP_REMOVE_ALL: 'shop_empty',
             },
         })
-        .value('NEW_RECIPE', { name: '', image: 'images/new.png', ingredients: '', steps: '' })
+        .value('NEW_RECIPE', { name: '', image: 'images/take-picture.png', ingredients: '', steps: '' })
         .factory('$recipe', ['$http', function($http) {
             function RecipeService() {
                 this.cache = new Map();
@@ -25,10 +25,11 @@
             RecipeService.prototype.list = async function(category) {
                 if (!this.listCache[category]) {
                     this.listCache[category] = $http.get('/listRecipes', {params: {category}})
-                        .then(recipes => {
-                            recipes.data.forEach(recipe =>
+                        .then(response => {
+                            if (response.status != 200 || response.data.offline) return [];
+                            response.data.forEach(recipe =>
                                 this.cache.set(recipe.id, Promise.resolve(recipe)));
-                            return recipes.data.map(recipe => recipe.id);
+                            return response.data.map(recipe => recipe.id);
                         });
                 }
                 return Promise.all((await this.listCache[category]).map(id => this.get(id)));
@@ -36,16 +37,18 @@
 
             RecipeService.prototype.search = async function(search) {
                 return $http.get('/searchRecipes', {params: {search}})
-                    .then(recipes => {
-                        recipes.data.forEach(recipe =>
+                    .then(response => {
+                        if (response.status != 200 || response.data.offline) return [];
+                        response.data.forEach(recipe =>
                             this.cache.set(recipe.id, Promise.resolve(recipe)));
-                        return recipes.data;
+                        return response.data;
                     });
             }
 
             RecipeService.prototype.get = async function(id) {
                 if (!this.cache.has(id)) {
-                    this.cache.set(id, $http.get(`/recipe/recipe${id}`).then(({data}) => data));
+                    this.cache.set(id, $http.get(`/recipe/recipe${id}`)
+                        .then(({status, data}) => status == 200 && !data.offline ? data : null));
                 }
                 return this.cache.get(id);
             }

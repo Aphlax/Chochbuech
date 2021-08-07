@@ -21,7 +21,7 @@ function controls(...names) {
 angular.module('Chochbuech', REQ)
     .controller('main', controls('C', '$state', '$mdSidenav'))
     .directive('mainSite', [function() {
-        return { replace: true, restrict: 'E', templateUrl: 'templates/main-site.html', };
+        return { replace: true, restrict: 'E', templateUrl: 'templates/main-site.html' };
     }])
     .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'CProvider',
     function($stateProvider, $locationProvider, $urlRouterProvider, CProvider) {
@@ -33,7 +33,7 @@ angular.module('Chochbuech', REQ)
                 url: '/',
                 params: { search: { type: 'string', value: '' }, category: null },
                 templateUrl: 'templates/start-site.html',
-                controller: controls('recipes'),
+                controller: controls('recipes', '$stateParams'),
                 resolve: {
                     recipes: ['$stateParams', '$recipe', function ($stateParams, $recipe) {
                         if ($stateParams.search) {
