@@ -60,7 +60,7 @@
             if (i == -1) i = recipe.steps.length;
             return {
                 ingredients: recipe.ingredients.split('\n').filter(i => i),
-                steps: recipe.steps.substring(0, i).split('\n'),
+                steps: recipe.steps.substring(0, i).split('\n').filter(i => i),
                 notes: recipe.steps.substring(i + 2),
             }
         });

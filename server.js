@@ -1,9 +1,7 @@
 /**
  * Created by Fabian on 28.11.2016.
  *
- * Node server for Chochbuech
- * Needs --harmony_array_includes option activated
- *
+ * Node server for Chochbuech.
  */
 
 "use strict";
@@ -91,7 +89,7 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
             if (!image) return res.sendStatus(404);
             res.type(image.mimeType).send(image.data.buffer);
         });
-        app.get(['/', 'r/*', '/edit/*', '/new'].join('|'), function(req, res) {
+        app.get(['/', '/r/*', '/edit/*', '/new', '/shopping-list'].join('|'), function(req, res) {
             res.sendFile(__dirname + '/public/index.html');
         });
 

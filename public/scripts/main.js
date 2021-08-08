@@ -71,7 +71,7 @@ angular.module('Chochbuech', REQ)
                 templateUrl: 'templates/editor-site.html',
                 controller: controls('recipe'),
                 resolve: {
-                    recipe: ['NEW_RECIPE', NEW_RECIPE => NEW_RECIPE],
+                    recipe: ['NEW_RECIPE', NEW_RECIPE => angular.copy(NEW_RECIPE)],
                 },
             })
             .state(C.SITE.Shopping, {
