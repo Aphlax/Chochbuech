@@ -56,12 +56,15 @@
             return new RecipeService();
         }])
         .value('recipeDisplay', function(recipe) {
-            let i = recipe.steps.indexOf('\n\n');
-            if (i == -1) i = recipe.steps.length;
+            const prepText = 'Vorbereitung: ';
+            const prepIndex = recipe.steps.startsWith(prepText) ? recipe.steps.indexOf('\n') : 0;
+            let noteIndex = recipe.steps.indexOf('\n\n');
+            if (noteIndex == -1) noteIndex = recipe.steps.length;
             return {
                 ingredients: recipe.ingredients.split('\n').filter(i => i),
-                steps: recipe.steps.substring(0, i).split('\n').filter(i => i),
-                notes: recipe.steps.substring(i + 2),
+                preparation: prepIndex ? recipe.steps.substring(prepText.length, prepIndex) : '',
+                steps: recipe.steps.substring(prepIndex, noteIndex).split('\n').filter(i => i),
+                notes: recipe.steps.substring(noteIndex + 2),
             }
         });
 })();
