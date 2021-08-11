@@ -1,0 +1,6 @@
+{
+  "fabiansserverUrl": "192.168.1.123",
+  "fabiansserverUser": "user",
+  "fabiansserverKeyPath": "./deploy/fabiansserver-user.id_rsa",
+  "fabiansserverProdDir": "/home/user/chochbuech/"
+}

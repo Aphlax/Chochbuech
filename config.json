@@ -4,5 +4,5 @@
   "mongoDb": "main",
 
   "serverDevPort": "3001",
-  "serverProdPort": "8082"
+  "serverProdPort": "8081"
 }
