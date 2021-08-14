@@ -66,5 +66,12 @@
                 steps: recipe.steps.substring(prepIndex, noteIndex).split('\n').filter(i => i),
                 notes: recipe.steps.substring(noteIndex + 2),
             }
-        });
+        })
+        .factory('canSave', ['$http', function($http) {
+            const canSave = { value: false };
+            $http.get('/canSave').then(({status, data}) => {
+                canSave.value = !(status == 200 && data.canSave);
+            });
+            return canSave;
+        }]);
 })();

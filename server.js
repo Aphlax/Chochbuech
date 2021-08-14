@@ -41,6 +41,11 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
             } else res.status(404).send('unknown module ' + req.params.module);
         });
 
+        app.get('/canSave', function(req, res) {
+            const canSave = req.headers.referer.startsWith("http://192.168.1") ||
+                req.headers.referer.startsWith("http://localhost");
+            res.json({ canSave });
+        })
         const upload = multer({storage: multer.memoryStorage()});
         app.post('/save', upload.single('image'), async function(req, res) {
             try {

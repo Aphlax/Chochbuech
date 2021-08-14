@@ -17,8 +17,8 @@
                 <div class="material-icons md-avatar-icon">icecream</div>
                 <span class="md-list-item-text">Dessert</span>
             </md-list-item>
-            <md-divider></md-divider>
-            <md-list-item ng-click="$state.go(C.SITE.New)">
+            <md-divider ng-if="canSave.value"></md-divider>
+            <md-list-item ng-click="$state.go(C.SITE.New)" ng-if="canSave.value">
                 <div class="material-icons md-avatar-icon">add</div>
                 <span class="md-list-item-text">Neues Rezept</span>
             </md-list-item>
