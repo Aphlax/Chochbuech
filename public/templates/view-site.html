@@ -3,7 +3,7 @@
     <div class="image" style="background-image: url('{{recipe.image}}');" layout="row"
          ng-click="showDetail = true">
         <span flex></span>
-        <md-button class="md-icon-button edit-button" aria-label="Edit" ng-if="canSave.value"
+        <md-button class="md-icon-button edit-button" aria-label="Edit" ng-if="properties.canEdit"
                    ng-click="$state.go(C.SITE.Editor, { id: recipe.id })">
             <i class="material-icons">edit</i>
         </md-button>

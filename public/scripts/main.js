@@ -19,7 +19,7 @@ function controls(...names) {
 }
 
 angular.module('Chochbuech', REQ)
-    .controller('main', controls('C', '$state', '$mdSidenav', 'canSave'))
+    .controller('main', controls('C', '$state', '$mdSidenav', 'properties'))
     .directive('mainSite', [function() {
         return { replace: true, restrict: 'E', templateUrl: 'templates/main-site.html' };
     }])

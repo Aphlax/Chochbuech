@@ -41,10 +41,10 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
             } else res.status(404).send('unknown module ' + req.params.module);
         });
 
-        app.get('/canSave', function(req, res) {
-            const canSave = req.headers.referer.startsWith("http://192.168.1") ||
+        app.get('/properties', function(req, res) {
+            const canEdit = req.headers.referer.startsWith("http://192.168.1") ||
                 req.headers.referer.startsWith("http://localhost");
-            res.json({ canSave });
+            res.json({ canEdit, client: req.headers.referer });
         })
         const upload = multer({storage: multer.memoryStorage()});
         app.post('/save', upload.single('image'), async function(req, res) {

@@ -27,7 +27,8 @@ html, body {
 #app-icon {
     width: 24px;
     height: 24px;
-    margin: 4px 8px 12px 0;
+    padding: 4px 8px 12px 0;
+    box-sizing: content-box;
     filter: invert();
     cursor: pointer;
     user-select: none;
@@ -42,6 +43,11 @@ html, body {
 .search-input {
     width: calc(100% - 10px);
     max-width: 250px;
+}
+
+.debug-notes {
+    color: lightgray;
+    text-align: center;
 }
 
 #main-site {

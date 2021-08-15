@@ -17,8 +17,8 @@
                 <div class="material-icons md-avatar-icon">icecream</div>
                 <span class="md-list-item-text">Dessert</span>
             </md-list-item>
-            <md-divider ng-if="canSave.value"></md-divider>
-            <md-list-item ng-click="$state.go(C.SITE.New)" ng-if="canSave.value">
+            <md-divider ng-if="properties.canEdit"></md-divider>
+            <md-list-item ng-click="$state.go(C.SITE.New)" ng-if="properties.canEdit">
                 <div class="material-icons md-avatar-icon">add</div>
                 <span class="md-list-item-text">Neues Rezept</span>
             </md-list-item>
@@ -28,6 +28,8 @@
                 <span class="md-list-item-text">Einkaufs-Liste</span>
             </md-list-item>
         </md-list>
+        <span flex></span>
+        <div class="debug-notes">{{properties.client}}</div>
     </md-sidenav>
     <md-toolbar>
         <div class="md-toolbar-tools">

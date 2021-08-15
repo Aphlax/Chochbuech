@@ -67,11 +67,11 @@
                 notes: recipe.steps.substring(noteIndex + 2),
             }
         })
-        .factory('canSave', ['$http', function($http) {
-            const canSave = { value: false };
-            $http.get('/canSave').then(({status, data}) => {
-                canSave.value = !(status == 200 && data.canSave);
+        .factory('properties', ['$http', function($http) {
+            const properties = { canEdit: false, client: '' };
+            $http.get('/properties').then(({status, data}) => {
+                if (status == 200) angular.copy(data, properties);
             });
-            return canSave;
+            return properties;
         }]);
 })();
