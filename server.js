@@ -43,13 +43,13 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
         });
 
         app.get('/properties', function(req, res) {
-            const canEdit = (req.headers.cookie ?? '').indexOf('adminKey=' + adminKey) != -1;
+            const canEdit = (req.headers.cookie || '').indexOf('adminKey=' + adminKey) != -1;
             res.json({ canEdit });
         })
         const upload = multer({storage: multer.memoryStorage()});
         app.post('/save', upload.single('image'), async function(req, res) {
             try {
-                if ((req.headers.cookie ?? '').indexOf('adminKey=' + adminKey) == -1)
+                if ((req.headers.cookie || '').indexOf('adminKey=' + adminKey) == -1)
                     return res.sendStatus(403);
                 if (!validSaveRecipeRequest(req.body, req.file)) return res.sendStatus(400);
                 const result = await saveRecipe(db, req.body, req.file);
