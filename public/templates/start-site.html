@@ -1,4 +1,10 @@
 <div id="start-site" flex layout="row" layout-wrap>
+  <div class="history" layout="row">
+    <div class="entry" ng-repeat="entry in history track by entry.id"
+         style="background-image: url('{{entry.image}}');"
+         ng-click="$state.go(C.SITE.View, { id: entry.id })">
+    </div>
+  </div>
   <div class="recipe" layout="column" ng-repeat="recipe in recipes track by recipe.id"
        ng-click="$state.go(C.SITE.View, { id: recipe.id })">
     <div class="image" style="background-image: url('{{recipe.image}}');"></div>

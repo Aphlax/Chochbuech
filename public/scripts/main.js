@@ -33,7 +33,7 @@ angular.module('Chochbuech', REQ)
                 url: '/',
                 params: { search: { type: 'string', value: '' }, category: null },
                 templateUrl: 'templates/start-site.html',
-                controller: controls('recipes', '$stateParams'),
+                controller: controls('recipes', 'history', '$stateParams'),
                 resolve: {
                     recipes: ['$stateParams', '$recipe', function ($stateParams, $recipe) {
                         if ($stateParams.search) {
@@ -41,6 +41,11 @@ angular.module('Chochbuech', REQ)
                         } else {
                             return $recipe.list($stateParams.category ?? C.CATEGORY.Easy);
                         }
+                    }],
+                    history: ['$cookies', function($cookies) {
+                        const COOKIE_NAME = 'history', RETENTION_MS = 1000 * 60 * 60 * 24 * 14;
+                        return JSON.parse($cookies.get(COOKIE_NAME) ?? '[]').filter(e =>
+                            e.time > new Date().getTime() - RETENTION_MS);
                     }],
                 }
             })
@@ -53,7 +58,14 @@ angular.module('Chochbuech', REQ)
                     recipe: ['$stateParams', '$recipe',
                         ($stateParams, $recipe) => $recipe.get(+$stateParams.id)],
                     display: ['recipe', 'recipeDisplay',
-                        (recipe, recipeDisplay) => recipeDisplay(recipe)]
+                        (recipe, recipeDisplay) => recipeDisplay(recipe)],
+                    history: ['$cookies', 'recipe', function($cookies, recipe) {
+                        const COOKIE_NAME = 'history', RETENTION_MS = 1000 * 60 * 60 * 24 * 14;
+                        const history = JSON.parse($cookies.get(COOKIE_NAME) ?? '[]').filter(e =>
+                            e.id != recipe.id && e.time > new Date().getTime() - RETENTION_MS);
+                        const entry = { id: recipe.id, image: recipe.image, time: new Date().getTime() };
+                        $cookies.put(COOKIE_NAME, JSON.stringify([entry, ...history]));
+                    }]
                 },
             })
             .state(C.SITE.Editor, {
