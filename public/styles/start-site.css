@@ -4,7 +4,6 @@
 
 #start-site .history {
     width: 100%;
-    cursor: pointer;
     overflow: auto;
 }
 
@@ -16,6 +15,7 @@
     padding-bottom: 16.666%;
     background-size: cover;
     background-position: center;
+    cursor: pointer;
 }
 
 #start-site .recipe {
