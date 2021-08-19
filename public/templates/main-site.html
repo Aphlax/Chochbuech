@@ -1,6 +1,6 @@
 <div id="main-site" flex layout="column" layout-align="start center">
     <md-sidenav md-component-id="sidenav" class="md-sidenav-right" layout="column">
-        <div id="app-icon-big"><img src="images/icon.png"></div>
+        <div id="app-icon-big" ng-click="admin($event)"><img src="images/icon.png"></div>
         <md-list ng-click="$mdSidenav('sidenav').close()">
             <md-list-item
                     ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy, search: '' })">
@@ -29,7 +29,6 @@
             </md-list-item>
         </md-list>
         <span flex></span>
-        <div class="debug-notes">{{properties.client}}</div>
     </md-sidenav>
     <md-toolbar>
         <div class="md-toolbar-tools">

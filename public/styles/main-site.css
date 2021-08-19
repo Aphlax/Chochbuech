@@ -16,12 +16,14 @@ html, body {
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.2);
     user-select: none;
+    outline: none;
 }
 
 #app-icon-big>img {
     width: 96px;
     height: 96px;
     filter: invert();
+    pointer-events: none;
 }
 
 #app-icon {
@@ -43,11 +45,6 @@ html, body {
 .search-input {
     width: calc(100% - 10px);
     max-width: 250px;
-}
-
-.debug-notes {
-    color: lightgray;
-    text-align: center;
 }
 
 #main-site {

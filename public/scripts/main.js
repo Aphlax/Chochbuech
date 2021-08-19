@@ -19,7 +19,7 @@ function controls(...names) {
 }
 
 angular.module('Chochbuech', REQ)
-    .controller('main', controls('C', '$state', '$mdSidenav', 'properties'))
+    .controller('main', controls('C', '$state', '$mdSidenav', 'properties', 'admin'))
     .directive('mainSite', [function() {
         return { replace: true, restrict: 'E', templateUrl: 'templates/main-site.html' };
     }])
@@ -61,10 +61,12 @@ angular.module('Chochbuech', REQ)
                         (recipe, recipeDisplay) => recipeDisplay(recipe)],
                     history: ['$cookies', 'recipe', function($cookies, recipe) {
                         const COOKIE_NAME = 'history', RETENTION_MS = 1000 * 60 * 60 * 24 * 14;
+                        const COOKIE_OPTS =
+                            {expires: (d => { d.setDate(d.getDate() + 30); return d; })(new Date())};
                         const history = JSON.parse($cookies.get(COOKIE_NAME) ?? '[]').filter(e =>
                             e.id != recipe.id && e.time > new Date().getTime() - RETENTION_MS);
                         const entry = { id: recipe.id, image: recipe.image, time: new Date().getTime() };
-                        $cookies.put(COOKIE_NAME, JSON.stringify([entry, ...history]));
+                        $cookies.put(COOKIE_NAME, JSON.stringify([entry, ...history]), COOKIE_OPTS);
                     }]
                 },
             })
@@ -129,6 +131,14 @@ angular.module('Chochbuech', REQ)
                 navigator.serviceWorker.register('/chochbuech-app.js').then(() => {}, () => {});
             })
         }
+    }])
+    .factory('admin', ['$cookies', function($cookies) {
+        const COOKIE_NAME = 'adminKey', COOKIE_OPTIONS =
+            {expires: (d => { d.setFullYear(d.getFullYear() + 30); return d; })(new Date())};
+        const input = angular.element(`<input type="text" value="${$cookies.get(COOKIE_NAME) ?? ''}"/>`);
+        input[0].oninput = () => $cookies.put(COOKIE_NAME, input[0].value, COOKIE_OPTIONS);
+        let counter = 0;
+        return e => ++counter != 10 ? 0 : e.target.parentElement.append(input[0]);
     }])
     .directive('ngEnter', function () {
         return function ($scope, $elem, $attr) {

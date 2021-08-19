@@ -22,6 +22,7 @@ const mongoUser = nconf.get('mongoUser');
 const mongoPass = nconf.get('mongoPass');
 const mongoUrl = nconf.get('mongoUrl');
 const mongoDb = nconf.get('mongoDb');
+const adminKey = nconf.get('adminKey');
 const mongoOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongoOptions)
     .then(client => {
@@ -42,15 +43,14 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
         });
 
         app.get('/properties', function(req, res) {
-            const canEdit = req.headers.referer.startsWith("http://192.168.1") ||
-                req.headers.referer.startsWith("http://localhost");
-            res.json({ canEdit, client: req.headers.referer });
+            const canEdit = req.headers.cookie.indexOf('adminKey=' + adminKey) != -1;
+            res.json({ canEdit });
         })
         const upload = multer({storage: multer.memoryStorage()});
         app.post('/save', upload.single('image'), async function(req, res) {
             try {
-                if (!req.headers.referer.startsWith("http://192.168.1") &&
-                    !req.headers.referer.startsWith("http://localhost")) return res.sendStatus(403);
+                if (req.headers.cookie.indexOf('adminKey=' + adminKey) == -1)
+                    return res.sendStatus(403);
                 if (!validSaveRecipeRequest(req.body, req.file)) return res.sendStatus(400);
                 const result = await saveRecipe(db, req.body, req.file);
                 return result.status == 200 ?
