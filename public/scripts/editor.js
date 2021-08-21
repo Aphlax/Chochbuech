@@ -32,7 +32,8 @@ angular.module('Editor', ['Values'])
                     await $http.post('/save', data, {headers: {'Content-Type': undefined}});
                 if (!result.offline) $state.go(C.SITE.View, result);
             } catch (e) {
-                $mdToast.showSimple('Zugriff verweigert.');
+                $mdToast.showSimple(e.status == 403 ? 'Zugriff verweigert.' :
+                    e.status == 500 ? 'Serverfehler.' : 'Etwas ging schief.');
             }
         };
     }])
