@@ -88,6 +88,14 @@ angular.module('Chochbuech', REQ)
                     recipe: ['NEW_RECIPE', NEW_RECIPE => angular.copy(NEW_RECIPE)],
                 },
             })
+            .state(C.SITE.All, {
+                url: '/all',
+                templateUrl: 'templates/list-site.html',
+                controller: controls('recipes'),
+                resolve: {
+                    recipes: ['$recipe', $recipe => $recipe.list('all')],
+                },
+            })
             .state(C.SITE.Shopping, {
                 url: '/shopping-list',
                 templateUrl: 'templates/shopping-site.html',

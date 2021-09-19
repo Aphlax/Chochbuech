@@ -11,11 +11,13 @@ const urlsToCache = [
     '/scripts/shopping.js',
     '/scripts/values.js',
     '/styles/editor-site.css',
+    '/styles/list-site.css',
     '/styles/main-site.css',
     '/styles/shopping-site.css',
     '/styles/start-site.css',
     '/styles/view-site.css',
     '/templates/editor-site.html',
+    '/templates/list-site.html',
     '/templates/main-site.html',
     '/templates/shopping-site.html',
     '/templates/start-site.html',
@@ -36,6 +38,7 @@ const appRoutes = [
     '/r/',
     '/edit/',
     '/new',
+    '/all',
     '/shopping-list',
 ];
 

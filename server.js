@@ -61,12 +61,13 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
             }
         });
         app.get('/listRecipes', async function(req, res) {
-            if (!['easy', 'hard', 'dessert'].includes(req.query.category)) return res.sendStatus(400);
+            if (!['easy', 'hard', 'dessert', 'all'].includes(req.query.category))
+                return res.sendStatus(400);
             const recipes = await db.collection('recipes').aggregate([
-                {$match: {category: req.query.category}},
+                {$match: req.query.category == 'all' ? {} : {category: req.query.category}},
                 {$set: {order: {$rand: {}}, id: "$_id"}},
-                {$sort: {order: 1}},
-                {$limit: 10},
+                {$sort: req.query.category == 'all' ? {id: 1} : {order: 1}},
+                {$limit: req.query.category == 'all' ? 1000 : 10},
                 {$project: {order: 0, _id: 0}},
             ]).toArray();
             res.json(recipes);
@@ -94,9 +95,8 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
             if (!image) return res.sendStatus(404);
             res.type(image.mimeType).send(image.data.buffer);
         });
-        app.get(['/', '/r/*', '/edit/*', '/new', '/shopping-list'].join('|'), function(req, res) {
-            res.sendFile(__dirname + '/public/index.html');
-        });
+        app.get(['/', '/r/*', '/edit/*', '/new', '/all', '/shopping-list'].join('|'),
+            function(req, res) { res.sendFile(__dirname + '/public/index.html'); });
 
         const port = nconf.get(global.prod ? 'serverProdPort' : 'serverDevPort');
         new Server(app).listen(port);

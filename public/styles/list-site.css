@@ -1,0 +1,30 @@
+#list-site h2 {
+    font-family: "Gotham", sans-serif;
+    padding-left: 4px;
+}
+
+#list-site .recipe {
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+#list-site .recipe:hover {
+    background-color: #e7e7e7;
+}
+
+#list-site .cell {
+    padding-left: 12px;
+}
+
+#list-site .id.cell {
+    padding-left: 4px;
+    width: 20px;
+}
+
+#list-site .name.cell {
+    width: 400px;
+}
+
+#list-site .category.cell {
+    width: 80px;
+}

@@ -1,0 +1,10 @@
+<div id="list-site" flex layout="column">
+    <h2>Rezepte</h2>
+    <div class="recipe" layout="row"  ng-repeat="recipe in recipes track by recipe.id"
+         ng-click="$state.go(C.SITE.View, { id: recipe.id })">
+        <div class="id cell">{{recipe.id}}</div>
+        <div class="name cell">{{recipe.name}}</div>
+        <div class="category cell">{{recipe.category}}</div>
+    </div>
+    <div style="min-height: 96px;"></div>
+</div>

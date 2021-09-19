@@ -18,6 +18,10 @@
                 <span class="md-list-item-text">Dessert</span>
             </md-list-item>
             <md-divider ng-if="properties.canEdit"></md-divider>
+            <md-list-item ng-click="$state.go(C.SITE.All)" ng-if="properties.canEdit">
+                <div class="material-icons md-avatar-icon">list</div>
+                <span class="md-list-item-text">Alle Rezepte</span>
+            </md-list-item>
             <md-list-item ng-click="$state.go(C.SITE.New)" ng-if="properties.canEdit">
                 <div class="material-icons md-avatar-icon">add</div>
                 <span class="md-list-item-text">Neues Rezept</span>
