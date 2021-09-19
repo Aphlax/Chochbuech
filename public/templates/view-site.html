@@ -14,11 +14,11 @@
             {{item}}
         </li>
     </ul>
-    <div class="preparation" ng-show="display.preparation" ng-click="zoom = !zoom" tabindex="-1">
+    <div class="preparation" ng-show="display.preparation" ng-click="zoom = true" tabindex="-1">
         <b>Vorbereitung:</b>
         {{display.preparation}}
     </div>
-    <ol class="content" ng-click="zoom = !zoom" tabindex="-1">
+    <ol class="content" ng-click="zoom = true" tabindex="-1">
         <li class="step" ng-repeat="step in display.steps">
             {{step}}
         </li>
