@@ -12,9 +12,11 @@
     </div>
     <div class="new-item-container" layout="row" flex="none" ng-show="showNewItem">
         <md-checkbox disabled aria-label="Eintrag hinzufügen"></md-checkbox>
-        <input ng-model="newItemLabel" ng-enter="addNewItem()" ng-blur="addNewItem(); showNewItem = flase;"/>
+        <input ng-model="newItemLabel" ng-enter="addNewItem()"
+               ng-blur="addNewItem(); showNewItem = false;"/>
     </div>
-    <md-button class="md-primary md-fab md-fab-bottom-right" ng-click="openNewItem()">
+    <md-button class="md-primary md-fab md-fab-bottom-right" ng-click="openNewItem()"
+               ng-show="!showNewItem">
         <div class="material-icons">add</div>
     </md-button>
 </div>

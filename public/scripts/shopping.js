@@ -42,6 +42,7 @@ angular.module('Shopping', ['Values', 'ngCookies'])
             if (!$scope.newItemLabel) return;
             $scope.list.push(createItem($scope.newItemLabel));
             $scope.newItemLabel = '';
+            $timeout(() => $element.find('input')[0].scrollIntoView());
         };
 
         $scope.$on(C.EVENTS.SHOP_REMOVE_ALL, () => $scope.list = []);

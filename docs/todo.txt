@@ -2,4 +2,4 @@ add rest of recepies
 ask about chochbuech.ch
 ui redesign from fiverr
 
-improve shopping list: scroll to new item on enter, hide fab button
+view site: magnifying glass
