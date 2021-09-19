@@ -42,9 +42,8 @@
     outline: none;
 }
 
-#view-site .step.done {
-    text-decoration: line-through;
-    color: rgba(0, 0, 0, 0.2);
+#view-site.zoom .preparation, #view-site.zoom .step {
+    font-size: 24px;
 }
 
 #view-site .notes {

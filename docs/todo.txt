@@ -1,5 +1,3 @@
 add rest of recepies
 ask about chochbuech.ch
 ui redesign from fiverr
-
-view site: magnifying glass

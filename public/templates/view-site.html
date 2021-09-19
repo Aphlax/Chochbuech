@@ -1,4 +1,4 @@
-<div id="view-site" flex layout="column"
+<div id="view-site" flex layout="column" ng-class="{zoom: zoom}"
      ng-init="$on(C.EVENTS.SHOPPING_CART_CLICK, shopRecipe(recipe));">
     <div class="image" style="background-image: url('{{recipe.image}}');" layout="row"
          ng-click="showDetail = true">
@@ -14,13 +14,12 @@
             {{item}}
         </li>
     </ul>
-    <div class="preparation" ng-show="display.preparation">
+    <div class="preparation" ng-show="display.preparation" ng-click="zoom = !zoom" tabindex="-1">
         <b>Vorbereitung:</b>
         {{display.preparation}}
     </div>
-    <ol class="content">
-        <li class="step" ng-repeat="step in display.steps"
-            ng-click="done = !done" ng-class="{ done: done }" tabindex="-1">
+    <ol class="content" ng-click="zoom = !zoom" tabindex="-1">
+        <li class="step" ng-repeat="step in display.steps">
             {{step}}
         </li>
     </ol>
