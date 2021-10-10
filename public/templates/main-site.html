@@ -2,25 +2,9 @@
     <md-sidenav md-component-id="sidenav" class="md-sidenav-right" layout="column">
         <div id="app-icon-big" ng-click="admin($event)"><img src="images/icon.png"></div>
         <md-list ng-click="$mdSidenav('sidenav').close()">
-            <md-list-item
-                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy })">
+            <md-list-item ng-click="$state.go(C.SITE.Main)">
                 <div class="material-icons md-avatar-icon">dinner_dining</div>
-                <span class="md-list-item-text">Alltag</span>
-            </md-list-item>
-            <md-list-item
-                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Hard })">
-                <div class="material-icons md-avatar-icon">brunch_dining</div>
-                <span class="md-list-item-text">Sonntags Menü</span>
-            </md-list-item>
-            <md-list-item
-                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Starter })">
-                <div class="material-icons md-avatar-icon">tapas</div>
-                <span class="md-list-item-text">Apéro</span>
-            </md-list-item>
-            <md-list-item
-                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Dessert })">
-                <div class="material-icons md-avatar-icon">icecream</div>
-                <span class="md-list-item-text">Dessert</span>
+                <span class="md-list-item-text">Rezepte</span>
             </md-list-item>
             <md-divider ng-if="properties.canEdit"></md-divider>
             <md-list-item ng-click="$state.go(C.SITE.All)" ng-if="properties.canEdit">
@@ -31,18 +15,19 @@
                 <div class="material-icons md-avatar-icon">add</div>
                 <span class="md-list-item-text">Neues Rezept</span>
             </md-list-item>
-            <md-divider></md-divider>
+            <md-divider ng-if="properties.canEdit"></md-divider>
             <md-list-item ng-click="$state.go(C.SITE.Shopping)">
                 <div class="material-icons md-avatar-icon">shopping_cart</div>
                 <span class="md-list-item-text">Einkaufs-Liste</span>
             </md-list-item>
         </md-list>
         <span flex></span>
+        <span class="credits">s&#8217;Chochbuech vom Fabian</span>
     </md-sidenav>
     <md-toolbar>
         <div class="md-toolbar-tools">
             <div layout="row" tabindex="0"
-                 ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy })">
+                 ng-click="$state.go(C.SITE.Main)">
                 <img id="app-icon" src="images/icon.png">
                 <h2 class="app-title" hide show-gt-xs>Chochbuech</h2>
                 <h2 class="app-title" hide-gt-xs
@@ -53,8 +38,8 @@
             <span flex></span>
             <div layout="row" ng-show="$state.is(C.SITE.Main) || $state.is(C.SITE.Search)">
                 <input class="search-input" ng-show="showSearch" type="search" ng-model="search"
-                       flex ng-enter="$state.go(C.SITE.Search, { term: search })"
-                       placeholder="Suche">
+                       ng-enter="search ? $state.go(C.SITE.Search, { term: search }) : $state.go(C.SITE.Main)"
+                       flex placeholder="Suche">
                 <md-button class="md-icon-button search-button" aria-label="Search"
                            ng-click="showSearch = !showSearch">
                     <div class="material-icons">search</div>

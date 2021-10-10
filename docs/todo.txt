@@ -1,6 +1,6 @@
 ask about chochbuech.ch
 ui redesign from fiverr
 add starters and desserts recipes
-store category per session / use tabs component
+store category per session
 
 https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs3/124179558/original/8d0d5ebbb7eccbcfe888679948886524bed3d200/create-amazing-ui-ux-designs-for-mobile-apps.png

@@ -27,16 +27,22 @@ angular.module('Chochbuech', REQ)
     function($stateProvider, $locationProvider, $urlRouterProvider, CProvider) {
         const C = CProvider.$get();
         $locationProvider.html5Mode({ enabled: true, rewriteLinks: false });
+        const tabs = [
+            {label: 'Alltag', category: C.CATEGORY.Easy},
+            {label: 'Wochenende', category: C.CATEGORY.Hard},
+            {label: 'Apéro', category: C.CATEGORY.Starter},
+            {label: 'Dessert', category: C.CATEGORY.Dessert},
+        ];
 
         $stateProvider
             .state(C.SITE.Main, {
                 url: '/',
-                params: { category: null },
                 templateUrl: 'templates/start-site.html',
-                controller: controls('recipes', 'history'),
+                controller: controls('tabs', 'history'),
                 resolve: {
-                    recipes: ['$stateParams', '$recipe', ($stateParams, $recipe) =>
-                        $recipe.list($stateParams.category ?? C.CATEGORY.Easy)],
+                    tabs: ['$stateParams', '$recipe', ($stateParams, $recipe) =>
+                        Promise.all(tabs.map(tab => $recipe.list(tab.category)))
+                            .then(recipess => recipess.map((recipes, i) => ({...tabs[i], recipes})))],
                     history: ['$cookies', function($cookies) {
                         const COOKIE_NAME = 'history', RETENTION_MS = 1000 * 60 * 60 * 24 * 14;
                         return JSON.parse($cookies.get(COOKIE_NAME) ?? '[]').filter(e =>
@@ -48,15 +54,11 @@ angular.module('Chochbuech', REQ)
                 url: '/search?:term',
                 params: { term: { type: 'string' } },
                 templateUrl: 'templates/start-site.html',
-                controller: controls('recipes', 'history'),
+                controller: controls('tabs', 'history'),
                 resolve: {
-                    recipes: ['$stateParams', '$recipe',
-                        ($stateParams, $recipe) => $recipe.search($stateParams.term)],
-                    history: ['$cookies', function($cookies) {
-                        const COOKIE_NAME = 'history', RETENTION_MS = 1000 * 60 * 60 * 24 * 14;
-                        return JSON.parse($cookies.get(COOKIE_NAME) ?? '[]').filter(e =>
-                            e.time > new Date().getTime() - RETENTION_MS);
-                    }],
+                    tabs: ['$stateParams', '$recipe', ($stateParams, $recipe) =>
+                        $recipe.search($stateParams.term).then(recipes => [{label: "Suche", recipes}])],
+                    history: [() => []],
                 },
             })
             .state(C.SITE.View, {

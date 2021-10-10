@@ -26,6 +26,14 @@ html, body {
     pointer-events: none;
 }
 
+.credits {
+    align-self: center;
+    padding-bottom: 12px;
+    font-family: "Gotham", sans-serif;
+    color: lightgray;
+    user-select: none;
+}
+
 #app-icon {
     width: 24px;
     height: 24px;
