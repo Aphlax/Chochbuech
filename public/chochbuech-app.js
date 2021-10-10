@@ -36,6 +36,7 @@ const urlsToCache = [
 ];
 const appRoutes = [
     '/r/',
+    '/search',
     '/edit/',
     '/new',
     '/all',

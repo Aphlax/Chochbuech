@@ -7,8 +7,10 @@
 
     angular.module('Values', [])
         .value('C', {
-            SITE:
-                {Main: 'main', Editor: 'edit', New: 'new', All: 'all', View: 'view', Shopping: 'shop'},
+            SITE: {
+                Main: 'main', Editor: 'edit', New: 'new', All: 'all', View: 'view',
+                Shopping: 'shop', Search: 'search',
+            },
             CATEGORY: {Easy: 'easy', Hard: 'hard', Dessert: 'dessert'},
             EVENTS: {
                 SHOPPING_CART_CLICK: 'shop_add',

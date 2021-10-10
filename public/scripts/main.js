@@ -31,23 +31,33 @@ angular.module('Chochbuech', REQ)
         $stateProvider
             .state(C.SITE.Main, {
                 url: '/',
-                params: { search: { type: 'string', value: '' }, category: null },
+                params: { category: null },
                 templateUrl: 'templates/start-site.html',
-                controller: controls('recipes', 'history', '$stateParams'),
+                controller: controls('recipes', 'history'),
                 resolve: {
-                    recipes: ['$stateParams', '$recipe', function ($stateParams, $recipe) {
-                        if ($stateParams.search) {
-                            return $recipe.search($stateParams.search);
-                        } else {
-                            return $recipe.list($stateParams.category ?? C.CATEGORY.Easy);
-                        }
-                    }],
+                    recipes: ['$stateParams', '$recipe', ($stateParams, $recipe) =>
+                        $recipe.list($stateParams.category ?? C.CATEGORY.Easy)],
                     history: ['$cookies', function($cookies) {
                         const COOKIE_NAME = 'history', RETENTION_MS = 1000 * 60 * 60 * 24 * 14;
                         return JSON.parse($cookies.get(COOKIE_NAME) ?? '[]').filter(e =>
                             e.time > new Date().getTime() - RETENTION_MS);
                     }],
                 }
+            })
+            .state(C.SITE.Search, {
+                url: '/search?:term',
+                params: { term: { type: 'string' } },
+                templateUrl: 'templates/start-site.html',
+                controller: controls('recipes', 'history'),
+                resolve: {
+                    recipes: ['$stateParams', '$recipe',
+                        ($stateParams, $recipe) => $recipe.search($stateParams.term)],
+                    history: ['$cookies', function($cookies) {
+                        const COOKIE_NAME = 'history', RETENTION_MS = 1000 * 60 * 60 * 24 * 14;
+                        return JSON.parse($cookies.get(COOKIE_NAME) ?? '[]').filter(e =>
+                            e.time > new Date().getTime() - RETENTION_MS);
+                    }],
+                },
             })
             .state(C.SITE.View, {
                 url: '/r/:id',

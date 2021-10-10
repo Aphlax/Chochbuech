@@ -3,17 +3,17 @@
         <div id="app-icon-big" ng-click="admin($event)"><img src="images/icon.png"></div>
         <md-list ng-click="$mdSidenav('sidenav').close()">
             <md-list-item
-                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy, search: '' })">
+                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy })">
                 <div class="material-icons md-avatar-icon">dinner_dining</div>
                 <span class="md-list-item-text">Alltag</span>
             </md-list-item>
             <md-list-item
-                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Hard, search: '' })">
+                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Hard })">
                 <div class="material-icons md-avatar-icon">brunch_dining</div>
                 <span class="md-list-item-text">Sonntags Menü</span>
             </md-list-item>
             <md-list-item
-                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Dessert, search: '' })">
+                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Dessert })">
                 <div class="material-icons md-avatar-icon">icecream</div>
                 <span class="md-list-item-text">Dessert</span>
             </md-list-item>
@@ -37,17 +37,18 @@
     <md-toolbar>
         <div class="md-toolbar-tools">
             <div layout="row" tabindex="0"
-                 ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy, search: '' })">
+                 ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Easy })">
                 <img id="app-icon" src="images/icon.png">
                 <h2 class="app-title" hide show-gt-xs>Chochbuech</h2>
-                <h2 class="app-title" ng-show="!showSearch || !$state.is(C.SITE.Main)" hide-gt-xs>
+                <h2 class="app-title" hide-gt-xs
+                    ng-show="!showSearch || !($state.is(C.SITE.Main) || $state.is(C.SITE.Search))">
                     Chochbuech
                 </h2>
             </div>
             <span flex></span>
-            <div layout="row" ng-show="$state.is(C.SITE.Main)">
+            <div layout="row" ng-show="$state.is(C.SITE.Main) || $state.is(C.SITE.Search)">
                 <input class="search-input" ng-show="showSearch" type="search" ng-model="search"
-                       flex ng-enter="$state.go(C.SITE.Main, { search: search })"
+                       flex ng-enter="$state.go(C.SITE.Search, { term: search })"
                        placeholder="Suche">
                 <md-button class="md-icon-button search-button" aria-label="Search"
                            ng-click="showSearch = !showSearch">
