@@ -61,7 +61,7 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
             }
         });
         app.get('/listRecipes', async function(req, res) {
-            if (!['easy', 'hard', 'dessert', 'all'].includes(req.query.category))
+            if (!['easy', 'hard', 'dessert', 'starter', 'all'].includes(req.query.category))
                 return res.sendStatus(400);
             const recipes = await db.collection('recipes').aggregate([
                 {$match: req.query.category == 'all' ? {} : {category: req.query.category}},

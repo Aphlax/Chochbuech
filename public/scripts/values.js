@@ -11,7 +11,7 @@
                 Main: 'main', Editor: 'edit', New: 'new', All: 'all', View: 'view',
                 Shopping: 'shop', Search: 'search',
             },
-            CATEGORY: {Easy: 'easy', Hard: 'hard', Dessert: 'dessert'},
+            CATEGORY: {Easy: 'easy', Hard: 'hard', Dessert: 'dessert', Starter: 'starter'},
             EVENTS: {
                 SHOPPING_CART_CLICK: 'shop_add',
                 SHOP_REMOVE_DONE: 'shop_done',
@@ -54,6 +54,10 @@
                         .then(({status, data}) => status == 200 && !data.offline ? data : null));
                 }
                 return this.cache.get(id);
+            }
+
+            RecipeService.prototype.invalidate = function() {
+                this.listCache = {};
             }
 
             return new RecipeService();

@@ -14,7 +14,7 @@ function validSaveRecipeRequest(body, file) {
         (!body.id || !isNaN(body.id)) && typeof body.name == 'string' && body.name.length &&
         typeof body.ingredients == 'string' && body.ingredients.length &&
         typeof body.steps == 'string' && body.steps.length &&
-        ['easy', 'hard', 'dessert'].includes(body.category) &&
+        ['easy', 'hard', 'dessert', 'starter'].includes(body.category) &&
         (!file || [...ALLOWED_MIME_TYPES_MAP.keys()].includes(file.mimetype)) &&
         !!(file || body.id);
 }

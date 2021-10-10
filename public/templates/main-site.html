@@ -13,6 +13,11 @@
                 <span class="md-list-item-text">Sonntags Menü</span>
             </md-list-item>
             <md-list-item
+                    ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Starter })">
+                <div class="material-icons md-avatar-icon">tapas</div>
+                <span class="md-list-item-text">Apéro</span>
+            </md-list-item>
+            <md-list-item
                     ng-click="$state.go(C.SITE.Main, { category: C.CATEGORY.Dessert })">
                 <div class="material-icons md-avatar-icon">icecream</div>
                 <span class="md-list-item-text">Dessert</span>

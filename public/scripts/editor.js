@@ -5,7 +5,7 @@
 "use strict";
 
 angular.module('Editor', ['Values'])
-    .controller('editor', ['$scope', '$http', '$state', '$mdToast', 'C', function($scope, $http, $state, $mdToast, C) {
+    .controller('editor', ['$scope', '$http', '$state', '$mdToast', '$recipe', 'C', function($scope, $http, $state, $mdToast, $recipe, C) {
         $scope.saveEnabled = function(recipe) {
             return (!recipe.id || !isNaN(recipe.id)) &&
                 recipe.image && recipe.name &&
@@ -30,7 +30,10 @@ angular.module('Editor', ['Values'])
             try {
                 const {data: result} =
                     await $http.post('/save', data, {headers: {'Content-Type': undefined}});
-                if (!result.offline) $state.go(C.SITE.View, result);
+                if (!result.offline) {
+                    $recipe.invalidate();
+                    $state.go(C.SITE.View, result);
+                }
             } catch (e) {
                 $mdToast.showSimple(e.status == 403 ? 'Zugriff verweigert.' :
                     e.status == 500 ? 'Serverfehler.' : 'Etwas ging schief.');
