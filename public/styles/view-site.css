@@ -1,8 +1,15 @@
-#view-site .image {
+#view-site {
     position: relative;
+    background-color: black;
+}
+
+#view-site .image {
+    position: absolute;
     width: 100%;
-    height: 60px;
+    height: 0;
+    padding-bottom: 100%;
     background-size: cover;
+    background-position: center;
 }
 
 #view-site .image:before {
@@ -10,19 +17,42 @@
     position: absolute;
     width: 100%;
     bottom: 0;
-    height: 30px;
-    background: linear-gradient(rgba(250, 250, 250, 0), rgba(250, 250, 250, 1));
+    height: 70px;
+    background: linear-gradient(rgba(0, 0, 0, 0), black);
     pointer-events: none;
 }
 
 #view-site .edit-button {
-    margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
     color: white;
 }
 
+#view-site .card-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+}
+
+#view-site .card-spacer {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+}
+
+#view-site .card {
+    margin: 10px 12px 250px;
+    border: 1px solid lightgray;
+    box-shadow: rgba(111, 111, 111, 0.4) 3px 3px 6px -2px;
+    border-radius: 12px;
+}
+
 #view-site .name {
-    margin: -10px 10px 0;
-    z-index: 1;
+    margin: 20px 20px 0;
     font-family: "Gotham", sans-serif;
     font-weight: 400;
 }
@@ -49,11 +79,4 @@
 #view-site .notes {
     padding-left: 20px;
     padding-bottom: 32px;
-}
-
-#view-site .detail-image {
-    position: fixed;
-    z-index: 1;
-    max-width: 100%;
-    max-height: 100%;
 }

@@ -12,7 +12,6 @@
         <div class="recipe" layout="column" ng-repeat="recipe in tab.recipes track by recipe.id"
              ng-click="$state.go(C.SITE.View, { id: recipe.id })">
           <div class="image" style="background-image: url('{{recipe.image}}');">
-            <div class="gradient"></div>
             <span class="name">{{recipe.name}}</span>
           </div>
         </div>

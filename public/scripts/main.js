@@ -78,7 +78,8 @@ angular.module('Chochbuech', REQ)
                         const history = JSON.parse($cookies.get(COOKIE_NAME) ?? '[]').filter(e =>
                             e.id != recipe.id && e.time > new Date().getTime() - RETENTION_MS);
                         const entry = { id: recipe.id, image: recipe.image, time: new Date().getTime() };
-                        $cookies.put(COOKIE_NAME, JSON.stringify([entry, ...history]), COOKIE_OPTS);
+                        let newHistory = JSON.stringify([entry, ...history].slice(0, 12));
+                        $cookies.put(COOKIE_NAME, newHistory, COOKIE_OPTS);
                     }]
                 },
             })
@@ -168,5 +169,10 @@ angular.module('Chochbuech', REQ)
                     $scope.$apply(() => $scope.$eval($attr['ngEnter']));
                 }
             });
+        };
+    })
+    .directive('scrollOnLoad', function() {
+        return function($scope, $elem) {
+            $elem[0].scroll(0, $elem[0].clientWidth * 0.8);
         };
     });

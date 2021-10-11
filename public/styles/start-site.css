@@ -44,7 +44,8 @@
     box-shadow: lightgray 3px 3px 6px -2px;
 }
 
-#start-site .recipe .image .gradient {
+#start-site .recipe .image:before {
+    content: '';
     position: absolute;
     left: 0;
     right: 0;

@@ -1,29 +1,30 @@
-<div id="view-site" flex layout="column" ng-class="{zoom: zoom}"
+<div id="view-site" flex ng-class="{zoom: zoom}"
      ng-init="$on(C.EVENTS.SHOPPING_CART_CLICK, shopRecipe(recipe));">
-    <div class="image" style="background-image: url('{{recipe.image}}');" layout="row"
-         ng-click="showDetail = true">
-        <span flex></span>
-        <md-button class="md-icon-button edit-button" aria-label="Edit" ng-if="properties.canEdit"
-                   ng-click="$state.go(C.SITE.Editor, { id: recipe.id })">
-            <i class="material-icons">edit</i>
-        </md-button>
+    <div class="image" style="background-image: url('{{recipe.image}}');"></div>
+    <div class="card-container" scroll-on-load>
+        <div class="card-spacer"></div>
+        <div class="card" layout="column" md-colors="{background: 'background'}">
+            <span class="name">{{recipe.name}}</span>
+            <ul class="content">
+                <li ng-repeat="item in display.ingredients">
+                    {{item}}
+                </li>
+            </ul>
+            <div class="preparation" ng-show="display.preparation" ng-click="zoom = true"
+                 tabindex="-1">
+                <b>Vorbereitung:</b>
+                {{display.preparation}}
+            </div>
+            <ol class="content" ng-click="zoom = true" tabindex="-1">
+                <li class="step" ng-repeat="step in display.steps">
+                    {{step}}
+                </li>
+            </ol>
+            <div class="notes">{{display.notes}}</div>
+        </div>
     </div>
-    <span class="name">{{recipe.name}}</span>
-    <ul class="content">
-        <li ng-repeat="item in display.ingredients">
-            {{item}}
-        </li>
-    </ul>
-    <div class="preparation" ng-show="display.preparation" ng-click="zoom = true" tabindex="-1">
-        <b>Vorbereitung:</b>
-        {{display.preparation}}
-    </div>
-    <ol class="content" ng-click="zoom = true" tabindex="-1">
-        <li class="step" ng-repeat="step in display.steps">
-            {{step}}
-        </li>
-    </ol>
-    <div class="notes">{{display.notes}}</div>
-    <img class="detail-image" ng-show="showDetail" src="{{recipe.image}}"
-         ng-click="showDetail = false">
+    <md-button class="md-icon-button edit-button" aria-label="Edit" ng-if="properties.canEdit"
+               ng-click="$state.go(C.SITE.Editor, { id: recipe.id })">
+        <i class="material-icons">edit</i>
+    </md-button>
 </div>
