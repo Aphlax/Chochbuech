@@ -18,6 +18,10 @@
     cursor: pointer;
 }
 
+#start-site .recipes-container {
+    padding: 0 6px;
+}
+
 #start-site .recipe {
     width: 50%;
     cursor: pointer;
@@ -26,29 +30,33 @@
 #start-site .recipe .image {
     position: relative;
     height: 0;
-    padding-bottom: 100%;
+    padding-bottom: calc(100% - 14px);
+    margin: 6px;
+    border: 1px solid lightgray;
+    border-radius: 12px;
+    overflow: hidden;
     background-size: cover;
     background-position: center;
+    box-shadow: lightgray 3px 3px 6px -2px;
 }
 
-#start-site .recipe .image:after {
-    content: '';
+#start-site .recipe .image .gradient {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 40px;
-    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9));
+    height: 70px;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.65));
 }
 
 #start-site .recipe .name {
-    z-index: 1;
-    margin-top: -10px;
+    position: absolute;
+    bottom: 0;
     padding: 0 10px 10px;
     font-family: "Gotham", sans-serif;
     font-weight: 400;
     font-size: 20px;
-    color: rgb(30, 30, 30);
+    color: rgb(252, 252, 252);
 }
 
 #start-site .no-recipes {
