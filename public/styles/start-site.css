@@ -9,10 +9,14 @@
 
 #start-site .history .entry {
     position: relative;
-    width: 16.666%;
-    min-width: 16.666%;
+    width: calc(16.666% - 14px);
+    min-width: calc(16.666% - 14px);
     height: 0;
-    padding-bottom: 16.666%;
+    padding-bottom: calc(16.666% - 14px);
+    margin: 6px 6px 0;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    box-shadow: lightgray 2px 0 4px -1px;
     background-size: cover;
     background-position: center;
     cursor: pointer;
