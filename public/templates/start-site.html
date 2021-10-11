@@ -5,7 +5,8 @@
          ng-click="$state.go(C.SITE.View, { id: entry.id })">
     </div>
   </div>
-  <md-tabs flex md-border-bottom md-center-tabs md-swipe-content md-no-pagination>
+  <md-tabs flex md-border-bottom md-center-tabs md-swipe-content md-no-pagination
+           md-selected="properties.tabId">
     <md-tab ng-repeat="tab in tabs" label="{{tab.label}}" md-on-select="$index">
       <div layout="row" layout-wrap>
         <div class="recipe" layout="column" ng-repeat="recipe in tab.recipes track by recipe.id"
