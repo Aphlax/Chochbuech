@@ -39,7 +39,7 @@
             }
 
             RecipeService.prototype.search = async function(search) {
-                return $http.get('/searchRecipes', {params: {search}})
+                return $http.get('/look', {params: {for: search}})
                     .then(response => {
                         if (response.status != 200 || response.data.offline) return [];
                         response.data.forEach(recipe =>

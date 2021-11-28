@@ -72,12 +72,12 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
             ]).toArray();
             res.json(recipes);
         });
-        app.get('/searchRecipes', async function(req, res) {
-            if (typeof req.query.search != 'string' || !req.query.search.length)
+        app.get('/look', async function(req, res) {
+            if (typeof req.query.for != 'string' || !req.query.for.length)
                 return res.sendStatus(400);
             const recipes = await db.collection('recipes').aggregate([
                 {$search: {index: 'text-search-de',
-                        text: {path: ['name', 'ingredients', 'steps'], query: req.query.search}}},
+                        text: {path: ['name', 'ingredients', 'steps'], query: req.query.for}}},
                 {$set: {id: "$_id"}},
                 {$project: {_id: 0}},
             ]).toArray();

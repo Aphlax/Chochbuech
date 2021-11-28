@@ -39,7 +39,7 @@
             <div layout="row" ng-show="$state.is(C.SITE.Main) || $state.is(C.SITE.Search)">
                 <input class="search-input" ng-show="showSearch" type="search" ng-model="search"
                        ng-enter="search ? $state.go(C.SITE.Search, { term: search }) : $state.go(C.SITE.Main)"
-                       flex placeholder="Suche">
+                       flex placeholder="Suche" give-focus="showSearch">
                 <md-button class="md-icon-button search-button" aria-label="Search"
                            ng-click="showSearch = !showSearch">
                     <div class="material-icons">search</div>

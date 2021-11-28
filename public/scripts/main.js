@@ -40,7 +40,7 @@ angular.module('Chochbuech', REQ)
                 templateUrl: 'templates/start-site.html',
                 controller: controls('tabs', 'history'),
                 resolve: {
-                    tabs: ['$stateParams', '$recipe', ($stateParams, $recipe) =>
+                    tabs: ['$recipe', $recipe =>
                         Promise.all(tabs.map(tab => $recipe.list(tab.category)))
                             .then(recipess => recipess.map((recipes, i) => ({...tabs[i], recipes})))],
                     history: ['$cookies', function($cookies) {
@@ -175,4 +175,11 @@ angular.module('Chochbuech', REQ)
         return function($scope, $elem) {
             $elem[0].scroll(0, $elem[0].clientWidth * 0.8);
         };
-    });
+    })
+    .directive('giveFocus', ['$timeout', function($timeout) {
+        return function($scope, $elem, $attr) {
+            $scope.$watch($attr['giveFocus'], giveFocus => {
+                if (giveFocus) $timeout(() =>$elem.focus());
+            })
+        }
+    }]);
