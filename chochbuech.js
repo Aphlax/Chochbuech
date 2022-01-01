@@ -24,7 +24,8 @@ async function saveRecipe(db, body, file) {
         body.id = Number(body.id);
         const result = await db.collection('recipes')
             .updateOne({_id: body.id}, {$set: unassign(sanitizeRecipe(body), 'id')});
-        if (result.matchedCount == 0) return {status: 400};
+        if (result.matchedCount == 0)
+            return {status: 400, message: "Unable to find recipe to update."};
     } else { // Create new recipe.
         const recipeUID = (await db.collection('values').findOneAndUpdate(
             {_id: 'recipeUID'}, {$inc: {value: 1}}, {upsert: true})).value.value;

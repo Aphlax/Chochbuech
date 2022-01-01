@@ -55,9 +55,9 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
                 const result = await saveRecipe(db, req.body, req.file);
                 return result.status == 200 ?
                     res.json({ id: result.id }) :
-                    res.sendStatus(result.status);
+                    res.status(result.status).send(result.message || "Error.");
             } catch (e) {
-                return res.sendStatus(500);
+                return res.status(500).send(e.name + ': ' +e.message || "Error.");
             }
         });
         app.get('/listRecipes', async function(req, res) {
