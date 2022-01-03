@@ -5,7 +5,7 @@
 (function () {
     "use strict";
 
-    angular.module('Values', [])
+    angular.module('Values', ['ngMaterial'])
         .value('C', {
             SITE: {
                 Main: 'main', Editor: 'edit', New: 'new', All: 'all', View: 'view',
@@ -80,5 +80,12 @@
                 if (status == 200) angular.copy(data, properties);
             });
             return properties;
+        }])
+        .factory('copyUrl', ['$mdToast', function($mdToast) {
+            return function() {
+                if (!('clipboard' in navigator)) return;
+                navigator.clipboard.writeText(window.location);
+                $mdToast.showSimple('Link kopiert!');
+            }
         }]);
 })();
