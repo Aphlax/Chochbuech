@@ -3,11 +3,32 @@
 
 const { unassign } = require('./utils');
 
-module.exports = { saveRecipe, validSaveRecipeRequest };
+module.exports = { listRecipes, searchRecipes, saveRecipe, validSaveRecipeRequest };
 
+async function listRecipes(db, category) {
+    return await db.collection('recipes').aggregate([
+        {$match: category == 'all' ? {} : { category }},
+        {$set: {order: {$rand: {}}, id: "$_id"}},
+        {$sort: category == 'all' ? {id: 1} : {order: 1}},
+        {$limit: category == 'all' ? 1000 : 10},
+        {$project: {order: 0, _id: 0}},
+    ]).toArray();
+}
+
+async function searchRecipes(db, query) {
+    return await db.collection('recipes').aggregate([
+        {
+            $search: {
+                index: 'autocomplete-de',
+                autocomplete: { path: 'name', query: query, fuzzy: { maxEdits: 1, prefixLength: 2 } },
+            }
+        },
+        {$set: {id: "$_id"}},
+        {$project: {_id: 0}},
+    ]).toArray();
+}
 
 const ALLOWED_MIME_TYPES_MAP = new Map([['image/jpeg', 'jpg'], ['image/png', 'png']]);
-
 function validSaveRecipeRequest(body, file) {
     const KEYS = ['id', 'name', 'ingredients', 'steps', 'category'];
     return body && Object.keys(body).every(key => KEYS.includes(key)) &&

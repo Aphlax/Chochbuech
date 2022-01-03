@@ -12,7 +12,7 @@ const { MongoClient } = require('mongodb');
 const multer = require('multer');
 const nconf = require('nconf');
 
-const { saveRecipe, validSaveRecipeRequest } = require('./chochbuech');
+const { listRecipes, searchRecipes, saveRecipe, validSaveRecipeRequest } = require('./chochbuech');
 const { unassign } = require('./utils');
 
 nconf.argv().file('keys', 'keys.json').file('config', 'config.json').env();
@@ -63,25 +63,12 @@ MongoClient.connect(`mongodb+srv://${mongoUser}:${mongoPass}@${mongoUrl}`, mongo
         app.get('/listRecipes', async function(req, res) {
             if (!['easy', 'hard', 'dessert', 'starter', 'all'].includes(req.query.category))
                 return res.sendStatus(400);
-            const recipes = await db.collection('recipes').aggregate([
-                {$match: req.query.category == 'all' ? {} : {category: req.query.category}},
-                {$set: {order: {$rand: {}}, id: "$_id"}},
-                {$sort: req.query.category == 'all' ? {id: 1} : {order: 1}},
-                {$limit: req.query.category == 'all' ? 1000 : 10},
-                {$project: {order: 0, _id: 0}},
-            ]).toArray();
-            res.json(recipes);
+            res.json(await listRecipes(db, req.query.category));
         });
         app.get('/look', async function(req, res) {
             if (typeof req.query.for != 'string' || !req.query.for.length)
                 return res.sendStatus(400);
-            const recipes = await db.collection('recipes').aggregate([
-                {$search: {index: 'text-search-de',
-                        text: {path: ['name', 'ingredients', 'steps'], query: req.query.for}}},
-                {$set: {id: "$_id"}},
-                {$project: {_id: 0}},
-            ]).toArray();
-            res.json(recipes);
+            res.json(await searchRecipes(db, req.query.for));
         });
         app.get('/recipe/recipe:id', async function(req, res) {
             if (isNaN(req.params.id)) return res.sendStatus(400);
