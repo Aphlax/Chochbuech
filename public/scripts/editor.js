@@ -60,4 +60,12 @@ angular.module('Editor', ['Values'])
                 $elem.bind('click', function() { input[0].click(); });
             },
         };
+    }])
+    .directive('autoHeight', ['$timeout', function($timeout) {
+        return function ($scope, $elem) {
+            $timeout(() =>
+                $elem.css('height', $elem[0].scrollHeight + 'px').css('overflow-y', 'hidden'));
+            $elem[0].oninput = () =>
+                $elem.css('height', 'auto').css('height', $elem[0].scrollHeight + 'px');
+        }
     }]);

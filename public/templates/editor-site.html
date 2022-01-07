@@ -21,9 +21,9 @@
         </div>
     </div>
     <h4>Zutaten</h4>
-    <textarea class="input ingredients" ng-model="recipe.ingredients" flex></textarea>
+    <textarea class="input ingredients" ng-model="recipe.ingredients" auto-height></textarea>
     <h4>Rezept</h4>
-    <textarea class="input steps" ng-model="recipe.steps" flex></textarea>
+    <textarea class="input steps" ng-model="recipe.steps" auto-height></textarea>
     <md-button class="md-raised" ng-click="save(recipe)" ng-disabled="!saveEnabled(recipe)">
         Speichern
     </md-button>

@@ -47,3 +47,11 @@
 #editor-site h4 {
     margin-bottom: 10px;
 }
+
+#editor-site .ingredients {
+    min-height: 72px;
+}
+
+#editor-site .steps {
+    min-height: 144px;
+}

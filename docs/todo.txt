@@ -2,7 +2,6 @@ tags: vegetarisch, fisch, fleisch, pasta, reis, auflauf
 split up ingredients
 app: only use cache if loading fails.
 changing the image does not work in prod
-nicer edit page
 
 
 kung pao ente
@@ -12,3 +11,4 @@ chinesische bohnen + chinesisches
 filet im teig
 glasnudeln mit chicken
 fruchtsalat
+tiramisu (marco)
