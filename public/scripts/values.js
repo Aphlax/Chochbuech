@@ -63,19 +63,24 @@
             return new RecipeService();
         }])
         .value('recipeDisplay', function(recipe) {
+            const ingredientGroups = recipe.ingredients.split('-- ').map((g, i) => g ? ({
+                name: i ? g.substring(0, g.indexOf('\n')) : '',
+                items: g.split('\n').filter((item, j) => item && (!i || j)),
+            }) : undefined).filter(g => g);
+
             const prepText = 'Vorbereitung: ';
             const prepIndex = recipe.steps.startsWith(prepText) ? recipe.steps.indexOf('\n') : 0;
             let noteIndex = recipe.steps.indexOf('\n\n');
             if (noteIndex == -1) noteIndex = recipe.steps.length;
             return {
-                ingredients: recipe.ingredients.split('\n').filter(i => i),
+                ingredientGroups,
                 preparation: prepIndex ? recipe.steps.substring(prepText.length, prepIndex) : '',
                 steps: recipe.steps.substring(prepIndex, noteIndex).split('\n').filter(i => i),
                 notes: recipe.steps.substring(noteIndex + 2),
             }
         })
         .factory('properties', ['$http', function($http) {
-            const properties = { canEdit: false, client: '' };
+            const properties = { canEdit: false };
             $http.get('/properties').then(({status, data}) => {
                 if (status == 200) angular.copy(data, properties);
             });

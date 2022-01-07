@@ -12,7 +12,7 @@ angular.module('Shopping', ['Values', 'ngCookies'])
         return function shopRecipe(recipe) {
             return () => {
                 const shoppingList = ($cookies.get(COOKIE_NAME) ?? '') +
-                    recipe.ingredients.split('\n').filter(i => i)
+                    recipe.ingredients.split('\n').filter(i => i && !i.startsWith('-- '))
                         .map(i => `${i} (${recipe.name})\n`).join('');
                 $cookies.put(COOKIE_NAME, shoppingList, COOKIE_OPTIONS);
                 $state.go(C.SITE.Shopping);

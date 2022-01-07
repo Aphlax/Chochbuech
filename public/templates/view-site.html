@@ -10,8 +10,10 @@
                     <div class="material-icons">share</div>
                 </md-button>
             </div>
-            <ul class="content">
-                <li ng-repeat="item in display.ingredients">
+            <span class="ingredient-group-name" ng-repeat-start="group in display.ingredientGroups"
+                  ng-if="group.name">{{group.name}}</span>
+            <ul class="ingredient-group-list" ng-repeat-end>
+                <li ng-repeat="item in group.items">
                     {{item}}
                 </li>
             </ul>
@@ -20,7 +22,7 @@
                 <b>Vorbereitung:</b>
                 {{display.preparation}}
             </div>
-            <ol class="content" ng-click="zoom = true" tabindex="-1">
+            <ol class="steps" ng-click="zoom = true" tabindex="-1">
                 <li class="step" ng-repeat="step in display.steps">
                     {{step}}
                 </li>

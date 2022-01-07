@@ -1,5 +1,4 @@
 tags: vegetarisch, fisch, fleisch, pasta, reis, auflauf
-split up ingredients
 app: only use cache if loading fails.
 changing the image does not work in prod
 

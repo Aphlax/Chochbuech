@@ -21,10 +21,12 @@
         </div>
     </div>
     <h4>Zutaten</h4>
-    <textarea class="input ingredients" ng-model="recipe.ingredients" auto-height></textarea>
+    <textarea class="input ingredients" ng-model="recipe.ingredients" auto-height flex="none">
+    </textarea>
     <h4>Rezept</h4>
-    <textarea class="input steps" ng-model="recipe.steps" auto-height></textarea>
+    <textarea class="input steps" ng-model="recipe.steps" auto-height flex="none"></textarea>
     <md-button class="md-raised" ng-click="save(recipe)" ng-disabled="!saveEnabled(recipe)">
         Speichern
     </md-button>
+    <span style="min-height: 40px"></span>
 </div>
