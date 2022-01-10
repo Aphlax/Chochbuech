@@ -42,6 +42,14 @@ const appRoutes = [
     '/all',
     '/shopping-list',
 ];
+const apiRoutes = [
+    '/properties',
+    '/save',
+    '/listRecipes',
+    '/look',
+    '/recipe/recipe',
+    '/images/recipe',
+];
 
 self.addEventListener('install', function(event) {
     event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)));
@@ -49,10 +57,19 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('fetch', event => event.respondWith((async () => {
     const cache = await caches.open(CACHE_NAME);
+    const request = appRoutes.some(route => event.request.url.indexOf(route) != -1) ?
+        new Request('/') : event.request;
+    const cachedResponse = await cache.match(request);
+    if (cachedResponse) {
+        event.waitUntil(async () => await cache.put(request, await fetch(event.request)));
+        return cachedResponse;
+    }
     try {
-        const request = appRoutes.some(route => event.request.url.indexOf(route) != -1) ?
-            new Request('/') : event.request;
-        return await cache.match(request) ?? await fetch(event.request);
+        const networkResponse = await fetch(event.request);
+        if (!apiRoutes.some(route => event.request.url.indexOf(route) != -1)) {
+            await cache.put(event.request, networkResponse.clone());
+        }
+        return networkResponse;
     } catch (e) {
         return new Response('{"offline":true}', {headers: [['Content-Type', 'application/json']]});
     }
