@@ -4,7 +4,6 @@ const nconf = require('nconf');
 const path = require("path");
 const {NodeSSH} = require('node-ssh');
 nconf.argv().file('deploy/config.json');
-const log = msg => console.log(msg);
 
 if (!process.cwd().endsWith('Chochbuech'))
     throw new Error('Invalid working directory: ' + process.cwd());
@@ -12,7 +11,7 @@ if (!process.cwd().endsWith('Chochbuech'))
 deployToFabiansServer().then(() => process.exit(0)).catch(() => process.exit(1));
 
 async function deployToFabiansServer() {
-    log("Deploying to Fabian's Server...");
+    console.log("Deploying to Fabian's Server... (this may take 30s)");
     try {
         const remote = await new NodeSSH().connect({
             host: nconf.get('fabiansserverUrl'),
@@ -26,11 +25,11 @@ async function deployToFabiansServer() {
         try {
             await remote.exec(`cd ${prodDir}`, []);
 
-            log('stopping server... (this may take 30s)');
+            console.log('stopping server...');
             await remote.exec(`sudo systemctl stop chochbuech`, []);
-            log('server stopped.');
+            console.log('server stopped.');
 
-            log('copy bundle to server...');
+            console.log('copy bundle to server...');
             if (await remote.exec(`[ -d ${prodDeployDir} ] && echo exists`, [])) {
                 await remote.exec(`mv ${prodDeployDir} ${prodDir}app_old/`, []);
             }
@@ -40,12 +39,12 @@ async function deployToFabiansServer() {
                 {recursive: true, concurrency: 10, validate: fileFilter});
 
             if (copySuccessful) {
-                log('bundle copied successfully.');
+                console.log('bundle copied successfully.');
                 if (await remote.exec(`[ -d ${prodDir}app_old ] && echo exists`, [])) {
                     await remote.exec(`rm -rf ${prodDir}app_old/`, []);
                 }
 
-                log('installing node modules...');
+                console.log('installing node modules...');
                 try {
                     await remote.exec(`npm install --production --silent`, [], {cwd: prodDeployDir});
                 } catch (e) {
@@ -54,27 +53,27 @@ async function deployToFabiansServer() {
                         return;
                     }
                 }
-                log('node modules installed.');
+                console.log('node modules installed.');
             } else {
-                log('copy bundle failed. Undoing changes...');
+                console.log('copy bundle failed. Undoing changes...');
                 if (await remote.exec(`[ -d ${prodDir}app_old ] && echo exists`, [])) {
                     await remote.exec(`rm -rf ${prodDeployDir}`, []);
                     await remote.exec(`mv ${prodDir}app_old/ ${prodDeployDir}`, []);
                 }
             }
 
-            log('starting server...');
+            console.log('starting server...');
             await remote.exec(`sudo systemctl start chochbuech`, []);
-            log('server started.');
+            console.log('server started.');
 
-            log(`Deployed Chochbuech to Fabian's Server.`);
+            console.log(`Successfully deployed Chochbuech to Fabian's Server.`);
         } catch (e) {
-            console.log("Failed Deployment to Fabian's Server:\n" + e.message);
+            console.log("Failed deployment to Fabian's Server:\n" + e.message);
         } finally {
             remote.dispose();
         }
     } catch (e) {
-        log("Unable to connect to server:\n" + e.message);
+        console.log("Unable to connect to server:\n" + e.message);
     }
 }
 

@@ -6,11 +6,17 @@ const { unassign } = require('./utils');
 module.exports = { listRecipes, searchRecipes, saveRecipe, validSaveRecipeRequest };
 
 async function listRecipes(db, category) {
+    if (category == 'all') {
+        return await db.collection('recipes').aggregate([
+            {$set: {id: "$_id"}}, {$sort: {id: 1}}, {$project: {_id: 0}},
+        ]).toArray();
+    }
+
     return await db.collection('recipes').aggregate([
-        {$match: category == 'all' ? {} : { category }},
+        {$match: { category }},
         {$set: {order: {$rand: {}}, id: "$_id"}},
-        {$sort: category == 'all' ? {id: 1} : {order: 1}},
-        {$limit: category == 'all' ? 1000 : 10},
+        {$sort: {order: 1}},
+        {$limit: 10},
         {$project: {order: 0, _id: 0}},
     ]).toArray();
 }
