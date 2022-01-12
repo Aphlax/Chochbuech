@@ -29,13 +29,17 @@ async function searchRecipes(db, query) {
 }
 
 const ALLOWED_MIME_TYPES_MAP = new Map([['image/jpeg', 'jpg'], ['image/png', 'png']]);
+const RECIPE_FIELDS = ['id', 'name', 'ingredients', 'steps', 'category', 'tags'];
+const ALLOWED_TAGS = ['Vegetarisch', 'Fisch', 'Fleisch', 'Pasta', 'Reis', 'Asiatisch'];
 function validSaveRecipeRequest(body, file) {
-    const KEYS = ['id', 'name', 'ingredients', 'steps', 'category'];
-    return body && Object.keys(body).every(key => KEYS.includes(key)) &&
-        (!body.id || !isNaN(body.id)) && typeof body.name == 'string' && body.name.length &&
-        typeof body.ingredients == 'string' && body.ingredients.length &&
-        typeof body.steps == 'string' && body.steps.length &&
+    return body && Object.keys(body).every(key => RECIPE_FIELDS.includes(key)) &&
+        (!body.id || !isNaN(body.id)) &&
+        typeof body.name == 'string' && body.name.length && body.name.length < 100 &&
+        typeof body.ingredients == 'string' && body.ingredients.length && body.ingredients.length < 1000 &&
+        typeof body.steps == 'string' && body.steps.length && body.steps.length < 3000 &&
         ['easy', 'hard', 'dessert', 'starter'].includes(body.category) &&
+        typeof body.tags == 'string' && (body.tags == '' ||
+            body.tags.split(',').every(tag => ALLOWED_TAGS.includes(tag))) &&
         (!file || [...ALLOWED_MIME_TYPES_MAP.keys()].includes(file.mimetype)) &&
         !!(file || body.id);
 }
@@ -66,7 +70,12 @@ async function saveRecipe(db, body, file) {
 }
 
 function sanitizeRecipe(recipe) {
-    return { ...recipe, ingredients: addNewLine(recipe.ingredients), steps: addNewLine(recipe.steps) };
+    return {
+        ...recipe,
+        ingredients: addNewLine(recipe.ingredients),
+        steps: addNewLine(recipe.steps),
+        tags: typeof recipe.tags != 'string' || recipe.tags == '' ? [] : recipe.tags.split(','),
+    };
 }
 
 function addNewLine(str) {

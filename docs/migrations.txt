@@ -1,0 +1,6 @@
+To update the format of a recipe in the db, go to:
+
+https://cloud.mongodb.com/v2/60ac3027b145744fd08a66b1#clusters
+
+And navigate through "browse collections" -> your collection -> "aggregation",
+then choose your operations, including $set and $out.

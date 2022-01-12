@@ -1,6 +1,6 @@
 #editor-site .image {
-    height: 100px;
-    width: 100px;
+    height: 140px;
+    width: 140px;
     cursor: pointer;
     object-fit: cover;
 }

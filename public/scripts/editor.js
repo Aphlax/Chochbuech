@@ -22,6 +22,7 @@ angular.module('Editor', ['Values'])
             data.append('ingredients', recipe.ingredients);
             data.append('steps', recipe.steps);
             data.append('category', recipe.category);
+            data.append('tags', recipe.tags.join(','));
             if (recipe.image instanceof File) {
                 const imageData = new Blob([new Uint8Array(await recipe.image.arrayBuffer())],
                     {type: recipe.image.type});
@@ -39,6 +40,12 @@ angular.module('Editor', ['Values'])
                     e.status == 500 ? 'Serverfehler.' : 'Etwas ging schief.');
             }
         };
+
+        $scope.TAGS = ['Vegetarisch', 'Fisch', 'Fleisch', 'Pasta', 'Reis', 'Asiatisch'];
+        $scope.searchTags = function(query) {
+            query = query.toLowerCase();
+            return $scope.TAGS.filter(tag => tag.toLowerCase().startsWith(query));
+        }
     }])
     .directive("pictureInput", [function() {
         return {

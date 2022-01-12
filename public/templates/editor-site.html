@@ -18,6 +18,12 @@
                     icecream
                 </md-radio-button>
             </md-radio-group>
+            <md-chips ng-model="recipe.tags" md-require-match="true">
+                <md-autocomplete md-search-text="tagSearch" md-autoselect
+                                 md-items="tag in searchTags(tagSearch)">
+                    {{tag}}
+                </md-autocomplete>
+            </md-chips>
         </div>
     </div>
     <h4>Zutaten</h4>

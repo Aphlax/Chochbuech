@@ -1,6 +1,6 @@
-tags: vegetarisch, fisch, fleisch, pasta, reis, auflauf
-app: only use cache if loading fails.
+tags: add to search results
 changing the image does not work in prod
+ - use jimp to crop and resize to 600 * 600 (if larger).
 
 
 kung pao ente
