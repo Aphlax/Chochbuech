@@ -1,6 +1,7 @@
 tags: add to search results
 changing the image does not work in prod
  - use jimp to crop and resize to 600 * 600 (if larger).
+all page
 
 
 kung pao ente

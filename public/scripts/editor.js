@@ -19,8 +19,8 @@ angular.module('Editor', ['Values'])
                 data.append('id', recipe.id);
             }
             data.append('name', recipe.name);
-            data.append('ingredients', recipe.ingredients);
-            data.append('steps', recipe.steps);
+            data.append('ingredients', recipe.ingredients = recipe.ingredients.replaceAll('\r\n', '\n'));
+            data.append('steps', recipe.steps = recipe.steps.replaceAll('\r\n', '\n'));
             data.append('category', recipe.category);
             data.append('tags', recipe.tags.join(','));
             if (recipe.image instanceof File) {

@@ -4,3 +4,6 @@ https://cloud.mongodb.com/v2/60ac3027b145744fd08a66b1#clusters
 
 And navigate through "browse collections" -> your collection -> "aggregation",
 then choose your operations, including $set and $out.
+
+Note: If you use the $out aggregation stage to modify a collection with an Atlas Search index,
+you must delete and re-create the search index. If possible, consider using $merge instead of $out.

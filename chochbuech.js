@@ -22,6 +22,7 @@ async function listRecipes(db, category) {
 }
 
 async function searchRecipes(db, query) {
+    // See https://docs.atlas.mongodb.com/atlas-search/operators/.
     return await db.collection('recipes').aggregate([
         {
             $search: {
@@ -78,14 +79,14 @@ async function saveRecipe(db, body, file) {
 function sanitizeRecipe(recipe) {
     return {
         ...recipe,
-        ingredients: addNewLine(recipe.ingredients),
-        steps: addNewLine(recipe.steps),
+        ingredients: sanitizeStringItems(recipe.ingredients),
+        steps: sanitizeStringItems(recipe.steps),
         tags: typeof recipe.tags != 'string' || recipe.tags == '' ? [] : recipe.tags.split(','),
     };
 }
 
-function addNewLine(str) {
+function sanitizeStringItems(str) {
     if (str.length && !str.endsWith('\n'))
-        return str + '\n';
-    return str;
+        return str.replace(/\r\n/g, '\n') + '\n';
+    return str.replace(/\r\n/g, '\n');
 }
