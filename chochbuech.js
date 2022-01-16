@@ -2,6 +2,7 @@
 "use strict";
 
 const { unassign } = require('./utils');
+const Jimp = require('jimp');
 
 module.exports = { listRecipes, searchRecipes, saveRecipe, validSaveRecipeRequest };
 
@@ -35,7 +36,7 @@ async function searchRecipes(db, query) {
     ]).toArray();
 }
 
-const ALLOWED_MIME_TYPES_MAP = new Map([['image/jpeg', 'jpg'], ['image/png', 'png']]);
+const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png'];
 const RECIPE_FIELDS = ['id', 'name', 'ingredients', 'steps', 'category', 'tags'];
 const ALLOWED_TAGS = ['Vegetarisch', 'Fisch', 'Fleisch', 'Pasta', 'Reis', 'Asiatisch'];
 function validSaveRecipeRequest(body, file) {
@@ -47,8 +48,7 @@ function validSaveRecipeRequest(body, file) {
         ['easy', 'hard', 'dessert', 'starter'].includes(body.category) &&
         typeof body.tags == 'string' && (body.tags == '' ||
             body.tags.split(',').every(tag => ALLOWED_TAGS.includes(tag))) &&
-        (!file || [...ALLOWED_MIME_TYPES_MAP.keys()].includes(file.mimetype)) &&
-        !!(file || body.id);
+        (!file || ALLOWED_MIME_TYPES.includes(file.mimetype)) && !!(file || body.id);
 }
 
 async function saveRecipe(db, body, file) {
@@ -62,15 +62,23 @@ async function saveRecipe(db, body, file) {
         const recipeUID = (await db.collection('values').findOneAndUpdate(
             {_id: 'recipeUID'}, {$inc: {value: 1}}, {upsert: true})).value.value;
         await db.collection('recipes').insertOne(
-            {_id: recipeUID, ...sanitizeRecipe(body),
-                image: `images/recipe${recipeUID}.${ALLOWED_MIME_TYPES_MAP.get(file.mimetype)}`});
+            {_id: recipeUID, ...sanitizeRecipe(body), image: `images/recipe${recipeUID}.png`});
         body.id = recipeUID;
     }
 
     if (file) {
+        const image = await Jimp.read(file.buffer);
+
+        const size = Math.min(image.getHeight(), image.getWidth());
+        await image.crop((image.getWidth() - size) / 2, (image.getHeight() - size) / 2, size, size);
+        if (size > 600) {
+            await image.resize(600, 600);
+        }
+
+        const buffer = await image.getBufferAsync('image/png');
         await db.collection('images').updateOne(
             {_id: body.id},
-            {$set: {data: file.buffer, mimeType: file.mimetype}},
+            {$set: {data: buffer, mimeType: 'image/png'}},
             {upsert: true});
     }
     return {id: body.id, status: 200};
