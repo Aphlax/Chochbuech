@@ -87,9 +87,10 @@
             return properties;
         }])
         .factory('copyUrl', ['$mdToast', function($mdToast) {
-            return function() {
+            return function(recipe) {
                 if (!('clipboard' in navigator)) return;
-                navigator.clipboard.writeText(window.location);
+                navigator.clipboard.writeText(
+                    `${window.location}#${recipe?.name?.replaceAll(' ', '-')}`);
                 $mdToast.showSimple('Link kopiert!');
             }
         }]);
