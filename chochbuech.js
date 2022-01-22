@@ -1,10 +1,9 @@
-
 "use strict";
 
-const { unassign } = require('./utils');
+const {unassign} = require('./utils');
 const Jimp = require('jimp');
 
-module.exports = { listRecipes, searchRecipes, saveRecipe, validSaveRecipeRequest };
+module.exports = {listRecipes, searchRecipes, saveRecipe, validSaveRecipeRequest};
 
 async function listRecipes(db, category) {
     if (category == 'all') {
@@ -14,7 +13,7 @@ async function listRecipes(db, category) {
     }
 
     return await db.collection('recipes').aggregate([
-        {$match: { category }},
+        {$match: {category}},
         {$set: {order: {$rand: {}}, id: "$_id"}},
         {$sort: {order: 1}},
         {$limit: 10},
@@ -22,13 +21,34 @@ async function listRecipes(db, category) {
     ]).toArray();
 }
 
+const TAGS = [
+    {value: 'Vegetarisch', synonyms: ['vegetarisch', 'vegi', 'vegan', 'vegetarian']},
+    {value: 'Fisch', synonyms: ['fisch', 'fish']},
+    {value: 'Fleisch', synonyms: ['fleisch', 'meat']},
+    {value: 'Pasta', synonyms: ['pasta']},
+    {value: 'Reis', synonyms: ['reis', 'rice']},
+    {value: 'Asiatisch', synonyms: ['asiatisch', 'asian', 'asia', 'chinesisch']}
+];
+
 async function searchRecipes(db, query) {
+    const lowerQuery = query.toLowerCase();
+    const tag = TAGS.find(t => t.synonyms.includes(lowerQuery));
+    if (tag) {
+        return await db.collection('recipes').aggregate([
+            {$match: {tags: tag.value}},
+            {$set: {order: {$rand: {}}, id: "$_id"}},
+            {$sort: {order: 1}},
+            {$limit: 10},
+            {$project: {order: 0, _id: 0}},
+        ]).toArray();
+    }
+
     // See https://docs.atlas.mongodb.com/atlas-search/operators/.
     return await db.collection('recipes').aggregate([
         {
             $search: {
                 index: 'autocomplete-de',
-                autocomplete: { path: 'name', query: query, fuzzy: { maxEdits: 1, prefixLength: 2 } },
+                autocomplete: {path: 'name', query: query, fuzzy: {maxEdits: 1, prefixLength: 2}},
             }
         },
         {$set: {id: "$_id"}},
@@ -38,7 +58,6 @@ async function searchRecipes(db, query) {
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png'];
 const RECIPE_FIELDS = ['id', 'name', 'ingredients', 'steps', 'category', 'tags'];
-const ALLOWED_TAGS = ['Vegetarisch', 'Fisch', 'Fleisch', 'Pasta', 'Reis', 'Asiatisch'];
 function validSaveRecipeRequest(body, file) {
     return body && Object.keys(body).every(key => RECIPE_FIELDS.includes(key)) &&
         (!body.id || !isNaN(body.id)) &&
@@ -47,7 +66,7 @@ function validSaveRecipeRequest(body, file) {
         typeof body.steps == 'string' && body.steps.length && body.steps.length < 3000 &&
         ['easy', 'hard', 'dessert', 'starter'].includes(body.category) &&
         typeof body.tags == 'string' && (body.tags == '' ||
-            body.tags.split(',').every(tag => ALLOWED_TAGS.includes(tag))) &&
+            body.tags.split(',').every(tag => TAGS.some(t => t.value == tag))) &&
         (!file || ALLOWED_MIME_TYPES.includes(file.mimetype)) && !!(file || body.id);
 }
 

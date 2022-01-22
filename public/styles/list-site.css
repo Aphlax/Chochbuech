@@ -6,6 +6,8 @@
 #list-site .recipe {
     padding: 8px 0;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
 }
 
 #list-site .recipe:hover {

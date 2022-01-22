@@ -26,7 +26,7 @@ angular.module('Chochbuech', REQ)
     .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'CProvider',
     function($stateProvider, $locationProvider, $urlRouterProvider, CProvider) {
         const C = CProvider.$get();
-        $locationProvider.html5Mode({ enabled: true, rewriteLinks: false });
+        $locationProvider.html5Mode({ enabled: true, rewriteLinks: true });
         const tabs = [
             {label: 'Alltag', category: C.CATEGORY.Easy},
             {label: 'Wochenende', category: C.CATEGORY.Hard},

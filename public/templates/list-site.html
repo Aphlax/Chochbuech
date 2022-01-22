@@ -1,11 +1,11 @@
 <div id="list-site" flex layout="column">
     <h2>Rezepte</h2>
-    <div class="recipe" layout="row"  ng-repeat="recipe in recipes track by recipe.id"
-         ng-click="$state.go(C.SITE.View, { id: recipe.id })">
+    <a class="recipe" layout="row"  ng-repeat="recipe in recipes track by recipe.id"
+         href="r/{{recipe.id}}">
         <div class="id cell">{{recipe.id}}</div>
         <div class="name cell">{{recipe.name}}</div>
         <div class="category cell">{{recipe.category}}</div>
-    </div>
+    </a>
     <div style="min-height: 96px;"></div>
     <md-button class="md-primary md-fab md-fab-bottom-right" ng-click="$state.go(C.SITE.New)">
         <div class="material-icons">add</div>
