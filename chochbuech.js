@@ -32,6 +32,11 @@ const TAGS = [
 
 async function searchRecipes(db, query) {
     const lowerQuery = query.toLowerCase();
+    if (['all', 'every', 'alle'].includes(lowerQuery)) {
+        return await db.collection('recipes')
+            .aggregate([{$set: {id: "$_id"}}, {$sort: {name: 1}}, {$project: {_id: 0}}]).toArray();
+    }
+
     const tag = TAGS.find(t => t.synonyms.includes(lowerQuery));
     if (tag) {
         return await db.collection('recipes').aggregate([
