@@ -1,20 +1,19 @@
 <div id="start-site" flex layout="column">
   <div class="history" layout="row" ng-if="history.length">
-    <div class="entry" ng-repeat="entry in history track by entry.id"
-         style="background-image: url('{{entry.image}}');"
-         ng-click="$state.go(C.SITE.View, { id: entry.id })">
-    </div>
+    <a class="entry" ng-repeat="entry in history track by entry.id"
+         style="background-image: url('{{entry.image}}');" href="r/{{entry.id}}">
+    </a>
   </div>
   <md-tabs flex md-border-bottom md-center-tabs md-swipe-content md-no-pagination
            md-selected="properties.tabId">
     <md-tab ng-repeat="tab in tabs" label="{{tab.label}}">
       <div class="recipes-container" layout="row" layout-wrap>
-        <div class="recipe" layout="column" ng-repeat="recipe in tab.recipes track by recipe.id"
-             ng-click="$state.go(C.SITE.View, { id: recipe.id })">
+        <a class="recipe" layout="column" ng-repeat="recipe in tab.recipes track by recipe.id"
+           href="r/{{recipe.id}}">
           <div class="image" style="background-image: url('{{recipe.image}}');">
             <span class="name">{{recipe.name}}</span>
           </div>
-        </div>
+        </a>
       </div>
       <div class="no-recipes" ng-if="!tab.recipes.length && $state.is(C.SITE.Search)" flex>
         Keine Rezepte gefunden.

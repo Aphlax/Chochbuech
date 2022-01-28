@@ -26,15 +26,14 @@
     </md-sidenav>
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <div layout="row" tabindex="0"
-                 ng-click="$state.go(C.SITE.Main)">
+            <a layout="row" href="/">
                 <img id="app-icon" src="images/icon.png">
                 <h2 class="app-title" hide show-gt-xs>Chochbuech</h2>
                 <h2 class="app-title" hide-gt-xs
                     ng-show="!showSearch || !($state.is(C.SITE.Main) || $state.is(C.SITE.Search))">
                     Chochbuech
                 </h2>
-            </div>
+            </a>
             <span flex></span>
             <div layout="row" ng-show="$state.is(C.SITE.Main) || $state.is(C.SITE.Search)">
                 <input class="search-input" ng-show="showSearch" type="search" ng-model="search"
