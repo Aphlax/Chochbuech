@@ -18,7 +18,8 @@
                 SHOP_REMOVE_ALL: 'shop_empty',
             },
         })
-        .value('NEW_RECIPE', { name: '', image: 'images/take-picture.png', ingredients: '', steps: '' })
+        .value('NEW_RECIPE',
+            { name: '', image: 'images/take-picture.png', ingredients: '', steps: '', tags: [] })
         .factory('$recipe', ['$http', function($http) {
             function RecipeService() {
                 this.cache = new Map();
