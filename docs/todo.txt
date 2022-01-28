@@ -1,6 +1,5 @@
 all page
-links in recipes.
-
+archive recipes.
 
 filet im teig
 kaiserschmarrn
