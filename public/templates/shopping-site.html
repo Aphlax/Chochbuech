@@ -1,5 +1,11 @@
 <div id="shopping-site" flex layout="column" ng-controller="shopping">
-    <h2>Einkaufsliste</h2>
+    <div layout="row">
+        <h2 flex>Einkaufsliste</h2>
+        <md-button class="md-icon-button share-button" aria-label="Share"
+                   ng-click="copyShoppingList()" ng-if="list.length">
+            <div class="material-icons">share</div>
+        </md-button>
+    </div>
     <sortable-list flex="none" order-changed="onOrderChanged(order)">
         <sortable-list-item ng-repeat="item in list">
             <md-checkbox ng-model="item.selected" aria-label="{{item.label}} " flex layout="row">

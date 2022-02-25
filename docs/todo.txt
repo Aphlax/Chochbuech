@@ -1,4 +1,3 @@
-all page
 archive recipes.
 
 filet im teig

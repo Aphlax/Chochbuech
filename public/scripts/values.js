@@ -107,7 +107,7 @@
             });
             return properties;
         }])
-        .factory('copyUrl', ['$mdToast', function($mdToast) {
+        .factory('copyRecipeUrl', ['$mdToast', function($mdToast) {
             return function(recipe) {
                 if (!('clipboard' in navigator)) return;
                 navigator.clipboard.writeText(

@@ -19,7 +19,7 @@ angular.module('Shopping', ['Values', 'ngCookies'])
             };
         };
     }])
-    .controller('shopping', ['$scope', '$element', '$cookies', '$timeout', 'C', function($scope, $element, $cookies, $timeout, C) {
+    .controller('shopping', ['$scope', '$element', '$cookies', '$timeout', '$mdToast', 'C', function($scope, $element, $cookies, $timeout, $mdToast, C) {
         const COOKIE_NAME = 'shopping-list';
         const COOKIE_OPTIONS = {expires: (d => { d.setDate(d.getDate() + 30); return d; })(new Date())};
         const ITEM_REGEX = /(.+)\((.+)\)/;
@@ -44,6 +44,13 @@ angular.module('Shopping', ['Values', 'ngCookies'])
             $scope.newItemLabel = '';
             $timeout(() => $element.find('input')[0].scrollIntoView());
         };
+        $scope.copyShoppingList = function() {
+            const shoppingList = $cookies.get(COOKIE_NAME);
+            if (!('clipboard' in navigator) || !shoppingList) return;
+            navigator.clipboard.writeText(shoppingList.split('\n').filter(i => i)
+                .map(item => createItem(item).label.trim()).join('\n'));
+            $mdToast.showSimple('Einkaufsliste kopiert!');
+        }
 
         $scope.$on(C.EVENTS.SHOP_REMOVE_ALL, () => $scope.list = []);
         $scope.$on(C.EVENTS.SHOP_REMOVE_DONE,
@@ -156,11 +163,11 @@ angular.module('Shopping', ['Values', 'ngCookies'])
                 }
             },
             template: '<div class="sortable-list-item" layout="row">' +
+                '   <ng-transclude flex layout="row"></ng-transclude>' +
                 '   <div class="material-icons drag-icon" ng-on-touchstart="startDrag($event)"' +
                 '        ng-mousedown="startDrag($event)">' +
                 '       drag_indicator' +
                 '   </div>' +
-                '   <ng-transclude flex layout="row"></ng-transclude>' +
                 '</div>',
         };
     }]);

@@ -3,6 +3,14 @@
   padding-left: 4px;
 }
 
+#shopping-site .share-button {
+  padding: 9px 8px 7px 8px;
+  margin-top: 14px;
+  margin-bottom: 8px;
+  margin-right: 0;
+  color: lightgray;
+}
+
 div.sortable-list {
   position: relative;
 }
@@ -59,7 +67,6 @@ div.sortable-list-item .drag-icon {
 #shopping-site .new-item-container {
   height: 47px;
   margin-top: -1px;
-  padding-left: 36px;
   box-sizing: content-box;
   overflow: hidden;
   border-top: 1px solid #e7e7e7;
