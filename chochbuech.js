@@ -13,7 +13,7 @@ async function listRecipes(db, category) {
     }
 
     return await db.collection('recipes').aggregate([
-        {$match: {category}},
+        {$match: {category, archived: false}},
         {$set: {order: {$rand: {}}, id: "$_id"}},
         {$sort: {order: 1}},
         {$limit: 10},
@@ -40,7 +40,7 @@ async function searchRecipes(db, query) {
     const tag = TAGS.find(t => t.synonyms.includes(lowerQuery));
     if (tag) {
         return await db.collection('recipes').aggregate([
-            {$match: {tags: tag.value}},
+            {$match: {tags: tag.value, archived: false}},
             {$set: {order: {$rand: {}}, id: "$_id"}},
             {$sort: {order: 1}},
             {$limit: 10},
@@ -62,7 +62,7 @@ async function searchRecipes(db, query) {
 }
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png'];
-const RECIPE_FIELDS = ['id', 'name', 'ingredients', 'steps', 'category', 'tags'];
+const RECIPE_FIELDS = ['id', 'name', 'ingredients', 'steps', 'category', 'tags', 'archived'];
 function validSaveRecipeRequest(body, file) {
     return body && Object.keys(body).every(key => RECIPE_FIELDS.includes(key)) &&
         (!body.id || !isNaN(body.id)) &&
@@ -72,6 +72,7 @@ function validSaveRecipeRequest(body, file) {
         ['easy', 'hard', 'dessert', 'starter'].includes(body.category) &&
         typeof body.tags == 'string' && (body.tags == '' ||
             body.tags.split(',').every(tag => TAGS.some(t => t.value == tag))) &&
+        ['true', 'false'].includes(body.archived) &&
         (!file || ALLOWED_MIME_TYPES.includes(file.mimetype)) && !!(file || body.id);
 }
 
@@ -114,6 +115,7 @@ function sanitizeRecipe(recipe) {
         ingredients: sanitizeStringItems(recipe.ingredients),
         steps: sanitizeStringItems(recipe.steps),
         tags: typeof recipe.tags != 'string' || recipe.tags == '' ? [] : recipe.tags.split(','),
+        archived: recipe.archived == true || recipe.archived == 'true',
     };
 }
 

@@ -23,6 +23,7 @@ angular.module('Editor', ['Values'])
             data.append('steps', recipe.steps = recipe.steps.replaceAll('\r\n', '\n'));
             data.append('category', recipe.category);
             data.append('tags', recipe.tags.join(','));
+            data.append('archived', `${!!recipe.archived}`);
             if (recipe.image instanceof File) {
                 const imageData = new Blob([new Uint8Array(await recipe.image.arrayBuffer())],
                     {type: recipe.image.type});

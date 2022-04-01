@@ -7,3 +7,20 @@ then choose your operations, including $set and $out.
 
 Note: If you use the $out aggregation stage to modify a collection with an Atlas Search index,
 you must delete and re-create the search index. If possible, consider using $merge instead of $out.
+
+To create a backup, grab the json response from https://choch-buech.ch/all.
+
+Example:
+
+$set
+{
+  archived: false
+}
+
+$merge
+{
+  into: 'recipes',
+  on: '_id',
+  whenMatched: 'replace',
+  whenNotMatched: 'fail'
+}

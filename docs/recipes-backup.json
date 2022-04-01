@@ -1,0 +1,780 @@
+[
+  {
+    "name": "Lasagne",
+    "ingredients": "Lasagne Blätter\n400g Hackfleisch\n1 Zwiebel\n1 Dose Pelati\n8dl Milch\n4EL Butter\n4El Mehl\nParmesan\n",
+    "steps": "Zwiebel hacken, mit Hackfleisch in Butter anbraten, Pelati zerkleinern und dazugeben, 10 Minuten leicht köcheln.\nBéchamelsauce anrühren (4EL Butter erhitzen, 4EL Mehl unter Rühren beigeben und bei mittlerer Hitze dünsten. Von der Platte nehmen, 8dl Milch einrühren und aufkochen, mit Muskat, Salz, Pfeffer würzen, 5 Minuten weiterköcheln.)\nFeuerfeste form mit Butter ausstreichen, abwechslungsweise Lasagne Blätter, Bolognese, Sauce Béchamel und Parmesan einschichten. Oberste Lage ohne Bolognese.\nIm vorgeheizten Ofen bei 200°C ca. 30 Minuten backen (Steamer: A3).\n",
+    "image": "images/recipe11.png",
+    "category": "easy",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 11
+  },
+  {
+    "name": "Spanische Tortilla",
+    "ingredients": "5 Eier\n500g Kartoffeln\n1 Chorizo\n1 Cervelat\n",
+    "steps": "Kartoffeln schälen und mit einer Raffel zerkleinern (oder in feine Scheiben sneiden). Die Rösti in reichlich Öl anbraten.\nWährenddessen die Eier zerquirlen, salzen, die Würste in kleine Würfel schneiden und mit den Eiern über die Rösti giessen und etwas einrühren.\nRösti wenden bis beide seiten goldbraun angebraten sind.\n\nDazu passt ein grüner Salat.\n",
+    "image": "images/recipe12.png",
+    "category": "easy",
+    "tags": [],
+    "id": 12
+  },
+  {
+    "name": "Pizza",
+    "ingredients": "1 Pizzateig\nTomatensauce\n400g Mozzarella\n200g Schinken\n1 kleine Zwiebel\n1 Dose Sardellen\n1 Dose Thun\n2EL Kapern\nfrische Pilze\n",
+    "steps": "Pizza zubereiten.\nIm vorgeheizten Ofen bei 200°C ca. 20 Minuten backen.\n",
+    "image": "images/recipe13.png",
+    "category": "easy",
+    "tags": [],
+    "id": 13
+  },
+  {
+    "name": "Berner Platte",
+    "ingredients": "Kartoffeln\nBohnen\nFleisch\n",
+    "steps": "[todo]\n",
+    "image": "images/recipe14.png",
+    "category": "hard",
+    "tags": [
+      "Fleisch"
+    ],
+    "id": 14
+  },
+  {
+    "name": "Omeletten",
+    "ingredients": "4 Eier\n4dl Milch\n300g Mehl\n200g Schinken\n1 Dose eingemachte Champignons\nRosmarin, Oregano, Salz, Pfeffer\n",
+    "steps": "Eier verquirlen, mit ca. 4dl Wasser, 4dl Milch und Mehl zu einer Masse mit mittlerer Konsistenz vermischen, würzen.\nSchinken in Streifen schneiden und mit den Champignons beigeben, würzen.\nMit zwei Bratpfannen in heissem Öl je eine portion zu einer Omelette braten (beidseitig 3 Minuten).\n",
+    "image": "images/recipe15.png",
+    "category": "easy",
+    "tags": [],
+    "id": 15
+  },
+  {
+    "name": "Überbackene Polenta",
+    "ingredients": "250g Polenta Mais\n500ml Bouillon\n500ml Milch\n1 Ei\n400g Tomaten\n250g Champignons\n400g Mozzarella\n4EL Reibkäse\n1 Bund Basilikum\nMuskat, Butter, Salz, Pfeffer\n",
+    "steps": "Vorbereitung: Polenta nach Rezept präparieren (Schritt 1 + 2).\nBouillon mit Milch und Salz aufkochen, Polenta beigeben, 25 Min. unter rühren köcheln.\n1EL Butter und zerquirltes Ei unterrühren, mit Muskat, Salz und Pfeffer würzen. Auf ein geöltes Blech streichen (ca. 1cm hoch), kalt und fest werden lassen.\nPilze schneiden, in 1½EL heisser Butter anbraten, würzen.\nTomaten und Mozzarella in Scheiben schneiden, Polenta in Quadrate, dann Dreiecke schneiden. Feuerfeste Form einfetten, abwechselnd Polenta, Pilze, Tomaten und Mozzarella einschichten. Mit Parmesan bestreuen und 15 Min. bei 200°C backen.\nBasilikum hacken und darüberstreuen, anrichten.\n",
+    "image": "images/recipe17.png",
+    "category": "hard",
+    "tags": [
+      "Vegetarisch"
+    ],
+    "id": 17
+  },
+  {
+    "name": "Filet im Teig",
+    "ingredients": "Filet\nBrät\nBlätterteig\nChampignons\nSpeck\nGetrocknete Tomaten\n",
+    "steps": "[todo]\n",
+    "image": "images/recipe18.png",
+    "category": "hard",
+    "tags": [
+      "Fleisch"
+    ],
+    "id": 18
+  },
+  {
+    "name": "Cervelat Gulasch",
+    "ingredients": "2 Cervelats\n1kg festkochende Kartoffeln\n3 Zwiebeln\n100g saurer Halbrahm\n2dl Bouillon\nPaprika, Salz\n",
+    "steps": "Cervelats schälen, längs halbieren und in Stücke schneiden. In heisser Butter goldbraun braten. Hitze reduzieren.\nZwiebeln schälen und achteln, Kartoffeln schälen und würfeln, beides zu den Cervelats geben und mit 2EL Paprika 3 Min. andämpfen.\nBouillon zugeben, aufkochen, Hitze reduzieren, zugedeckt ca. 20 Min. kochen bis die Kartoffeln weich sind, salzen.\nGulasch mit dem sauren Halbrahm anrichten, mit Salz und Paprika würzen.\n",
+    "image": "images/recipe19.png",
+    "category": "easy",
+    "tags": [
+      "Fleisch"
+    ],
+    "id": 19
+  },
+  {
+    "name": "Fachitas",
+    "ingredients": "2 Peperoni, rot + gelb\n1 Zwiebel\nTomaten\nEisbergsalat\nParmesan\n400g Poulet\n500g Hackfleisch\n4 Weizen-Tortillas pro Person\nWürzmischungen Chicken + Beef\nSalsa\nBohnenmus\n",
+    "steps": "Weizen-Tortillas voneinander lösen und auf einem Teller im Ofen bei 80°C aufwärmen.\nTomaten klein würfeln, Peperoni in kurze Streifen schneiden, Zwiebel hacken, Poulet in kleine Stücke schneiden.\nPoulet und Hackfleisch nach Anleitung der Würzmischungen zubereiten, Bohnenmus aufwärmen.\nAlles in kleinen Schüsseln servieren, Weizen-Tortillas mit einem Tuch zudecken.\n",
+    "image": "images/recipe20.png",
+    "category": "easy",
+    "tags": [
+      "Vegetarisch",
+      "Fleisch"
+    ],
+    "id": 20
+  },
+  {
+    "name": "Apfel Caramel Cake",
+    "ingredients": "150g Butter\n200g Zucker\n250g Mehl\n1TL Backpulver\n4 Eier\n2 rote Äpfel\n150g weiche Caramels\nSalz\n",
+    "steps": "Butter, Zucker und eine Prise Salz schaumig rühren. Ein Ei nach dem andern dazu geben, 5 Minuten weiter rühren bis die Masse etwas heller ist.\nÄpfel und Caramels in stücke schneiden, mit wenig Mehl mischen. Mehl und Backpulver zum Teig mischen, Äpfel und Caramels hinzu geben, in eine Form füllen.\nIm auf 180°C vorgeheizten Ofen 70 Minuten backen.\n",
+    "image": "images/recipe21.png",
+    "category": "dessert",
+    "tags": [],
+    "id": 21
+  },
+  {
+    "name": "Gebrannte Crème",
+    "ingredients": "1l Milch\n10EL Zucker\n3 Eier\n3EL Maizena\n1dl Wasser\n",
+    "steps": "Pfanne mit Wasser ausschwenken, Zucker darin karamellisieren. Wenn der Zucker karamellisiert ist Wasser dazugeben und weiter kochen bis der Zucker sich aufgelöst hat. Alle bis auf ein wenig Milch dazugeben und aufkochen.\nRestliche Milch in eine Schüssel geben, Maizena und Eier darin verrühren. In der Schüssel die Flüssigkeit unterrühren. Alles wieder in die Pfanne geben und bis kurz vors Kochen bringen. In die Schüssel geben und erkalten lassen.\n",
+    "image": "images/recipe22.png",
+    "category": "dessert",
+    "tags": [],
+    "id": 22
+  },
+  {
+    "name": "Schweins-Geschnezeltes an Senfsauce",
+    "ingredients": "300g Kürbis\n600g Schweinefleisch\n1 Schalotte\n1 Knoblauchzehe\n2dl Weisswein\n3dl Kalbsfond\n1dl Halbrahm\n2EL Maizena\n1EL Dijon-Senf\n2EL grobkörniger Senf\n1EL pikanter Senf\nButter\nMuskat, Salz, Pfeffer\n",
+    "steps": "Kürbis in der warmen Butter andämpfen, mit Muskat, Pfeffer und Salz würzen. Zugedeckt ca 10 Min. knapp weich kochen. Entstandene flüssigkeit offen auf 2 Esslöffel einköcheln, zugedeckt warmstellen.\nSchalotten hacken, Knoblauch pressen und in Butter andämpfen. Mit Weisswein und Fond ablöschen, auf ca. 3dl einkochen. Maizena unter Rühren zugeben, ca. 1 Min. kochen. Senf und Halbrahm beifügen, mit Pfeffer und Salz würzen.\nFleisch schneiden, in Butter anbraten und mit Pfeffer und Salz würzen.\nFleisch und ⅔ des Kürbisses in die Sauce geben, nur noch heiss werden lassen, anrichten, restlichen Kürbis darauf verteilen.\n\nDazu passt Rösti oder Nudeln.\n",
+    "category": "hard",
+    "image": "images/recipe23.png",
+    "tags": [
+      "Fleisch"
+    ],
+    "id": 23
+  },
+  {
+    "name": "Hüttenrigatoni",
+    "ingredients": "300g Rigatoni-Teigwaren\n200g Speck\n1 Zwiebel\n2 kleiner Lauch\n200g Champignons\n2 Tomaten\n2dl Vollrahm\n1 Bund Schnittlauch\nSalz, Pfeffer\n",
+    "steps": "Rigatoni in Salzwasser al dente kochen.\nSpeck in Streifen schneiden, Zwiebel hacken, Lauch halbieren und in Streifen, Champignons in Scheiben schneiden. Tomaten würfeln.\nIn wenig Öl Speck knusprig anbraten, Zwiebeln, Lauch und Champignons zugeben und mitdünsten bis die Champignons leicht braun werden.\nRigatoni dazugeben und alles gut mischen. Tomatenwürfel darunter geben, Rahm darübergiessen und fast völlig einkochen lassen. Mit Salz und Pfeffer abschmechen, mit Schnittlauch bestreuen.\n",
+    "category": "easy",
+    "image": "images/recipe24.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 24
+  },
+  {
+    "name": "Hot Chicken Wings auf Rösti",
+    "ingredients": "800g festkochende Kartoffeln\n600g Kohlrabi\n800g Pouletflügeli\n1dl Sweet Chili Sauce\n1 Bund Koriander\n1TL Salz\nwenig Pfeffer\n",
+    "steps": "Kartoffeln und Kohlrabi grob auf ein mit Backpapier belegtes Blech reiben, mit Salz und Pfeffer würzen, mischen.\nPouletflügeli und Sweet Chili Sauce mischen, auf Rösti verteilen.\nIm auf 220°C vorgeheizten Ofen 35 Minuten backen. Koriander fein schneiden, darüberstreuen.\n\nDazu passt Joghurt nature.\n",
+    "category": "easy",
+    "image": "images/recipe25.png",
+    "tags": [
+      "Fleisch"
+    ],
+    "id": 25
+  },
+  {
+    "name": "Italienischer Bohneneintopf",
+    "ingredients": "1kg Bohnen\n800g sehr reife Tomaten\n1 grosse Zwiebel\n1-2 Knoblauchzehen\n4EL Olivenöl\n100g Speckwürfel\n1 Mozzarella\n1 Bund Peterli\n1 Bund Thymian oder Basilikum\nSalz, Pfeffer\n",
+    "steps": "Die Bohnen rüsten und waschen. Zwiebel und Knoblauch grob hacken und in Olivenöl andämpfen. Tomaten würfeln und beifügen. Bohnen und Speckwürfel dazugeben. Thymian waschen und blättchen dazugeben, mit Salz und Pfeffer würzen.\nDas Ganze ca. 50 Min. auf kleinem Feuer köcheln lassen, ab und zu rühren (Bohnen zwischendurch probieren).\nDie Bohnen in eine Gratinform geben, Peterli grob gehackt darüberstreuen. Mozzarella in Scheiben schneiden und über die Bohnen verteilen. Im vorgeheizten Ofen bei 180°C 10 Min. überbacken bis der Käse geschmolzen ist.\n\nDazu passen Nudeln.\n",
+    "category": "easy",
+    "image": "images/recipe26.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 26
+  },
+  {
+    "name": "Quiche Basilisk",
+    "ingredients": "350g tiefgekühlter Broccoli\n1 Kuchenteig\n100g geriebener Sprinz\n200g Rauchlachs\n2 Eier\n1dl Weisswein\n2dl Halbrahm\n1 Messerspitze Curry\n1 Bund Schnittlauch\nMuskat, Salz, Pfeffer\n",
+    "steps": "Vorbereitung: (Optional) Broccoli über Nacht im Kühlschrank auftauen.\nKuchenteig auf rundes Blech legen, nach belieben mit 2EL reibkäse bestreuen. Broccoli und aufgerollter Lachs auf dem Teig verteilen.\nEier zerquirlen, mit dem Weisswein, Rahm, Curry, Muskat, Salz und Pfeffer mischen. Schnittlauch fein schneiden und mit dem Rest über die Füllung giessen. Mit restlichem Sprinz bestreuen.\nIm vorgeheizten Ofen bei 220°C 30 Min. backen.\n",
+    "category": "easy",
+    "image": "images/recipe27.png",
+    "tags": [],
+    "id": 27
+  },
+  {
+    "name": "Zürcher Geschnezeltes",
+    "ingredients": "450g Kalbfleisch\n200g Kalbsnieren\n250g Champignons\n750g Kartoffeln\n4 Schalotten oder 1 Zwiebel\n1TL Zitronensaft\n1dl Weisswein\n1dl Bouillon\n2dl Halbrahm\n1 Bund Petersilie\n2TL Mehl\nButter\nPaprika\nSalz, Pfeffer\n",
+    "steps": "Vorbereitung: Am Vorabend Kartoffeln knapp weich garen. Noch heiss schälen und in einem Plastikbeutel im Kühlschrank aufbewahren.\nDas Kalbfleisch und die Nieren in Scheiben schneiden. Die Schalotten fein hacken. Die Champignons putzen und schneiden und mit Zitronensaft beträufeln, beiseite stellen.\nDie Kartoffeln raspeln und salzen. In ca 2EL heisser Bratbutter unter Wenden kurz anbraten. Dann zugedeckt bei kleiner Hitze weiterbraten.\nDas Fleisch mit Salz und Pfeffer würzen, Mehl daruntermischen. Dann in ca. 1EL heisser Bratbutter unter Wenden kurz anbraten.\nSchalotten in 1EL Butter glasig dünsten, Champignons dazugeben bis sie goldbraun werden. Mit Wein ablöschen und zur Hälfte einkochen. Bouillon und Rahm unter rühren beigeben, aufkochen und bei kleiner Hitze zu einer sämigen Sauce köcheln. Mit Salz, Pfeffer und Paprika abschmecken.\nDie Rösti mit hilfe eines grössen Tellers oder Deckel wenden und ca. 1EL Butter am Pfannenrand entlang beigeben.\nFleisch in die Sauce geben, Petersilie fein hacken und darüberstreuen. Mit Rösti anrichten.\n\nTipp: Die Schalotten nach dem Kochen durch ein Sieb pressen.\n",
+    "category": "hard",
+    "image": "images/recipe28.png",
+    "tags": [
+      "Fleisch"
+    ],
+    "id": 28
+  },
+  {
+    "name": "Stroganoff",
+    "ingredients": "500g Rindsplätzli\n2 Rote Peperoni\n200g Champignons\n3 Essiggurken\n2 Zwiebeln\n2 Knoblauchzehen\n1EL Senf\n2.5dl Bouillon\n2dl Halbrahm\nMaizena, Pfeffer, Salz\n",
+    "steps": "Zwiebel in Ringe, Knoblauch in Scheiben schneiden, in Bratbutter anbraten. Pepperoni in feine Streifen und Champignons in Scheiben schneiden, zugeben und 5 Min. weiterbraten. Das Ganze beiseite stellen.\nFleisch in kurze Streifen schneiden, in Bratbutter portionenweise anbraten, mit Salz und Pfeffer würzen und ebenfalls beiseite stellen.\nSenf mit Bouillon mischen, aufkochen und ca 5 Min. köcheln. Pfanne von der platte nehmen, Rahm mit Maizena mischen, darunterziehen. Gurken in dünne Streifen schneiden, mit Gemüse und Fleisch beigeben, würzen, nur noch heiss werden lassen und servieren.\n\nDazu passt Wildreis. Alternative: Statt Rindsplätzli Pouletbrüstchen verwenden.\n",
+    "category": "easy",
+    "image": "images/recipe29.png",
+    "tags": [
+      "Fleisch"
+    ],
+    "id": 29
+  },
+  {
+    "name": "Grünes Thai Curry",
+    "ingredients": "400g Pouletfleisch\n2TL grüne Curry-Paste\n3 Knoblauchzehen\n500g verschiedene Gemüse, z.B. Rosenkohl, Lauch, Rüebli, Peperoni\n1 Dose Bambussprossen\n500ml Kokosnussmilch\n2EL Sojasauce\nfrischer Limonen- oder Zitronensaft\nZucker\n",
+    "steps": "Das Pouletfleisch in Würfel schneiden, mit Öl unter wenden anbraten. 1TL Curry-Paste zufügen und kurz andämpfen, dann alles beiseite stellen.\nKnoblauch in Scheiben, Rosenkohl in viertel, Lauch in Ringe, Rüebli und Peperoni in Streifchen schneiden.\nKnoblauch im Öl andämpfen, dann restliches Gemüse beifügen und unter Wenden einige Minuten dämpfen, 1-2TL Curry-Paste beigeben. Fleisch zum Gemüse geben, dann alles mit Kokosnussmilch ablöschen und einige Minuten einköcheln lassen.\nKurz vor dem servieren mit Sojasauce, Limonensaft und Zucker abschmecken. Falls die Sauce zu dünn ist, kann sie mit etwas Maizena gebunden werden.\n\nDazu passt Basmati-Reis.\n",
+    "category": "hard",
+    "image": "images/recipe30.png",
+    "tags": [
+      "Asiatisch"
+    ],
+    "id": 30
+  },
+  {
+    "name": "Gemüsepfanne mit Mozzarella",
+    "ingredients": "250g Mozzarella\n100g Mortadella (1cm Scheibe)\n300g Zucchini\n300g Tomaten\n1 Knoblauchzehe\n1 Bund Basilikum\n3EL Olivenöl\nZitronenpfeffer, Salz\n",
+    "steps": "Mozzarella, Tomaten und Zucchini in Scheiben schneiden, in eine feuerfeste Form schichten.\nKnoblauch pressen, Basilikum in Streifen schneiden und mit 3EL Olivenöl mischen. Über das Gemüse verteilen und mit Salz und Zitronenpfeffer würzen.\nIm vorgeheizten Ofen bei 200°C 25-30 Min. backen. Mortadella würfeln und nach der Hälfte über das Gemüse geben.\n\nDazu passt Pasta.\n",
+    "category": "easy",
+    "image": "images/recipe31.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 31
+  },
+  {
+    "name": "Salade Niçoise",
+    "ingredients": "4 Eier\n5 Tomaten\n1 Salatgurke\n1 Dose Artischockenherzen\n2 gelbe Peperoni\n4 Frühlingszwiebeln\n1 Dose Thon\n1 Dose Sardellenfilets\n1 Knoblauchzehe\n100g schwarze Oliven\n1 Bund Basilikum\n5EL Olivenöl\nZitronensaft\nSalz, Pfeffer\n",
+    "steps": "Vorbereitung: Eier hartkochen, schälen und auskühlen lassen.\nTomaten, Gurke, Peperoni und Frühlingszwiebeln schneiden. Thon abtropfen lassen und zerkleinern, Sardellenfilets in kurze Stücke schneiden, das ganze in eine grosse Schüssel geben und mischen.\nEier vierteln und mit den Oliven über dem Salat verteilen.\nBasilikum klein Schneiden und mit 5EL Olivenöl, Zitronensaft, Salz und Pfeffer verrühren, über den Salat geben und anrichten.\n",
+    "category": "easy",
+    "image": "images/recipe32.png",
+    "tags": [],
+    "id": 32
+  },
+  {
+    "name": "Hirsch Saltimbocca",
+    "ingredients": "8 Hirschschnitzel à 75g\n4 Tranchen Rohschinken\n8 Salbeiblätter\n1dl Rotwein\n50g Butter\n1 Schalotte\n20g getrocknete Steinpilze\n1 Aubergine\n300g Tomaten\n200g Polenta Mais\n4dl Milch\n1 Briefchen Safran\n2EL Sprinz\nSalz, Pfeffer\n",
+    "steps": "Vorbereitung: Steinpilze in lauwarmem Wasser einweichen.\n4dl Wasser mit 4dl Milch, 1½TL Salz und Safran aufkochen, Polenta Mais einrühren, unter gelegentlichem Rühren bei kleiner Hitze ca. 30 Min. zu einem dicken Brei köcheln. Pfanne von der Platte nehmen und etwas Butter und Sprinz daruntermischen.\nSchalotte fein hacken, Aubergine und Tomaten würfeln. Schalotte in Öl andämpfen, Pilze und Aubergine ca. 5 Min. mitdämpfen. Tomaten beigeben und ca. 2 Min. fertig dämpfen, mit Salz und Pfeffer würzen.\nSchnitzel mit je einer halben tranche Rohschinken und einem Salbeiblatt belegen, mit Zahnstocher fixieren. Im heissen Öl mit der belegten Seite zuerst beidseitig ca. 2 Min. braten. Würzen und warm stellen.\nRotwein in dieselbe Pfanne giessen und aufkochen. Hitze reduzieren, 50g Butter nach und nach unter Rühren mit Schwingbesen zugeben (die Sauce darf dabei nicht kochen). Würzen und sofort servieren.\n",
+    "category": "hard",
+    "image": "images/recipe33.png",
+    "tags": [
+      "Fleisch"
+    ],
+    "id": 33
+  },
+  {
+    "name": "Pizokel",
+    "ingredients": "300g Mehl\n50g Gries\n3 Eier\n½dl Milch\n5 grosse Kartoffeln\n150g Bündner Bergkäse\n2-3 Lauchstangen\n200g Bratspeck\n300g Champignons\n50g Butter\n1 Bund Petersilie\n",
+    "steps": "Aus Mehl, Gries, Eiern, Milch, 1TL Salz und 1EL Öl einen dicken Teig herstellen. Kartoffeln schälen und mit einer Bircherraffel zerkleinern. In den Teig mischen und 10 Min. ruhen lassen.\nMit einem Löffel nicht all zu grosse stücke abstechen, im knapp kochenden Salzwasser ziehen lassen. Wenn sie aufschwimmen sind sie gar. Pizokel herausheben und abtropfen lassen. 50g Butter in einer Pfanne schmelzen, die Pizokel in der Butter schwenken und auf einer grossen Platte verteilen, Käse darüber raspeln.\nLauch in Ringe, Speck in streifen, Champignons in Scheiben schneiden. In der gleichen Pfanne den Speck anbraten, Lauch und Champignons dazugeben und dünsten. Alles über die Pizokel verteilen. Petersilie hacken und darüber streuen.\n",
+    "category": "hard",
+    "image": "images/recipe34.png",
+    "tags": [],
+    "id": 34
+  },
+  {
+    "name": "Rehgeschnetzeltes",
+    "ingredients": "300g Trauben\n500g Rehgeschnetzeltes\n100g Bratspeck\n100g Butter\n1EL Tomatenpüree\n2dl roter Traubensaft oder Rotwein\n2dl Kalbsfond\n1 Bund Petersilie\nSalz, Pfeffer\n",
+    "steps": "Trauben Halbieren und entkernen. Geschnetzeltes und Speck mit 20g Butter portionenweise anbraten. Würzen und beiseite stellen.\nTomatenpüree im Bratensatz rösten, mit Traubensaft und Kalbsfond auflösen. Kurz aufkochen und durch ein Sieb in eine Saucenpfanne giessen. Auf die hälfte einkochen, 80g Butter stückweise unter die Sauce schwingen. Weiterkochen bis die Sauce bindet.\nFleisch und Trauben in die Sauce geben, mit Salz und Pfeffer abschmecken. Petersilie hacken und darüberstreuen.\n\nDazu passen Spätzli.\n",
+    "category": "hard",
+    "image": "images/recipe35.png",
+    "tags": [
+      "Fleisch"
+    ],
+    "id": 35
+  },
+  {
+    "name": "Goldbuttfilets mit Kapernsauce",
+    "ingredients": "800g Goldbuttfilets\n2-3 Schalotten\n2dl Weisswein\n50g Butter\n3EL Kapern\n½ Zitrone\n2.5dl Rahm\nMehl, Salz und Pfeffer\n",
+    "steps": "Die Filets würzen, in eine gebutterte Gratinplatte legen, Wein dazu giessen und im Ofen 15 Minuten pochieren (150°C). Danach den Fond abschütten und beiseite stellen.\nDie restliche Butter in einem Pfännchen schmelzen. Die Schalotte fein hacken, glasig dünsten, Kapern und wenig Mehl beifügen.\nDie Sauce mit dem Fond ablöschen, Rahm dazufügen, mit Zitronensaft, Salz und Pfeffer abschmecken. Die Sauce über die Filets giessen und im Ofen ca. 5 Minuten fertig garen.\n\nDazu passt Wildreis und ein Gemüse (z.B. Rüebli oder Broccoli).\n",
+    "category": "hard",
+    "image": "images/recipe36.png",
+    "tags": [
+      "Fisch"
+    ],
+    "id": 36
+  },
+  {
+    "name": "Canelloni mit Spinat-Ricottafüllung",
+    "ingredients": "16 Lasagneblätter\n2 Schalotten\n2 Knoblauchzehen\n500g Blattspinat\n250g Ricotta\n100g Parmesan\n750g Tomaten\nMuskat, Salz, Pfeffer\n",
+    "steps": "Lasagneblätter in Salzwasser knapp weich garen und auf einem Tuch auslegen.\nEine Schalotte schneiden und eine Knoblauchzehe pressen, in heissem Öl anbraten. Spinat grob schneiden, beigeben und kurz mitdämpfen. Herausnehmen und in einer Schüssel auskühlen. Ricotta und Parmesan daruntermischen, mit Muskat, Salz und Pfeffer würzen.\nRestliche Schalotte und Knoblauchzehe schneiden, in heissem Öl anbraten. Tomaten würfeln, mitdämpfen und würzen. Sauce zugedeckt 20 Min. köcheln.\nSpinat-Ricotta-Masse mithilfe eines Teelöffels auf die Lasagneblätter geben und diese aufrollen und in eine Form geben. Die Tomatensauce darauf verteilen und für 20 Min. im auf 200°C vorgeheizten Ofen backen.\n",
+    "category": "easy",
+    "image": "images/recipe37.png",
+    "tags": [
+      "Vegetarisch",
+      "Pasta"
+    ],
+    "id": 37
+  },
+  {
+    "name": "Orecchiette mit Erbsen-Sugo",
+    "ingredients": "300g Orecchiette\n100g Bratspeck\n800g Pelati-Tomaten\n200g tiefgekühlte Erbsen\n250g Mascarpone\n75g Parmesan\n1 Bund Petersilie\nSalz, Pfeffer\n",
+    "steps": "Orecchiette in Salzwasser al dente kochen.\nSpeck in streifen schneiden, mit Butter anbraten. Tomaten zerkleinern und mit Erbsen beigeben, 10 Min. leise kochen.\nPetersilie hacken, mit Mascarpone in die Sauce geben, würzen. Teigwaren darunter mischen, den Parmesan zugeben und servieren.\n",
+    "category": "easy",
+    "image": "images/recipe38.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 38
+  },
+  {
+    "name": "Pikanter Plunder",
+    "ingredients": "2 Blätterteig\n2 Dosen Thon\n200g Tomatensauce\n2 Dosen Sardellen\n200g Mozzarella\n",
+    "steps": "Thon zerkleinern, Sardellen schneiden, beides mit der Tomatensauce mischen.\nDie beiden Blätterteige in je 6 Quadrate schneiden. Füllung auf die Quadrate verteilen, Ecken einklappen und fest drücken. Darauf je eine Scheibe Mozzarella legen.\nIm 180°C heissen Ofen ca. 30 Min. backen.\n\nDazu passt ein Salat.\n",
+    "category": "easy",
+    "image": "images/recipe39.png",
+    "tags": [],
+    "id": 39
+  },
+  {
+    "name": "Würstchen im Teig",
+    "ingredients": "1 rechteckiger Pizzateig\n8 Schweinswürstchen oder Wienerli\n8 Scheiben Rohschinken oder Schinken\n80g Parmesan\n1 Eigelb\nSenf\n",
+    "steps": "Teig in 8 Rechtecke schneiden, je eine Scheibe Schinken und ein Würstchen darauf legen. Mit Senf und Parmesan bestreuen. Schinken aufrollen, dann Teig darum rollen.\nEigelb zerquirlen und Teig damit bestreichen. Im 200°c heissen Ofen 20 Min. backen.\n\nDazu passt ein Salat\n",
+    "category": "easy",
+    "image": "images/recipe40.png",
+    "tags": [],
+    "id": 40
+  },
+  {
+    "name": "Safranrisotto mit Steinpilzen",
+    "ingredients": "300g Risottoreis\n1l Bouillon\n1dl Weisswein\n1 Zwiebel\n30g getrocknete Steinpilze\n1 Beutelchen Safran\n80g Gorgonzola\n1dl Rahm\n",
+    "steps": "Zwiebel schneiden, in heissem Öl anbraten, Reis dazugeben und glasig dünsten. Mit dem Wein ablöschen bis er verdampft ist.\nDie Bouillon und Pilze dazugeben, köcheln bis fast alles Wasser aufgesaugt ist, dann den Safran daruntermischen. Danach den Käse zerkleinern und mit etwas Rahm dazugeben.\n",
+    "category": "easy",
+    "image": "images/recipe41.png",
+    "tags": [
+      "Vegetarisch",
+      "Reis"
+    ],
+    "id": 41
+  },
+  {
+    "name": "Risotto verde",
+    "ingredients": "1 kleiner Zucchino\n150g Blattspinat\n100g Rohschinken\n150g Ricotta\n300g Risottoreis\n1 Zwiebel\n1 Knoblauchzehen\n2dl Weisswein\n1l Bouillon\n5EL Parmesan\nSalz, Pfeffer\n",
+    "steps": "Zwiebel und Knoblauch schneiden, in heisser Butter andämpfen. Zucchino würfeln und kurz mitdämpfen. Reis beigeben, unter rühren dünsten bis er glasig ist. Wein dazugiessen und vollständig einkochen. Hitze reduzieren, Bouillon unter häufigem rühren nach und nach beigeben, ca. 20 Min. köcheln.\nSpinat grob hacken, Rohschinken in kurze Streifen schneiden, beides mit dem Ricotta unter den Reis mischen. Nur noch heiss werden lassen, Parmesan darunter rühren, würzen und servieren.\n\nDazu passt ein kleines Stück Fleisch mit Salat.\n",
+    "category": "easy",
+    "image": "images/recipe42.png",
+    "tags": [
+      "Reis"
+    ],
+    "id": 42
+  },
+  {
+    "name": "Bündner Gerstensuppe",
+    "ingredients": "100g Rollgerste\n500g Suppengemüse, zB. Lauch, Sellerie, Karotten, Zwiebeln\n400g Kochspeck\n400g Rollschinkli\n2 grosse Kartoffeln\n2 Eigelb\n2dl Rahm\n1 Bund Schnittlauch\nMehl, Butter, Salz, Pfeffer\n",
+    "steps": "Vorbereitung: Die Gerste am Vorabend in kaltem Wasser einweichen.\nDas Gemüse kleinschneiden und in heisser Butter Dünsten. Gerste mit einem Sieb abtropfen, mit 2EL Mehl bestäuben und unter Wenden kurz mitdünsten. Mit 1½l Wasser ablöschen, würzen. Speck und Schinkli beigeben und bei kleiner Hitze 1 Stunde kochen.\n30 Min. vor Ende der Kochzeit die Kartoffeln würfeln und in die Suppe geben.\nSpeck und Schinkli herausnehmen und in Tranchen schneiden. Suppe nochmals aufkochen. Eigelb und Rahm verquirlen, wenig Suppe dazugeben. Suppe von der Platte nehmen und Rahm darunterrühren.\nSuppe kräftig würzen, Schnittlauch schneiden und darüber geben, mit dem Fleisch anrichten.\n",
+    "category": "hard",
+    "image": "images/recipe43.png",
+    "tags": [],
+    "id": 43
+  },
+  {
+    "name": "Lumaconi mit Auberginenfüllung",
+    "ingredients": "1 grosse Dose Pelati\n1 Aubergine\n2 Knoblauchzehen\n250g grosse Schneckennudeln\n1 Dose Sardellenfilets\n250g Mozzarella\n4EL Parmesan\n1 Bund Majoran\nSalz, Pfeffer\n",
+    "steps": "Aubergine würfeln, in heissem Öl anbraten. Knoblauch fein hacken, mit Tomaten beigeben und ca. 20-30 Min. zu einer dickflüssigen Masse einkochen.\nNudeln in Salzwasser al dente kochen, kalt abschrecken.\nMajoran hacken, Sardellen klein schneiden, Mozzarella klein würfeln. Alles under die abgekühlte Tomatenmasse untermischen, würzen.\nForm mit Butter ausstreichen. Teigwaren mit Sauce füllen und in die Form geben. Parmesan darüber streuen und bei 180°C Umluft 25-30 Min. backen.\n",
+    "category": "hard",
+    "image": "images/recipe44.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 44
+  },
+  {
+    "name": "Poulet-Schmarrn",
+    "ingredients": "125g Mehl\n1TL Backpulver\n3 Eigelb\n3 Eiweiss\n3½dl Milch\n1 Bund Petersilie\n600g Pouletfleisch\n90g Rucola\nSalz, Pfeffer\n",
+    "steps": "Mehl, Backpulver, Eigelb, Milch, Petersilie, ½TL Salz in einen Messbecher geben, pürieren. Zugedeckt ca. 10 Min. ziehen lassen.\nPoulet klein schneiden, portionenweise in heisser Butter braten, würzen, warm stellen.\nEiweiss mit wenig Salz steif schlagen, vorsichtig unter den Teig ziehen.\n1EL Butter in der Pfanne erhitzen, Teig beigeben, bei mittlerer Hitze ca. 10 Min. rührbraten.\nFleisch darauf anrichten, mit Rucola garnieren, servieren.\n",
+    "category": "hard",
+    "image": "images/recipe45.png",
+    "tags": [],
+    "id": 45
+  },
+  {
+    "name": "Poulet an Basilikum-Zitronen-Sauce",
+    "ingredients": "4 Pouletbrüstchen\n1 Bio Zitrone\n1dl Weisswein\n2dl Rahm\n1 Bund Basilikum\n½ Bouillonwürfel\nButter, Salz, Pfeffer\n",
+    "steps": "In jedes Pouletbrüstchen eine tiefe Tasche schneiden und diese mit je vier Basilikumblättern auslegen. Beidseitig würzen und in heisser Butter anbraten, dann Hitze reduzieren und 5 Min. weiter braten.\nGelbe Schale der Zitrone dünn ablösen und in feine Streifen schneiden. Die Zitrone auspressen und Saft mit Wein mischen, zu den Poulets geben und das ganze 5 Min. weiter köcheln lassen. Dann das Fleisch herausnehmen und warmstellen.\nRestliches Basilikum hacken, Sauce auf grossem Feuer bis auf die Hälfte einkochen, Bouillonwürfel und Rahm hinzufügen. Noch etwas köcheln lassen, würzen, und Zitronenschale und Basilikum hinzugeben. Fleisch in die Sauce legen und servieren.\n\nDazu passen Nudeln oder Reis.\n",
+    "category": "easy",
+    "image": "images/recipe46.png",
+    "tags": [
+      "Fleisch",
+      "Pasta"
+    ],
+    "id": 46
+  },
+  {
+    "name": "One-Pot-Pasta",
+    "ingredients": "-- (Yikes)\n\n500g Auberginen\n400g Teigwaren, z.B. Penne\n500g Cherry-Tomaten\n300g Mozzarella\n1 Bund Basilikum\nSalz, Pfeffer\n",
+    "steps": "Auberginen würfeln, mit Teigwaren, Tomaten, 800ml Wasser, 1½TL Salz, wenig Pfeffer in einen Topf und aufkochen, dann 10 Min. zugedeckt unter gelegentlichem Rühren weiterköcheln lassen.\nMozzarella zerzupfen, Basilikum hacken und unter die Teigwaren rühren.\n",
+    "category": "easy",
+    "image": "images/recipe47.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 47
+  },
+  {
+    "name": "Knuspriges Schweins-Süss-Sauer",
+    "ingredients": "450g Schweinsfilet\n4EL Sojasauce\n60g Maisstärke\n60g Zucker\n1.2dl Essig\n2TL Sesamöl\n20g Ingwer\n3 Knoblauchzehen\n2 Peperoni, rot & gelb\n4 Frühlingszwiebeln\n½dl Rapsöl\n",
+    "steps": "Filets in Scheiben schneiden, grössere Stücke halbieren. 2EL Sojasauce mit 3EL Wasser und 30g Maisstärke verrühren. Fleisch mit Marinade mischen und kurz marinieren.\nInzwischen 2EL Sojasauce, Zucker, Essig und Sesamöl verrühren und beiseitestellen. Ingwer und Knoblauch fein hacken, Peperoni und Frühlingszwiebeln in Streifen schneiden. Fleisch aus der Marinade heben und in der restlichen 30g Maisstärke wenden.\nReichlich Rapsöl in einer Pfanne oder Wok heiss werden lassen, Fleisch portionenweise knusprig braten und beiseitestellen. In heissem Öl Knoblauch und Ingwer anbraten, Zucker-Essig-Mischung zugeben und ca. 3 Min. köcheln. Peperoni zugeben und rührbraten. Zwiebeln einrühren, mit Fleisch belegen und mit Koriander servieren.\n\nDazu passt Basmati Reis.\n",
+    "category": "hard",
+    "image": "images/recipe48.png",
+    "tags": [
+      "Asiatisch"
+    ],
+    "id": 48
+  },
+  {
+    "name": "Spargelquiche mit Rohschinken",
+    "ingredients": "1 runder Kuchenteig\n500g Spargeln, weiss oder grün\n3dl Rahm\n3 Eier\n3EL Sprinz\n100g Rohschinken\n¼ Bund Pfefferminze\nMuskat, Salz, Pfeffer\n",
+    "steps": "Form einbuttern, Teig hineinlegen, gut festdrücken und kühlstellen.\nSpargeln schälen, Enden abschneiden, in Salzwasser 2 Min. kochen, abtropfen.\nMinze hacken, mit Rahm, Eiern und Sprinz verquirlen. Mit Muskat, Salz und Pfeffer würzen.\nSpargeln auf dem Kuchenteig verteilen, mit Guss übergiessen. Quiche auf der untersten Rille im auf 200°C vorgeheizten Ofen 30 Min. backen, die ersten 10 Min. mit Unterhitze.\nHerausnehmen, etwas abkühlen lassen, mit Rohschinken anrichten.\n",
+    "category": "easy",
+    "image": "images/recipe49.png",
+    "tags": [],
+    "id": 49
+  },
+  {
+    "name": "Farfalle mit Sauce Hollandaise",
+    "ingredients": "400g Farfalle\n6 Tomaten\n200g Schinken\n200g Sauce Hollandaise\n1 Bund Peterli\nSalz, Pfeffer\n",
+    "steps": "Farfalle in Salzwasser al dente kochen.\nTomaten würfeln, Schinken in Flocken schneiden, Peterli hacken.\nAlles untereinander mischen, würzen, servieren.\n",
+    "category": "easy",
+    "image": "images/recipe50.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 50
+  },
+  {
+    "name": "Churer Fleischtorte",
+    "ingredients": "2 Blätterteig, rund\n500g Hackfleisch\n100g Speckwürfeli\n1 Salsiz\n1 Zwiebel\n½dl Rotwein\n1dl Bratensauce oder Kalbsfond\n200g Weissbrot\n3 Eier\n1dl Rahm\n3dl Milch\n4EL Paniermehl\n1 Bund Majoran\n1 Bund Peterli\nPaprika, Salz, Pfeffer\n",
+    "steps": "Weissbrot würfeln und für 15 Minuten in Milch einlegen, gut ausdrücken.\nSalsiz klein schneiden, Zwiebel, Majoran und Peterli hacken, 2 Eier verquirlen.\nHackfleisch, Speck, Salsiz, Zwiebel, Rotwein, Fond, Brot, Majoran, Peterli, Eier, Rahm zu einer nicht zu festen Masse mischen. Würzen.\nBlätterteig auf ein rundes Bachblech, mit 2EL Paniermehl bestreuen, Masse darauf verteilen. Restliches Paniermehl und etwas Butter darüber verteilen. Mit zweitem Blätterteig abdecken, Ränder festdrücken und das ganze mit Eigelb bestreichen.\nIm vorgeheizten Ofen bei 200°C ca 40-50 Minuten backen.\n\nDazu passt ein grüner Salat.\n",
+    "category": "hard",
+    "image": "images/recipe51.png",
+    "tags": [],
+    "id": 51
+  },
+  {
+    "name": "Pouletflügeli nach kantonesischer Art",
+    "ingredients": "32 Pouletflügeli\n1 Ingwerwurzel\n4 Knoblauchzehen\n2EL flüssiger Honig\n1EL Chinesisches 5-Gewürz\n2EL Sojasauce\n1EL Worcester Sauce\n1EL Maisstärke\nSalz, Pfeffer\n",
+    "steps": "Ingwerwurzel schälen und fein raffeln. Knoblauch schälen und pressen, Pouletflügeli waschen und trockentupfen.\nIngwer, Knoblauch, Honig, 5-Gewürz, Maisstärke, Soja- und Worcester Sauce miteinander vermischen und in einer Bratpfanne aufkochen. Von der Herdplatte nehmen, würzen. Pouletflügeli in die heisse marinade geben, gut mischen und wenden.\nEin Gitter auf ein Stück Alufolie stellen, die Pouletflügeli darauflegen und erkalten lassen.\nIm vorgeheizten Ofen bei 220°C 10 Minuten backen. Dabei den Backvorgang sorgfältig überwachen, sobald sie braun und knusprig sind aus dem Ofen nehmen.\n\nDazu passt Basmati Reis und Bohnen nach chinesischer Art.\n",
+    "category": "hard",
+    "image": "images/recipe52.png",
+    "tags": [
+      "Asiatisch"
+    ],
+    "id": 52
+  },
+  {
+    "name": "Spaghetti Carbonara",
+    "ingredients": "500g Spaghetti\n2dl Halbrahm\n2 Eier\n150g Parmesan\n200g Schinken\nPfeffer\n",
+    "steps": "Spaghetti in Salzwasser al dente kochen.\nEier trennen, Eigelb mit Rahm zerquirlen. Reibkäse dazugeben, würzen. Schinken klein schneiden und dazugeben. Aufkochen, servieren.\n",
+    "category": "easy",
+    "image": "images/recipe53.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 53
+  },
+  {
+    "name": "Lamm-Pilaff",
+    "ingredients": "550g Reis\n500g Lammfleisch\n1 Zwiebel\n2 Tomaten\n4EL Mandelsplitter\n2 Bananen\n1.5l Bouillon\n½TL Nelkenpulver\n½TL Ingwerpulver\n½TL Zimt\n2EL Sultaninen\n2EL Curry\n",
+    "steps": "Zwiebel hacken und in heisser Butter anbraten, Fleisch in kleine Würfel schneiden, mit Curry dazugeben. Einige Minuten dünsten, Nelkenpulver, Ingwerpulver, Zimt, Sultaninen und Reis dazugeben. Mit Bouillon aufgiessen, ca. 20 Minuten kochen.\nTomaten würfeln und nach halber Kochzeit zugeben.\nMandelsplitter in Butter goldbraun rösten. Bananen längs halbieren und beidseitig in Butter braten. Bananen und Mandeln über dem Reis anrichten.\n",
+    "category": "easy",
+    "image": "images/recipe54.png",
+    "tags": [
+      "Asiatisch"
+    ],
+    "id": 54
+  },
+  {
+    "name": "Fried Rice",
+    "ingredients": "200g Reis\n2 Eier\n2EL Öl\n3EL Sojasauce\nDiverse Gemüse\nDiverse Fisch- oder Fleischreste\nPfeffer\n",
+    "steps": "Reis in Salzwasser gar kochen.\nGemüse und Fleisch/Fisch in kleine Stücke schneiden, in heissem Öl anbraten. Eier zerquirlen, neben dem Rest zu Rührei braten, alles vermischen.\nReis dazugeben und einige Minuten leicht anbraten, mit Sojasauce abschmecken, würzen.\n",
+    "category": "easy",
+    "image": "images/recipe55.png",
+    "tags": [
+      "Asiatisch",
+      "Reis"
+    ],
+    "id": 55
+  },
+  {
+    "name": "Überbackene Tortellini",
+    "ingredients": "500g Tortellini\n500g Zucchini\n2 Zwiebeln\n3 Tomaten\n200g Gorgonzola\n1 Bund Basilikum\nSalz, Pfeffer\n",
+    "steps": "Tortellini in Salzwasser al dente kochen.\nZwiebeln in Ringe, Zucchini in Scheiben, Tomaten in Achtel schneiden. Zwiebeln in heisser Butter anbraten, Zucchini dazugeben und 5 Minuten mitdünsten, dann Tomaten kurz andünsten, würzen.\nFeuerfeste form mit Butter ausstreichen, Tortellini und Gemüse beigeben und mischen. Käse in Würfel schneiden und darüber streuen.\nIm vorgeheizten Ofen bei 200°C ca. 10 Minuten garen, bis der Käse geschmolzen ist.\nBasilikum zerkleinern, darüber geben und servieren.\n",
+    "category": "easy",
+    "image": "images/recipe56.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 56
+  },
+  {
+    "name": "Hörndliuflauf mit Ghacktem",
+    "ingredients": "500g Hackfleisch\n300g Hörndli\n1 Zwiebel\n4dl Sauce Béchamel\n100g Parmesan\n",
+    "steps": "Hörndli in Salzwasser al dente kochen.\nZwiebel hacken, in Butter anbraten, Hackfleisch dazugeben und braten.\nSauce Béchamel anmischen.\nFeuerfeste Form mit Butter ausstreichen, Hörnldi und Hackfleisch einfüllen und mischen. Sauce Béchamel und Parmesan darüberstreuen, 10 Minuten im Ofen bei 200°C backen bis der Käse geschmolzen ist.\n",
+    "category": "easy",
+    "image": "images/recipe57.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 57
+  },
+  {
+    "name": "Spinat & co.",
+    "ingredients": "Rahmspinat\n2 Fleischkäse\n4 Eier\nNudeln\n",
+    "steps": "Rahmspinat aufwärmen, Nudeln in Salzwasser al dente kochen.\nSpiegeleier zubereiten und Fleischkäse anbraten.\n",
+    "category": "easy",
+    "image": "images/recipe58.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 58
+  },
+  {
+    "name": "Nudelauflauf mit Aubergine",
+    "ingredients": "1 Aubergine\n1 Bund Basilikum\n500g Pelati\n200g Bratspeck\n3EL Parmesan\nMakkaroni Nudeln\nZitronensaft, Salz, Pfeffer\n",
+    "steps": "Aubergine in Scheiben schneiden, mit Salz und Zitronensaft beträufeln, beiseite stellen.\nNudeln in Salzwasser al dente kochen.\nBasilikum in streifen schneiden, Pelati grob zerkleinern, mischen, mit Salz und Pfeffer würzen.\nAbwechslungsweise Bratspeck und Auberginen in heissem Öl anbraten.\nEine feuerfeste Form ausbuttern, die Hälfte der Nudeln einfüllen, mit etwas Käse bestreuen, ⅔ der Tomatenmasse darauf verteilen. Auberginen darauf geben, mit restlichen Nudeln abdecken. Rest der Tomaten, Bratspeck und Käse   darüber geben.\nIm auf 200°C vorgeheizten Ofen 20-30 Minuten backen.\n",
+    "category": "hard",
+    "image": "images/recipe59.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 59
+  },
+  {
+    "name": "Poulet Marengo",
+    "ingredients": "1.2kg Poulet\n1 Dose Eierschwämmli\n400g Pelati\n6-8 kleine Zwiebeln\n1dl Bouillon\n1 Bund Petersilie\n1TL Zucker\nSalz, Pfeffer\n",
+    "steps": "Poulet in 8 Stücke teilen, mit Salz und Pfeffer einreiben und in heisser Butter anbraten. Pilzsaft und Bouillon zufügen, 25 Minuten kochen lassen.\nZwiebeln schälen und ganz mit den Pilzen in heisser Butter anbraten, Pelati etwas zerkleinern und zugeben, Zucker und Würze beigeben, 10 Minuten köcheln.\nTomatenmasse über das Poulet geben, etwas weiterköcheln. Petersilie hacken und darüberstreuen, anrichten.\n\nDazu passt Reis.\n",
+    "category": "hard",
+    "image": "images/recipe60.png",
+    "tags": [
+      "Asiatisch"
+    ],
+    "id": 60
+  },
+  {
+    "name": "Kalbsleber mit Apfelscheiben und Speck",
+    "ingredients": "550g Kalbslebertranchen\n2 Äpfel\n½ Zitrone\n2EL Butter\n1 Bund Thymian\n200g Bratspeck\n",
+    "steps": "Äpfel schälen, Gehäuse ausstechen und in Ringe schneiden, in Zitronenwasser legen. In heisser Butter anbraten und mit abgezupften Thymianblättern bestreuen.\nLeber mit Pfeffer würzen und in heisser Butter anbraten, beidseitig salzen und warm stellen.\nSpeck anbraten und mit Lebern und Äpfeln anrichten.\n\nDazu passen Spätzli oder Kartoffelgratin.\n",
+    "category": "hard",
+    "image": "images/recipe61.png",
+    "tags": [
+      "Fleisch"
+    ],
+    "id": 61
+  },
+  {
+    "name": "Auberginen Auflauf",
+    "ingredients": "1 Aubergine\n400g Hackfleisch\n2 Zwiebeln\n1 Knoblauchzehe\n4 Tomaten\n500g Kartoffeln\n1.25dl Milch\n4EL Maizena\n1 Joghurt Nature\n1 Crème fraîche\n2 Eier\nZitronensaft, Rosmarin, Thymian, Paprika, Salbei, Muskat, Salz, Pfeffer\n",
+    "steps": "Vorbereitung: Kartoffeln gar kochen, abkühlen.\nAubergine in Scheiben schneiden, mit Salz und Zitronensaft beträufeln. In heissem Öl anbraten, beiseite stellen.\nZwiebeln und Knoblauch hacken, mit Hackfleisch anbraten, mit Rosmarin, Thymian, Paprika, Salbei, Salz, Pfeffer abschmecken.\nKartoffeln und Tomaten in Scheiben schneiden.\nFeuerfeste Form ausbuttern, Kartoffeln, Hackfleisch und Gemüse einschichten.\nMilch aufkochen, mit Maizena binden, Joghurt, Crème fraîche, Eier, Muskat und Salz einrühren, über den Auflauf geben. Im auf 200°C vorgeheizten Ofen 45 Minuten backen.\n",
+    "category": "hard",
+    "image": "images/recipe62.png",
+    "tags": [],
+    "id": 62
+  },
+  {
+    "name": "Bulgursalat mit Aubergine",
+    "ingredients": "200g Bulgur\n1 Aubergine\n3 Peperoni, gelb, rot, grün\n2 Lauchzwiebeln\n200g Feta\n4dl Bouillon\n1 Bund Minze\nZitronensaft\n",
+    "steps": "Bulgur in der Bouillon aufkochen und 20 Minuten leicht köcheln lassen.\nAuberginen in Halbmonde schneiden, mit Salz und Zitronensaft beträufeln.\nPeperoni in grobe Stücke schneiden, in heissem Öl unter wenden anbraten. Auberginen anbraten, abkühlen lassen.\nLauchzwiebeln in Ringe schneiden, Käse zerbröckeln, beides mit abgekühltem Bulgur vermischen, mit Gemüse und Minze anrichten.\n",
+    "category": "easy",
+    "image": "images/recipe63.png",
+    "tags": [
+      "Vegetarisch"
+    ],
+    "id": 63
+  },
+  {
+    "name": "Kartoffel Cervelat Auflauf",
+    "ingredients": "3 grosse Kartoffeln\n2 Tomaten\n1 Cervelat\n2 Eier\n2dl Rahm\n1 Käsemischung, geraffelt\nAromat, Pfeffer\n",
+    "steps": "Kartoffeln schälen und in dünne Scheiben raffeln, mit Aromat würzen. Tomaten und Cervelats in Scheiben schneiden.\nFeuerfeste Form ausbuttern, die Hälfte der Kartoffeln einfüllen, Tomaten und Cervelats beifügen und Rest der Kartoffeln darüber geben.\nBei 200°C für 40 Minuten zugedeckt backen (oder 20 Minuten steamen).\n2 Eier zerquirlen, mit Rahm und Käse mischen, über den Auflauf geben und ohne Deckel 20 Minuten weiterbacken.\n",
+    "category": "easy",
+    "image": "images/recipe64.png",
+    "tags": [],
+    "id": 64
+  },
+  {
+    "name": "Farbige Lasagne",
+    "ingredients": "12 weisse Lasagneblätter\n500g gekochte Randen\n500g Kürbis oder Rüben\n300g gefrorener Blattspinat\n8dl Milch\n4EL Mehl\n6EL Parmesan\nMuskat, Salz, Pfeffer\n",
+    "steps": "Vorbereitung: Blattspinat auftauen.\nBéchamelsauce anrühren (4EL Butter erhitzen, 4EL Mehl unter Rühren beigeben und bei mittlerer Hitze dünsten. Von der Platte nehmen, 8dl Milch einrühren und aufkochen, mit Muskat, Salz, Pfeffer würzen, 5 Minuten weiterköcheln.)\nHälfte der Randen und allen Kürbis in Scheiben schneiden.\nFeuerfeste Form ausbuttern, wenig Béchamelsauce darin verteilen, 3 Lasagneblätter und Randen einschichten. Restliche Randen mit 2dl Béchamelsauce pürieren und darüber geben, mit 2EL Parmesan bestreuen.\n3 Lasagneblätter, Béchamelsauce, Kürbis, 2EL Parmesan, 3 Lasagneblätter einschichten.\nSpinat mit 2dl Béchamelsauce und 2EL Öl vermischen, salzen, zur Lasagne geben.\n3 Lasagneblätter, restliche Béchamelsauce und Parmesan einschichten, im auf 200°C vorgeheizten Ofen 45 Minuten backen.\n",
+    "category": "hard",
+    "image": "images/recipe65.png",
+    "tags": [
+      "Vegetarisch",
+      "Pasta"
+    ],
+    "id": 65
+  },
+  {
+    "name": "Spaghetti mit Thon-Sauce",
+    "ingredients": "Spaghetti\n150g Thon\n1 Dose Sardellenfilets\n3EL Weisswein\n1dl Bouillon\n200g saurer Halbrahm\n2EL Kapern\n1TL Maizena\nZitronensaft, Pfeffer\n",
+    "steps": "Spaghetti in Salzwasser al dente kochen.\nHälfte des Thons mit einer Gabel zerpflücken. Den Rest mit Sardellen, Wein und Bouillon pürieren, in eine Pfanne geben. Maizena mit saurem Halbrahm verrühren, zugeben, unter Rühren aufkochen, mit Pfeffer und Zitronensaft abschmecken.\nRest des Thons und Kapern beigeben, nur warm werden lassen.\n",
+    "category": "easy",
+    "image": "images/recipe66.png",
+    "tags": [
+      "Pasta"
+    ],
+    "id": 66
+  },
+  {
+    "name": "Flammechueche",
+    "ingredients": "1 Pizzateig\n150g Schinken oder Speckwürfeli\n4 Zwiebeln\n200g Crème fraîche\nSalz, Pfeffer\n",
+    "steps": "Zwiebeln in Halbringe schneiden, Schinken würfeln, mit Crème fraîche in einer Schüssel mischen, würzen.\nPizzateig auf einem Blech auslegen, mit Gabel einstechen. Masse darauf verteilen. Im auf 230°C vorgeheizten Ofen 25 Minuten backen.\n\nDazu passt ein Salat.\n",
+    "category": "easy",
+    "image": "images/recipe67.png",
+    "tags": [],
+    "id": 67
+  },
+  {
+    "name": "Polentagratin",
+    "ingredients": "1.2l Bouillon\n250g Polenta\n1 Glas grillierte Peperoni in Öl\n160g schwarze Oliven, entsteint\n200g Chorizo\n200g Taleggio\n",
+    "steps": "Bouillon aufkochen, Polenta einrühren. Unter Rühren bei kleiner Hitze 4 Minuten zu einem dicken Brei köcheln, in eine ausgebutterte Form geben.\nChorizo in Scheiben, Käse in Stücke schneiden, Oliven und Peperoni abtropfen, alles auf der Polenta verteilen.\nIm auf 240°C vorgeheizten Ofen 10 Minuten backen.\n\nDazu passt Salat.\n",
+    "category": "easy",
+    "image": "images/recipe68.png",
+    "tags": [],
+    "id": 68
+  },
+  {
+    "name": "Dorschfilets mit Ananas",
+    "ingredients": "800g Dorschfilets\n1 kleine Dose Ananas\n2dl Sauce Hollandaise\n50g Mandelsplitter\nZitronensaft, Salz, Pfeffer\n",
+    "steps": "Filets zerkleinern, mit Zitronensaft, Salz und Pfeffer marinieren. Ananas in Stücke schneiden.\nFeuerfeste Form ausbuttern, Sauce Hollandaise, Fisch und Ananas in die Form geben, Mandelsplitter darüber streuen. Im auf 200°C vorgeheizten Ofen 20 Minuten backen.\n\nDazu passt Reis und ein Gemüse.\n",
+    "category": "easy",
+    "image": "images/recipe69.png",
+    "tags": [
+      "Reis"
+    ],
+    "id": 69
+  },
+  {
+    "name": "Thonkugeln",
+    "ingredients": "100g Toastbrot\n400g Thon\n2 Eier\n1 Zwiebel\n1 Knoblauchzehe\n1 Dose Sardellenfilets\n2dl Vollrahm\n1dl Bouillon\n1 Bund Petersilie\nSalz, Pfeffer\n",
+    "steps": "Toastbrot in Wasser einweichen, ausdrücken und zerzupfen. 2 Eier zerquirlen, Zwiebel hacken und Knoblauch pressen. Sardellenfilets klein schneiden. Alles mit Salz und Pfeffer mischen und von Hand kneten bis sich eine kompakte Masse bildet.\nMit nassen Händen 15 Kugeln formen und in eine gebutterte feuerfeste Form geben. Bei 220°C 20 Minuten backen.\nPetersilie hacken, mit Pfeffer, Bouillon und Rahm mischen, über die Kugeln giessen. Zugedeckt bei 180°C weitere 15 Minuten backen.\n\nDazu passt Polenta.\n",
+    "category": "hard",
+    "image": "images/recipe70.png",
+    "tags": [],
+    "id": 70
+  },
+  {
+    "name": "Dorschfilet Provençale",
+    "ingredients": "700g Dorschfilets\n1kg festkochende Kartoffeln\n3 Tomaten\n100g schwarze Oliven, entsteint\n2 Knoblauchzehen\n8EL Paniermehl\n4EL Parmesan\n1 Bund Petersilie\n1 Bund Basilikum\nZitronensaft, Salz, Pfeffer\n",
+    "steps": "Kartoffeln in Scheiben schneiden, mit 1EL Olivenöl und Salz marinieren, auf einem Blech verteilen. Im auf 220°C vorgeheizten Ofen 20 Minuten backen.\nPetersilie und Basilikum hacken, Knoblauch pressen, mit Paniermehl, Parmesan, 1EL Zitronensaft, 4EL Olivenöl mischen. Mit Salz und Pfeffer abschmecken.\nKartoffeln an den Rand des Blechs schieben, die Fischfilets in die Mitte legen, die Provençale Mischung darauf verteilen. Tomaten in Würfel schneiden, mit Oliven über die Kartoffeln verteilen. Bei 180°C für 15 Minuten fertig backen.\n",
+    "category": "easy",
+    "image": "images/recipe71.png",
+    "tags": [
+      "Fisch"
+    ],
+    "id": 71
+  },
+  {
+    "name": "Lauch Schinken Rollen",
+    "ingredients": "500g Lauch\n200g Schinken\n3dl Béchamelsauce\n1kg mehligkochende Kartoffeln\n1 Bund Peterli\n3EL Parmesan\n",
+    "steps": "Kartoffeln in Salzwasser weich garen, Peterli hacken und darüber streuen.\nLauch putzen, waschen und in Stücke schneiden, 10 Minuten in Salzwasser kochen, herausnehmen und abschrecken.\nBéchamelsauce anrühren (1.5EL Butter erhitzen, 1.5EL Mehl unter Rühren beigeben und bei mittlerer Hitze dünsten. Von der Platte nehmen, 3dl Milch einrühren und aufkochen, mit Muskat, Salz, Pfeffer würzen, 5 Minuten weiterköcheln.)\nJe eine Scheibe Schinken um ein Lauch wickeln, in eine ausgebutterte feuerfeste Form geben. Béchamelsauce darüber giessen, mit Parmesan bestreuen. Im auf 220°C vorgeheizten Ofen 10 Minuten backen.\n",
+    "category": "easy",
+    "image": "images/recipe72.png",
+    "tags": [],
+    "id": 72
+  },
+  {
+    "name": "Cholera - Walliser Lauchkuchen",
+    "ingredients": "2 Kuchenteig, rund\n300g Lauch\n250g Kartoffeln\n150g Raclettekäse\n60g Speckwürfeli\n2 Äpfel\n1 grosse Zwiebel\n1 Eigelb\nMuskat, Salz, Pfeffer\n",
+    "steps": "Vorbereitung: Kartoffeln schälen, garen und abkühlen lassen.\nZwiebel hacken, Lauch in Ringe schneiden, Kartoffeln würfeln, Äpfel schälen, entkernen und würfeln.\nSpeck kurz anbraten, Zwiebeln und Lauch dazugeben und dünsten. Kartoffeln und Äpfel dazugeben, würzen. Käse grob raspeln und dazu mischen.\nTeig in eine runde Form legen, Füllung darauf verteilen, mit dem andern Teig abdecken. Ränder gut verschliessen, Deckel mit einer Gabel einstechen und mit Eigelb bestreichen.\nIm auf 200°C vorgeheizten Ofen für 45 Minuten backen.\n",
+    "category": "hard",
+    "image": "images/recipe73.png",
+    "tags": [],
+    "id": 73
+  },
+  {
+    "name": "Kung-Pao-Poulet",
+    "ingredients": "600g Pouletbrust\n3 Knoblauchzehen\n2 Pepperoni, rot & gelb\n4 Frühlingszwiebeln\n20g Ingwer\n50g Cashewkerne\n6EL Bouillon\n5EL Sojasauce\n1EL Aceto Balsamico\n1TL Zucker\n2TL Maisstärke\n2TL Sesamöl\n",
+    "steps": "Cashewkerne in einer Bratpfanne ohne Fett rösten, abkühlen lassen, grob hacken.\nPouletbrust in Streifen schneiden, Knoblauch und Ingwer fein hacken. Peperoni in Streifen, Frühlingszwiebeln in Ringe schneiden.\n2EL Öl in einer Bratpfanne oder Wok erhitzen, Pouletstreifen rundum heiss anbraten. Knoblauch, Ingwer 1 Minute mitbraten, Peperoni dazugeben.\n6EL Bouillon, 5EL Sojasauce, 1EL Aceto Balsamico, 1TL Zucker und 2TL Stärke mischen, zum Fleisch geben und kurz aufkochen. Cashewkerne, 2TL Sesamöl und Frühlingszwiebeln unterrühren, anrichten.\n\nDazu passt Basmati Reis.\n",
+    "category": "easy",
+    "image": "images/recipe74.png",
+    "tags": [
+      "Asiatisch"
+    ],
+    "id": 74
+  },
+  {
+    "name": "Auberginen mit Feta und Zimt",
+    "ingredients": "2 grosse Auberginen\n800g reife Tomaten\n5 Schalotten\n3 Knoblauchzehen\n100g Rosinen\n300g Feta\n100g Parmesan\n1TL Zucker\n2 Lorbeerblätter\n2 Zimtstangen\n½TL Koriandersamen, gemahlen\nSalz, Pfeffer\n",
+    "steps": "Schalotten hacken, Knoblauch pressen, in 3EL Öl anbraten, Tomaten würfeln und dazugeben. Mit Zucker, Lorbeer, Zimt und Koriandersamen würzen und 25 Minuten leicht köcheln lassen. Mit Salz und Pfeffer abschmecken, Rosinen dazugeben und weitere 5 Minuten köcheln, dann Zimt und Lorbeer entfernen.\nAuberginen längs in Scheiben schneiden, salzen und in 4EL Öl beidseitig anbraten.\nDie Auberginenscheiben auslegen und je 1EL Tomatensauce darauf verteilen. Feta darüber bröseln, dann Scheiben aufrollen.\nFeuerfeste form mit restlicher Tomatensauce bestreichen, und die Rollen daraufsetzen. Mit Parmesan bestreuen. Im auf 180°C vorgeheizten Ofen bei Umluft 30 Minuten backen.\n",
+    "category": "hard",
+    "image": "images/recipe75.png",
+    "tags": [
+      "Asiatisch",
+      "Vegetarisch"
+    ],
+    "id": 75
+  },
+  {
+    "name": "Avocado Salat mit Shrimps",
+    "ingredients": "2 Avocados\n2 Tomaten\n1 Schalotte\n1 Knoblauchzehe\n200g gekochte Shrimps oder Riesenshrimps\nSaft einer halben Zitrone\nSalz, Pfeffer\n",
+    "steps": "Knoblauch pressen, in wenig Öl anbraten, Shrimps dazu geben und anbraten, dann beiseite stellen.\nTomaten würfeln, Schalotte hacken, Avocados längs in Streifen schneiden. Tomaten und Schalotte in einer Schüssel mischen, Zitronensaft beigeben, Shrimps untermischen, würzen.\nAvocado anrichten, mit wenig Zitronensaft beträufeln, Tomaten hinzufügen, servieren.\n",
+    "category": "starter",
+    "image": "images/recipe76.png",
+    "tags": [],
+    "id": 76
+  },
+  {
+    "name": "Quitten-Orangen-Moscato mit Feta",
+    "ingredients": "340g Feta\n2EL Honig\n4EL Sirup, z.B. Orangen-Quitten\n6dl Moscato, gekühlt\n1 Bund Pfefferminze\n1 Bund glattblättrige Petersilie\nPfeffer oder Blumenpfeffer\n",
+    "steps": "Pfefferminze und Petersilie grob hacken, Feta in Würfel schneiden, mit Pfeffer würzen und mit den Kräutern mischen. In einer Schüssel anrichten, Honig darüber träufeln.\nSirup mit Moscato servieren.\n",
+    "category": "starter",
+    "image": "images/recipe77.png",
+    "tags": [],
+    "id": 77
+  },
+  {
+    "name": "Lachsgipfeli",
+    "ingredients": "1 Blätterteig, rechteckig\n200g Lachsabschnitte\n100g Parmesan\n200g Saurer Halbrahm\n1 Zwiebel\n1 Eigelb\n",
+    "steps": "Teig halbieren und der länge nach kleine Dreiecke schneiden\nLachsabschnitte und Zwiebel hacken, mit Parmesan und Halbrahm mischen, würzen.\nMasse auf teig geben und einrollen. Gipfeli mit Eigelb bestreichen und im auf 220°C vorgeheizten Ofen 10-15 Minuten backen.\n",
+    "category": "starter",
+    "image": "images/recipe78.png",
+    "tags": [],
+    "id": 78
+  },
+  {
+    "name": "Apfel Kuchen",
+    "ingredients": "200g Butter\n225g Zucker\n4 Eier\n200g Mehl\n500g säuerliche Äpfel\n1 unbehandelte Zitrone\n1 Zimtstange\n2EL Paniermehl\nPuderzucker\n",
+    "steps": "Zitronenschale abreiben (ca. 2EL) und Zitrone auspressen. Hälfte der Schale mit dem Saft, 75g Zucker und Zimtstange in 2dl Wasser aufkochen, vom herd nehmen.\nÄpfel schälen, in Spalten schneiden und in den Zitronensud geben. Aufkochen und 5 Minuten weiter köcheln, dann abkühlen lassen.\nButter und 150g Zucker schaumig rühren. Eier, Rest der Zitronenschale und zuletzt das Mehl unterrühren.\nEine runde Form ausbuttern, mit Paniermehl bestreuen. Hälfte des Teigs in die Form geben und glattstreichen, dann Äpfel abtropfen und auf dem Teig verteilen, mit restlichem Teig abdecken.\nIm auf 180°C vorgeheizten Ofen 40 Minuten backen. Auskühlen lassen, mit Puderzucker bestreuen.\n",
+    "category": "dessert",
+    "image": "images/recipe79.png",
+    "tags": [],
+    "id": 79
+  },
+  {
+    "name": "Schoko Bomb Cake",
+    "ingredients": "200g schwarze Schokolade\n200g Butter\n200g Zucker\n4 Eier\nSalz\n",
+    "steps": "Die Schokolade in heissem Wasserbad schmelzen, Butter unterrühren bis eine Masse entsteht.\nEier trennen, Eigelb mit der Hälfte des Zuckers zu einer hellen Creme schlagen, die Schokoladenmasse darunterziehen.\nEiweiss mit einer Prise Salz schaumig schlagen, dann nach und nach restlichen Zucker untermischen.\nBeide Massen vorsichtig zusammenrühren, Teig in eine ausgebutterte runde Form geben.\nIm auf 180°C vorgeheizten Ofen 40 Minuten backen, evtl. nach 15 Minuten mit einer Alufolie zudecken. Auskühlen lassen, mit Puderzucker bestreuen.\n",
+    "category": "dessert",
+    "image": "images/recipe80.png",
+    "tags": [],
+    "id": 80
+  },
+  {
+    "name": "Sushi",
+    "ingredients": "-- Reis\n500g Risotto Reis\n7dl Wasser\n1½dl Essig\n4EL Zucker\n⅓TL Salz\n\n-- Sushi\nNori Blätter\n2 Dosen Thon\nMayonnaise\n1 Bund Schnittlauch\nfrischer Thunfisch\nfrischer Lachs\nRauchlachs\nRüebli\nSalatgurken\nAvocado\nZucchini\njapanischer Ingwer\nSojasauce, Wasabi\n",
+    "steps": "Reis mit Wasser in eine Pfanne geben, offen aufkochen, Hitze reduzieren, köcheln bis das Wasser soweit verdampft ist, dass sich kleine Krater bilden.\nZudecken, 10 Minuten bei kleinster Hitze dämpfen (Induktion Stufe 2). Auf ausgeschalteter Platte (Induktion Stufe 1) weitere 10 Minuten ziehen lassen. Wichtig: Deckel nie abheben.\nEssig, Zucker und Salz in einem Pfännchen leicht erwärmen, bis sich der Zucker aufgelöst hat. Reis in eine weite Schüssel geben, mit der warmen Flüssigkeit sorgfältig 1 Minute mischen, dabei mit einem Fächer oder Karton Luft zufächeln, damit möglichst viel Flüssigkeit verdampft.\nFür Alltagssushi Nori Blätter vierteln. Dosen Thon mit Mayo und gehacktem Schnittlauch mischen. Restliche Zutaten in lange Streifen schneiden.\n",
+    "category": "hard",
+    "image": "images/recipe81.png",
+    "tags": [
+      "Asiatisch"
+    ],
+    "id": 81
+  },
+  {
+    "name": "Glasnudeln mit Poulet",
+    "ingredients": "200g Glasnudeln\n25g getrocknete Shiitakepilze\n400g Pouletbrust\n2 Frühlingszwiebeln\n2 Karotten\n300g Chinakohl\n2EL Sesamsamen\n2 Knoblauchzehen\n15g Ingwer\n½dl Geflügelfond\n3EL Sojasauce\n\n-- Marinade\n2EL Sojasauce\n1EL Sesamöl\n1TL Maisstärke\n",
+    "steps": "Vorbereitung: Nudeln und Shiitakepilze separat 30 Minuten in Wasser einweichen. Für die Marinade alle Zutaten mischen. Pouletbrust in Streifen schneiden, mit der Marinade mischen und 30 Minuten in den Kühlschrank stellen.\nSesamsamen in einer Bratpfanne ohne Fett rösten, abkühlen lassen.\nFrühlingszwiebeln in Ringe, Karotten und Chinakohl in Streifen schneiden, Knoblauch und Ingwer fein hacken. Pilze abgiessen, Stielansatz entfernen und in Streifen schneiden.\nNudeln abgiessen, in kochendem Wasser 4 Minuten kochen, kalt abspülen und mit einer Schere 3-4 Mal durchschneiden.\n2EL Öl in einer Bratpfanne oder Wok erhitzen, Pouletstreifen rundum heiss anbraten. Knoblauch, Ingwer 1 Minute mitbraten, Pilze, Karotten und Chinakohl dazugeben. Mit Fond und Sojasauce ablöschen, Nudeln und Frühlingszwiebeln untermischen und aufkochen. Mit Sesam anrichten.\n",
+    "category": "easy",
+    "tags": [
+      "Asiatisch"
+    ],
+    "image": "images/recipe82.png",
+    "id": 82
+  },
+  {
+    "name": "Entenbrust mit Gemüse",
+    "ingredients": "2 Entenbrüstchen, je 350g\n4EL Honig\n3EL Hoisinsauce\n1EL Rotwein\nSalz, Pfeffer, Nelkenpulver, Ingwerpulver, Zucker\n\n-- Gemüse\n1 Knoblauchzehe\n3 Frühlingszwiebeln\n250g Kefen\n25g getrocknete Shiitakepilze\n2 Karotten\n200g Mungosprossen\n2EL Austernsauce\n2EL Sojasauce\n1EL Sesamöl\nSalz\n",
+    "steps": "Vorbereitung: Shiitakepilze 20 Minuten in Wasser einweichen.\nBackofen auf 180°C vorheizen. Salz, Pfeffer, Nelkenpulver, Ingwerpulver und  Zucker zu ½TL mischen und auf die Fleischseite der Ente streuen. Mit Fleischseite nach unten in eine Gratinform legen und Hautseite salzen. 10 Minuten backen.\nKnoblauch hacken, Frühlingszwiebeln in Ringe schneiden (grüner Teil erst kurz vor Ende beigeben). Pilze abgiessen, Stielansatz entfernen und in Streifen schneiden. Karotten in Streifen schneiden und Hefen halbieren. Mungosprossen waschen.\n2EL Austernsauce, 2EL Sojasauce, 1EL Sesamöl und ½TL Salz mischen und beiseite stellen.\nFleisch mit 4EL Honig beträufeln und weitere 10 Minuten im Ofen braten. 3EL Hoisinsauce, 1EL Wasser und 1EL Rotwein mischen, über das Fleisch giessen und nochmals 10 Minuten bei Umluft backen.\n3EL Öl in einer Bratpfanne oder Wok erhitzen, Knoblauch und Frühlingszwiebeln heiss anbraten, salzen. Kefen, Pilze, Karotten und Mungosprossen dazugeben und 2 Minuten mitbraten.\nEntenbrust in Tranchen schneiden und mit der Backflüssigkeit übergiessen, anrichten.\n\nDazu passt Basmati Reis.\n",
+    "category": "hard",
+    "tags": [
+      "Asiatisch"
+    ],
+    "image": "images/recipe83.png",
+    "id": 83
+  },
+  {
+    "name": "Chinesisches Poulet mit Zitrone",
+    "ingredients": "30g getrocknete Shiitakepilze\n400g Pouletbrust\n15g Ingwer\n1 rote Peperoni\n5 Frühlingszwiebeln\nSchale von 2 Zitronen\n4EL trockener Sherry\n1½EL Zucker\n2EL Sojasauce\n1TL Maisstärke\nSalz, Pfeffer, Zitronensaft\n",
+    "steps": "Vorbereitung: Shiitakepilze 30 Minuten in Wasser einweichen.\nPouletbrust in Streifen schneiden. Peperoni in Streifen, Frühlingszwiebeln in Ringe schneiden, Ingwer fein hacken. Pilze abgiessen, Stielansatz entfernen und in Streifen schneiden. Zitronenschale in feine Streifen schneiden.\n3EL Öl in einer Bratpfanne oder Wok erhitzen, Pouletstreifen rundum heiss anbraten, mit Salz und Pfeffer würzen, dann aus der Pfanne nehmen und warmstellen.\n1EL Butter erhitzen und Pilze, Peperoni und Ingwer 1 Minute unter rühren braten. Zitronenschale und Frühlingszwiebeln dazugeben und ½ Minute weiterbraten, dann mit 4EL Sherry, 1½EL Zucker und 2EL Sojasauce ablöschen. 1TL Maisstärke mit ½dl Wasser mischen und mit dem Fleisch zugeben, aufkochen.\nMit 1-2TL Zitronensaft abschmecken und servieren.\n\nDazu passt Basmati Reis und [grüne Bohnen](r/85).\n",
+    "category": "hard",
+    "tags": [
+      "Asiatisch"
+    ],
+    "image": "images/recipe84.png",
+    "id": 84
+  },
+  {
+    "name": "Bohnen mit Frühlingszwiebeln",
+    "ingredients": "1½dl Bouillon\n500g grüne Bohnen\n6 Knoblauchzehen\n2 Frühlingszwiebeln\n1EL trockener Sherry\n1EL Sojasauce\nSalz, Zucker\n",
+    "steps": "Bouillon aufkochen und Bohnen darin garen bis die Flüssigkeit fast eingekocht ist (20 Minuten).\nFrühlingszwiebeln in Ringe schneiden, Knoblauch pressen.\n2EL Öl und 1EL Butter in einer Bratpfanne oder Wok erhitzen, Knoblauch und Frühlingszwiebeln kurz heiss anbraten, salzen.\nBohnen, 1EL Sojasauce, 1TL Zucker und 1EL Sherry unterrühren und aufkochen, servieren.\n\nPasst zu [chinesischem Poulet mit Zitrone](r/84).\n",
+    "category": "hard",
+    "tags": [
+      "Asiatisch"
+    ],
+    "image": "images/recipe85.png",
+    "id": 85
+  },
+  {
+    "name": "Kabisgratin",
+    "ingredients": "1 Kabiskopf, ca. 600g\n1 Zwiebel\n100g Parmesan\n150g Scheiben Schinken\n100g Specktranchen\n400g Pelati Tomaten\n1½dl Halbrahm\n2 Eier\n1 Bund Petersilie\neinige tropfen Tabasco\nSalz, Pfeffer\n",
+    "steps": "Den Kabis vierteln, grobe Strunkteile herausschneiden, dann in streifen Schneiden.\nZwiebel hacken und in Butter goldbraun braten. Kabis beigeben, würzen und 20 Minuten garen.\nSaft der Pelati Tomaten mit Rahm und Eiern verquirlen (ein Ei trennen und nur das Eigelb verwenden). Petersilie hacken, beigeben und pikant mit Tabasco, Salz und Pfeffer würzen.\nSchinken klein schneiden, Pelati Tomaten in Würfel schneiden. In eine gebutterte feuerfeste Form lagenweise Kabis, Parmesan, Schinken und Tomaten einschichten. Speck grob zerkleinern und mit Sauce darüber verteilen.\nBei 200°C 25 Minuten backen.\n\nDazu passen gekochte Kartoffeln.\n",
+    "category": "easy",
+    "tags": [],
+    "image": "images/recipe86.png",
+    "id": 86
+  }
+]

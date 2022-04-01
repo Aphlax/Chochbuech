@@ -31,6 +31,7 @@
     </textarea>
     <h4>Rezept</h4>
     <textarea class="input steps" ng-model="recipe.steps" auto-height flex="none"></textarea>
+    <md-checkbox ng-model="recipe.archived">Archived</md-checkbox>
     <md-button class="md-raised" ng-click="save(recipe)" ng-disabled="!saveEnabled(recipe)">
         Speichern
     </md-button>
