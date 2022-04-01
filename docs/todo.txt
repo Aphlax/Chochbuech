@@ -1,7 +1,6 @@
 archive recipes.
 
 install app prompt
-share button
 
 quick recipes
   - chässchnitte

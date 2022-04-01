@@ -107,12 +107,15 @@
             });
             return properties;
         }])
-        .factory('copyRecipeUrl', ['$mdToast', function($mdToast) {
-            return function(recipe) {
-                if (!('clipboard' in navigator)) return;
-                navigator.clipboard.writeText(
-                    `${window.location}#${recipe?.name?.replaceAll(' ', '-')}`);
-                $mdToast.showSimple('Link kopiert!');
+        .factory('shareRecipeUrl', ['$mdToast', function($mdToast) {
+            return async function(recipe) {
+                if ('share' in navigator) {
+                    await navigator.share({ title: 'Chochbuech', text: recipe?.name, url: window.location });
+                } else if ('clipboard' in navigator) {
+                    await navigator.clipboard.writeText(
+                        `${window.location}#${recipe?.name?.replaceAll(' ', '-')}`);
+                    $mdToast.showSimple('Link kopiert!');
+                }
             }
         }]);
 })();

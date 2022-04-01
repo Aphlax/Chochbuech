@@ -44,12 +44,17 @@ angular.module('Shopping', ['Values', 'ngCookies'])
             $scope.newItemLabel = '';
             $timeout(() => $element.find('input')[0].scrollIntoView());
         };
-        $scope.copyShoppingList = function() {
+        $scope.shareShoppingList = async function() {
             const shoppingList = $cookies.get(COOKIE_NAME);
-            if (!('clipboard' in navigator) || !shoppingList) return;
-            navigator.clipboard.writeText(shoppingList.split('\n').filter(i => i)
-                .map(item => createItem(item).label.trim()).join('\n'));
-            $mdToast.showSimple('Einkaufsliste kopiert!');
+            if (!shoppingList) return;
+            const text = shoppingList.split('\n').filter(i => i)
+                .map(item => createItem(item).label.trim()).join('\n');
+            if ('share' in navigator) {
+                await navigator.share({ title: 'Einkaufsliste', text });
+            } else if ('clipboard' in navigator) {
+                await navigator.clipboard.writeText(text);
+                $mdToast.showSimple('Einkaufsliste kopiert!');
+            }
         }
 
         $scope.$on(C.EVENTS.SHOP_REMOVE_ALL, () => $scope.list = []);

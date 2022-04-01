@@ -65,7 +65,7 @@ angular.module('Chochbuech', REQ)
                 url: '/r/:id',
                 params: { id: { type: 'int' } },
                 templateUrl: 'templates/view-site.html',
-                controller: controls('recipe', 'display', 'shopRecipe', 'copyRecipeUrl'),
+                controller: controls('recipe', 'display', 'shopRecipe', 'shareRecipeUrl'),
                 resolve: {
                     recipe: ['$stateParams', '$recipe',
                         ($stateParams, $recipe) => $recipe.get(+$stateParams.id)],
