@@ -1,8 +1,10 @@
 // https://developers.google.com/web/fundamentals/primers/service-workers/
+// https://web.dev/offline-cookbook/
 
 // Only works in https contexts.
 
 const CACHE_NAME = 'chochbuech';
+const APP_MINOR_VERSION = 0;
 const urlsToCache = [
     '/',
     '/manifest.json',
@@ -52,10 +54,19 @@ const apiRoutes = [
 ];
 
 self.addEventListener('install', function(event) {
+    self.skipWaiting();
     event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)));
 });
 
+self.addEventListener('activate', () => {
+    clients.claim();
+});
+
 self.addEventListener('fetch', event => {
+    if (apiRoutes.some(route => event.request.url.indexOf(route) != -1)) {
+        return;
+    }
+
     if (new URL(event.request.url).origin == location.origin) {
         event.respondWith(async function() {
             const cache = await caches.open(CACHE_NAME);
@@ -63,14 +74,11 @@ self.addEventListener('fetch', event => {
                 new Request('/') : event.request;
             const cachedResponse = await cache.match(request);
             if (cachedResponse) {
-                event.waitUntil(async () => await cache.put(request, await fetch(event.request)));
                 return cachedResponse;
             }
             try {
                 const networkResponse = await fetch(event.request);
-                if (!apiRoutes.some(route => event.request.url.indexOf(route) != -1)) {
-                    await cache.put(event.request, networkResponse.clone());
-                }
+                await cache.put(event.request, networkResponse.clone());
                 return networkResponse;
             } catch (e) {
                 return new Response('{"offline":true}', {headers: [['Content-Type', 'application/json']]});

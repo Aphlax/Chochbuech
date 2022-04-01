@@ -1,5 +1,16 @@
 archive recipes.
 
+install app prompt
+share button
+
+quick recipes
+  - chässchnitte
+  - spinat & co
+  - rösti + bratwurst
+  - riz casimir
+  - fried rice
+  - Würstchen im Teig
+
 filet im teig
 kaiserschmarrn
 fruchtsalat
@@ -7,4 +18,5 @@ tiramisu (marco)
 wurst+käse platte
 chips und nüssli
 Dip
+schinken teig rollen (ladina)
 
