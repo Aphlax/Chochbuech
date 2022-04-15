@@ -2,7 +2,7 @@
     <h2>Rezepte</h2>
     <a class="recipe" layout="row"  ng-repeat="recipe in recipes track by recipe.id"
          href="r/{{recipe.id}}">
-        <div class="id cell">{{recipe.id}}</div>
+        <div class="id cell">{{recipe.id}}<span ng-if="recipe.archived">*</span></div>
         <div class="name cell">{{recipe.name}}</div>
         <div class="category cell">{{recipe.category}}</div>
     </a>

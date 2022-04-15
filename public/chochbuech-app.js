@@ -5,7 +5,7 @@
 // Only works in https contexts.
 
 const CACHE_NAME = 'chochbuech';
-const APP_MINOR_VERSION = 1;
+const APP_MINOR_VERSION = 2;
 const urlsToCache = [
     '/',
     '/manifest.json',
