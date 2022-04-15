@@ -9,7 +9,7 @@ angular.module('Editor', ['Values'])
         $scope.saveEnabled = function(recipe) {
             return (!recipe.id || !isNaN(recipe.id)) &&
                 recipe.image && recipe.name &&
-                recipe.ingredients && recipe.steps &&
+                recipe.ingredients && recipe.steps && recipe.category &&
                 (recipe.id || recipe.image instanceof File);
         }
 

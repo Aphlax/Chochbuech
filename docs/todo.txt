@@ -1,7 +1,3 @@
-archive recipes.
-
-install app prompt
-
 quick recipes
   - chässchnitte
   - spinat & co
@@ -17,5 +13,5 @@ tiramisu (marco)
 wurst+käse platte
 chips und nüssli
 Dip
-schinken teig rollen (ladina)
 
+https://developers.google.com/web/tools/workbox/guides/get-started

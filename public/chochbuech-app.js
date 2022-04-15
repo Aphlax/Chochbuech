@@ -1,10 +1,11 @@
 // https://developers.google.com/web/fundamentals/primers/service-workers/
 // https://web.dev/offline-cookbook/
+// https://developers.google.com/web/tools/workbox/guides/get-started
 
 // Only works in https contexts.
 
 const CACHE_NAME = 'chochbuech';
-const APP_MINOR_VERSION = 0;
+const APP_MINOR_VERSION = 1;
 const urlsToCache = [
     '/',
     '/manifest.json',
