@@ -1,5 +1,6 @@
 {
-  "fabiansserverUrl": "192.168.1.123",
+  "fabiansserverUrlComment": "Also go to https://cloud.mongodb.com/v2/60ac3027b145744fd08a66b1#security/network/accessList and change allowed ips.",
+  "fabiansserverUrl": "192.168.0.15",
   "fabiansserverUser": "user",
   "fabiansserverKeyPath": "./deploy/fabiansserver-user.id_rsa",
   "fabiansserverProdDir": "/home/user/chochbuech/"
